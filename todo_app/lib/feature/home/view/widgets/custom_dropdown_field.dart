@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
@@ -61,14 +62,14 @@ class CustomDropdownField extends StatelessWidget {
 
   OutlineInputBorder _borderStyle() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(15.r),
       borderSide: BorderSide(color: AppColors.lightGray),
     );
   }
 
   Row dropdownMenuItem({required String image, required String text}) {
     return Row(
-      children: [SvgPicture.asset(image), SizedBox(width: 20), Text(text)],
+      children: [SvgPicture.asset(image), SizedBox(width: 20.w), Text(text)],
     );
   }
 }

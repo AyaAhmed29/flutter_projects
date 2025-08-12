@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_router.dart';
@@ -67,7 +66,7 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
                 ? Assets.assetsImagesIconsUnlock
                 : Assets.assetsImagesIconsLock,
           ),
-          SizedBox(height: 20),
+
           CustomButton(
             text: 'Register',
             onPressed: () {

@@ -13,7 +13,7 @@ import 'package:todo_app/feature/task/view/edit_task_view.dart';
 import 'package:todo_app/feature/task/view/today_tasks_view.dart';
 
 abstract class AppRouter {
-  static const String onboardingView = '/OnboardingView';
+  static const String onboardingView = '/onboardingView';
   static const String registerView = '/RegisterView';
   static const String loginView = '/LoginView';
   static const String homeView = '/HomeView';

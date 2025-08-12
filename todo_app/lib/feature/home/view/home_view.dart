@@ -1,100 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/core/widgets/custom_floating_action_button.dart';
 import 'package:todo_app/core/widgets/custom_userInf_app_bar.dart';
 import 'package:todo_app/feature/home/view/widgets/in_progress_list_view.dart';
+import 'package:todo_app/feature/home/view/widgets/number_container.dart';
 import 'package:todo_app/feature/home/view/widgets/task_completion_card.dart';
-import 'package:todo_app/feature/task/view/widgets/task_field.dart';
+import 'package:todo_app/feature/home/view/widgets/task_group_list_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: CustomFloatingActionButton(
         onPressed: () {
           GoRouter.of(context).push(AppRouter.addTaskView);
         },
-        shape: const CircleBorder(),
-        backgroundColor: AppColors.primaryColor,
-        child: Image.asset(Assets.assetsImagesIconsFile),
+        icon: Assets.assetsImagesIconsFile,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            CustomUserInfAppBar(
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: CustomUserInfAppBar(
               onTap: () => GoRouter.of(context).push(AppRouter.profileView),
             ),
-            SizedBox(height: 50),
-            Text(
-              'There are no tasks yet,\nPress the button\nTo add New Task ',
-              style: AppStyle.light12.copyWith(fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 50),
-            GestureDetector(
-              onDoubleTap: () => Navigator.of(
-                context,
-              ).push(MaterialPageRoute(builder: (context) => const Home())),
-              child: Image.asset(Assets.assetsImagesOBJECTS),
-            ),
-          ],
-        ),
+          ),
+          SliverToBoxAdapter(child: SizedBox(height: 30.h)),
+
+          SliverToBoxAdapter(child: HomeTasks()),
+        ],
       ),
     );
   }
 }
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class HomeEmptyWidget extends StatelessWidget {
+  const HomeEmptyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          GoRouter.of(context).push(AppRouter.addTaskView);
-        },
-        shape: const CircleBorder(),
-        backgroundColor: AppColors.primaryColor,
-        child: Image.asset(Assets.assetsImagesIconsFile),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomUserInfAppBar(),
-          SizedBox(height: 20),
-          Center(child: TaskCompletionCard()),
-          InProgressListView(),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Text('Task Groups'),
-          ),
-          TaskField(
-            text: 'Personal Task',
-            prefixIcon: Assets.assetsImagesIconsProfileWithoutBackground,
+    return Column(
+      children: [
+        SizedBox(height: 30.h),
+        Text(
+          'There are no tasks yet,\nPress the button\nTo add New Task ',
+          style: AppStyle.light12.copyWith(fontSize: 16.sp),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(height: 39.h),
+        Image.asset(Assets.assetsImagesOBJECTS),
+      ],
+    );
+  }
+}
 
-            color: AppColors.primaryColor,
-            number: 5,
+class HomeTasks extends StatelessWidget {
+  const HomeTasks({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Center(child: TaskCompletionCard()),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            children: [
+              Text('In Progress', style: AppStyle.light14),
+              NumberContainer(number: 5, color: AppColors.primaryColor),
+            ],
           ),
-          TaskField(
-            text: 'Home Task',
-            prefixIcon: Assets.assetsImagesIconsHomeWithoutBackground,
-            color: AppColors.pink,
-            number: 5,
-          ),
-          TaskField(
-            text: 'Work Task',
-            prefixIcon: Assets.assetsImagesIconsWorkWithoutBackground,
-            color: AppColors.black,
-            number: 1,
-          ),
-        ],
-      ),
+        ),
+        InProgressListView(),
+        SizedBox(height: 25.h),
+        Padding(
+          padding: EdgeInsets.only(left: 16.0.w, bottom: 8.h),
+          child: Text('Task Groups'),
+        ),
+        TaskGroupListView(),
+      ],
     );
   }
 }

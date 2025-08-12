@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/widgets/custom_app_bar.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/feature/home/view/widgets/custom_dropdown_field.dart';
+import 'package:todo_app/feature/task/view/widgets/custom_datetime_picker.dart';
 import 'package:todo_app/feature/task/view/widgets/custom_task_field.dart';
 
 class AddTaskViwe extends StatefulWidget {
@@ -14,39 +16,29 @@ class AddTaskViwe extends StatefulWidget {
 
 class _AddTaskViweState extends State<AddTaskViwe> {
   final key = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(titile: 'Add Task'),
       body: SingleChildScrollView(
         child: Form(
+          
           key: key,
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40.0,
-                  vertical: 20,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.r),
                   child: Image.asset(Assets.assetsImagesProfile),
                 ),
               ),
               CustomTaskField(text: 'Title'),
               CustomTaskField(text: 'Description'),
               CustomDropdownField(),
-              CustomTaskField(
-                onTap: () async {
-                  await   showTimePicker(
-                    context: context,
-                    initialTime: TimeOfDay.now(),
-                  );
-                },
-                text: 'End Time',
-                prefixIcon: Assets.assetsImagesIconsCalendar,
-              ),
-              SizedBox(height: 18),
+              CustomDateTimePicker(),
+              SizedBox(height: 18.h),
               CustomButton(
                 text: 'Add Task',
                 onPressed: () {

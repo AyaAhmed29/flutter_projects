@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
@@ -21,12 +22,12 @@ class InProgressCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(8),
-      height: 100,
-      width: 250,
+      height: 100.h,
+      width: 250.w,
       decoration: BoxDecoration(
         color: color,
 
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: BorderRadius.circular(30.r),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),

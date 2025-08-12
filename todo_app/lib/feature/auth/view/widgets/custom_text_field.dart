@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
+import 'package:todo_app/core/utils/app_padding.dart';
 import 'package:todo_app/core/utils/app_style.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -26,13 +28,9 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: AppPadding.symmetricH22V5,
       child: TextFormField(
         validator: (value) {
-          //  RegExp("$value");
-          // if (value != null && !value.contains(RegExp('@'))) {
-          //   return 'Must contain  @';
-          // }
           if (value == null || value.isEmpty) {
             return 'Please enter $text';
           } else if (keyboardType == TextInputType.visiblePassword &&
@@ -57,16 +55,13 @@ class CustomTextField extends StatelessWidget {
                   icon: SvgPicture.asset(suffixIcon!),
                 )
               : null,
-
           prefixIcon: Transform.scale(
             scale: 0.6,
             child: SvgPicture.asset(icon),
           ),
-
           labelText: text,
           labelStyle: AppStyle.extraLight14,
           border: _borderStyle(),
-
           focusedBorder: _borderStyle().copyWith(
             borderSide: BorderSide(color: AppColors.primaryColor),
           ),
@@ -80,7 +75,7 @@ class CustomTextField extends StatelessWidget {
 
   OutlineInputBorder _borderStyle() {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(15.r),
       borderSide: BorderSide(color: AppColors.lightGray),
     );
   }

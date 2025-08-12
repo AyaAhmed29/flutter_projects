@@ -41,7 +41,6 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                 : Assets.assetsImagesIconsLock,
           ),
 
-          SizedBox(height: 20),
           CustomButton(
             text: 'Login',
             onPressed: () {
@@ -55,7 +54,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
               }
             },
           ),
-          SizedBox(height: 20),
+         
         ],
       ),
     );

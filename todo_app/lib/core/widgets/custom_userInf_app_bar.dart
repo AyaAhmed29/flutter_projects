@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_style.dart';
 
@@ -13,9 +14,9 @@ class CustomUserInfAppBar extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding:  EdgeInsets.symmetric(horizontal: 16.0.w),
               child: CircleAvatar(
-                radius: 30,
+                radius: 30.r,
                 backgroundImage: AssetImage(Assets.assetsImagesProfile),
               ),
             ),
@@ -25,7 +26,7 @@ class CustomUserInfAppBar extends StatelessWidget {
                 Text('Hello!', style: AppStyle.light12),
                 Text(
                   'Aya Ahmed',
-                  style: AppStyle.light12.copyWith(fontSize: 16),
+                  style: AppStyle.light12.copyWith(fontSize: 16.sp),
                 ),
               ],
             ),

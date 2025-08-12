@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
@@ -13,8 +14,8 @@ class UpdateProfileView extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadiusGeometry.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+              bottomLeft: Radius.circular(20.r),
+              bottomRight: Radius.circular(20.r),
             ),
             child: Image.asset(Assets.assetsImagesProfile),
           ),
@@ -27,7 +28,7 @@ class UpdateProfileView extends StatelessWidget {
                 hintText: 'Username',
                 hintStyle: AppStyle.extraLight14,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(15.r),
                   borderSide: BorderSide(color: AppColors.lightGray),
                 ),
               ),

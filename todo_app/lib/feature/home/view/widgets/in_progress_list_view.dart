@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/feature/home/view/widgets/in_progress_card.dart';
@@ -28,7 +29,7 @@ class InProgressListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 110,
+      height: 110.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: item.length,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
@@ -70,7 +71,7 @@ class _CustomConfirmPassFormState extends State<CustomConfirmPassForm> {
                 ? Assets.assetsImagesIconsUnlock
                 : Assets.assetsImagesIconsLock,
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 20.h),
           CustomButton(
             text: 'Save',
             onPressed: () {

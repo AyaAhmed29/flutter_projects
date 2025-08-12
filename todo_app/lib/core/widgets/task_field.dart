@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
 import 'package:todo_app/feature/home/view/widgets/number_container.dart';
 
@@ -24,21 +26,21 @@ class TaskField extends StatelessWidget {
     return IconButton(
       onPressed: onPressed,
       icon: Container(
-        margin: EdgeInsets.all(8),
-        height: 60,
+        // margin: EdgeInsets.all(8),
+        height: 63.h,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(15.r),
         ),
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 14.0),
               child: Container(
-                height: 25,
-                width: 25,
+                height: 25.h,
+                width: 25.w,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(5.r),
                   color: color.withValues(alpha: 0.15),
                 ),
                 child: Center(
@@ -53,7 +55,7 @@ class TaskField extends StatelessWidget {
             Text(text, style: AppStyle.regular16),
             Spacer(flex: 1),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: EdgeInsets.symmetric(horizontal: 16.0.w),
               child: NumberContainer(color: color, number: number),
             ),
           ],
