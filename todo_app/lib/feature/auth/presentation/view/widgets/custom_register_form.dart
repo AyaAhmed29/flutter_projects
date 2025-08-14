@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
-import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
-import 'package:todo_app/feature/auth/view/widgets/custom_text_field.dart';
+import 'package:todo_app/feature/auth/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
+import 'package:todo_app/feature/auth/presentation/view/widgets/custom_text_field.dart';
 
 class CustomRegisterForm extends StatefulWidget {
   const CustomRegisterForm({super.key});
@@ -15,7 +16,7 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
   bool isPasswordVisible = true;
   bool isConfirmPasswordVisible = true;
   final formKey = GlobalKey<FormState>();
-  String password = '';
+  String password = '', email = '';
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,7 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
             text: 'Username',
             icon: Assets.assetsImagesIconsProfile,
             keyboardType: TextInputType.name,
+            onSaved: (p0) => email = '$p0@example.com',
           ),
           CustomTextField(
             isPasswordVisible: isPasswordVisible,
@@ -72,11 +74,10 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
             onPressed: () {
               formKey.currentState!.save();
               if (formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Registration successful')),
+                context.read<SignUpCubit>().register(
+                  email,
+                  password,
                 );
-
-                AppRouter.router.go(AppRouter.homeView);
               }
             },
           ),

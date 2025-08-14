@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:todo_app/feature/auth/view/login_view.dart';
-import 'package:todo_app/feature/auth/view/register_view.dart';
+import 'package:todo_app/feature/auth/presentation/view/login_view.dart';
+import 'package:todo_app/feature/auth/presentation/view/register_view.dart';
 import 'package:todo_app/feature/home/view/home_view.dart';
 import 'package:todo_app/feature/onboarding/view/onboarding%20_view.dart';
 import 'package:todo_app/feature/profile/view/change_password_view.dart';

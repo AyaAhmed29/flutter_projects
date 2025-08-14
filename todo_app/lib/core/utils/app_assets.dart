@@ -1,30 +1,26 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for assetsImagesIconsArrow
   /// assets/images/icons/Arrow.svg
   static const String assetsImagesIconsArrow = "assets/images/icons/Arrow.svg";
 
   /// Assets for assetsImagesIconsBackArrow
   /// assets/images/icons/BackArrow.svg
-  static const String assetsImagesIconsBackArrow =
-      "assets/images/icons/BackArrow.svg";
+  static const String assetsImagesIconsBackArrow = "assets/images/icons/BackArrow.svg";
 
   /// Assets for assetsImagesIconsCalendar
   /// assets/images/icons/calendar.svg
-  static const String assetsImagesIconsCalendar =
-      "assets/images/icons/calendar.svg";
+  static const String assetsImagesIconsCalendar = "assets/images/icons/calendar.svg";
 
   /// Assets for assetsImagesIconsDelete
   /// assets/images/icons/Delete.svg
-  static const String assetsImagesIconsDelete =
-      "assets/images/icons/Delete.svg";
+  static const String assetsImagesIconsDelete = "assets/images/icons/Delete.svg";
 
   /// Assets for assetsImagesIconsDownArro
   /// assets/images/icons/DownArro.svg
-  static const String assetsImagesIconsDownArro =
-      "assets/images/icons/DownArro.svg";
+  static const String assetsImagesIconsDownArro = "assets/images/icons/DownArro.svg";
 
   /// Assets for assetsImagesIconsFile
   /// assets/images/icons/file.png
@@ -32,8 +28,7 @@ class Assets {
 
   /// Assets for assetsImagesIconsFilter
   /// assets/images/icons/Filter.png
-  static const String assetsImagesIconsFilter =
-      "assets/images/icons/Filter.png";
+  static const String assetsImagesIconsFilter = "assets/images/icons/Filter.png";
 
   /// Assets for assetsImagesIconsHome
   /// assets/images/icons/home.svg
@@ -41,8 +36,7 @@ class Assets {
 
   /// Assets for assetsImagesIconsHomeWithoutBackground
   /// assets/images/icons/HomeWithoutBackground.svg
-  static const String assetsImagesIconsHomeWithoutBackground =
-      "assets/images/icons/HomeWithoutBackground.svg";
+  static const String assetsImagesIconsHomeWithoutBackground = "assets/images/icons/HomeWithoutBackground.svg";
 
   /// Assets for assetsImagesIconsLock
   /// assets/images/icons/Lock.svg
@@ -50,38 +44,31 @@ class Assets {
 
   /// Assets for assetsImagesIconsPassword
   /// assets/images/icons/Password.svg
-  static const String assetsImagesIconsPassword =
-      "assets/images/icons/Password.svg";
+  static const String assetsImagesIconsPassword = "assets/images/icons/Password.svg";
 
   /// Assets for assetsImagesIconsPersonal
   /// assets/images/icons/personal.svg
-  static const String assetsImagesIconsPersonal =
-      "assets/images/icons/personal.svg";
+  static const String assetsImagesIconsPersonal = "assets/images/icons/personal.svg";
 
   /// Assets for assetsImagesIconsProfile
   /// assets/images/icons/Profile.svg
-  static const String assetsImagesIconsProfile =
-      "assets/images/icons/Profile.svg";
+  static const String assetsImagesIconsProfile = "assets/images/icons/Profile.svg";
 
   /// Assets for assetsImagesIconsProfileWithoutBackground
   /// assets/images/icons/ProfileWithoutBackground.svg
-  static const String assetsImagesIconsProfileWithoutBackground =
-      "assets/images/icons/ProfileWithoutBackground.svg";
+  static const String assetsImagesIconsProfileWithoutBackground = "assets/images/icons/ProfileWithoutBackground.svg";
 
   /// Assets for assetsImagesIconsSearch
   /// assets/images/icons/Search.svg
-  static const String assetsImagesIconsSearch =
-      "assets/images/icons/Search.svg";
+  static const String assetsImagesIconsSearch = "assets/images/icons/Search.svg";
 
   /// Assets for assetsImagesIconsSetting
   /// assets/images/icons/Setting.svg
-  static const String assetsImagesIconsSetting =
-      "assets/images/icons/Setting.svg";
+  static const String assetsImagesIconsSetting = "assets/images/icons/Setting.svg";
 
   /// Assets for assetsImagesIconsUnlock
   /// assets/images/icons/Unlock.svg
-  static const String assetsImagesIconsUnlock =
-      "assets/images/icons/Unlock.svg";
+  static const String assetsImagesIconsUnlock = "assets/images/icons/Unlock.svg";
 
   /// Assets for assetsImagesIconsWork
   /// assets/images/icons/Work.svg
@@ -89,13 +76,11 @@ class Assets {
 
   /// Assets for assetsImagesIconsWorkGreen
   /// assets/images/icons/workGreen.svg
-  static const String assetsImagesIconsWorkGreen =
-      "assets/images/icons/workGreen.svg";
+  static const String assetsImagesIconsWorkGreen = "assets/images/icons/workGreen.svg";
 
   /// Assets for assetsImagesIconsWorkWithoutBackground
   /// assets/images/icons/WorkWithoutBackground.svg
-  static const String assetsImagesIconsWorkWithoutBackground =
-      "assets/images/icons/WorkWithoutBackground.svg";
+  static const String assetsImagesIconsWorkWithoutBackground = "assets/images/icons/WorkWithoutBackground.svg";
 
   /// Assets for assetsImagesLitsGo
   /// assets/images/litsGo.png
@@ -110,6 +95,7 @@ class Assets {
   static const String assetsImagesProfile = "assets/images/profile.png";
 
   /// Assets for assetsImagesSplash
-  /// assets/images/splash.png
-  static const String assetsImagesSplash = "assets/images/splash.png";
+  /// assets/images/splash.svg
+  static const String assetsImagesSplash = "assets/images/splash.svg";
 }
+
