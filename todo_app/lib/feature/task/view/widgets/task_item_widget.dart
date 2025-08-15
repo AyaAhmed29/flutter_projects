@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,11 +20,11 @@ class TaskItemWidget extends StatelessWidget {
 
   Color getStatusColor() {
     switch (status) {
-      case 'Done'|| 'تمت':
+      case 'Done' || 'تمت':
         return AppColors.primaryColor;
-      case 'Missed':
+      case 'Missed' || 'فاتت':
         return Colors.red;
-      case 'In Progress':
+      case 'In Progress' || "قيد التنفيذ":
         return AppColors.primaryColor.withValues(alpha: .2);
       default:
         return AppColors.black;
@@ -36,13 +34,13 @@ class TaskItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Padding(
-        padding:  EdgeInsets.only(top: 8.0.h),
+        padding: EdgeInsets.only(top: 8.0.h),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -55,7 +53,7 @@ class TaskItemWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-             SizedBox(width: 12.w),
+            SizedBox(width: 12.w),
 
             Expanded(
               child: Column(
@@ -69,7 +67,7 @@ class TaskItemWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        padding:  EdgeInsets.symmetric(
+                        padding: EdgeInsets.symmetric(
                           horizontal: 8.w,
                           vertical: 4.h,
                         ),

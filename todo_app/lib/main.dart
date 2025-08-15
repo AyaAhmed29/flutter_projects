@@ -38,11 +38,11 @@ class MyApp extends StatelessWidget {
                 ],
                 locale: Locale,
                 supportedLocales: S.delegate.supportedLocales,
-
+                debugShowCheckedModeBanner: false,
                 routerConfig: AppRouter.router,
                 theme: ThemeData(
                   progressIndicatorTheme: ProgressIndicatorThemeData(
-                    color: AppColors.primaryColor, // لون المؤشر
+                    color: AppColors.primaryColor, 
                   ),
                   textSelectionTheme: TextSelectionThemeData(
                     cursorColor: AppColors.primaryColor,

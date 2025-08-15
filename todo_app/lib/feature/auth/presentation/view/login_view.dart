@@ -18,15 +18,15 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignInCubit(AuthRepoImpl(FirebaseAuthService())),
+      create: (context) => LoginCubit(AuthRepoImpl(FirebaseAuthService())),
       child: Builder(
         builder: (context) {
-          return BlocConsumer<SignInCubit, SignInState>(
+          return BlocConsumer<LoginCubit, LoginState>(
             listener: (context, state) {
-              if (state is SignInFailure) {
+              if (state is LoginFailure) {
                 ShowSnackBar(context: context, text: state.errorMessage);
               }
-              if (state is SignInSuccess) {
+              if (state is LoginSuccess) {
                 ShowSnackBar(
                   context: context,
                   text: S.of(context).LoginSuccessfully,
@@ -37,7 +37,7 @@ class LoginView extends StatelessWidget {
             },
             builder: (context, state) {
               return ModalProgressHUD(
-                inAsyncCall: state is SignInLoading,
+                inAsyncCall: state is LoginLoading,
                 child: Scaffold(
                   body: SingleChildScrollView(
                     child: Column(

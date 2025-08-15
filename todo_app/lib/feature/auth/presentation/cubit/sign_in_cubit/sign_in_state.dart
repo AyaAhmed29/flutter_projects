@@ -1,19 +1,19 @@
-
 import 'package:todo_app/feature/auth/domain/entites/user_entity.dart';
 
-abstract class SignInState {}
+abstract class LoginState {}
 
-class SignInitial extends SignInState {}
+class Loginitial extends LoginState {}
 
-class SignInLoading extends SignInState {}
+class LoginLoading extends LoginState {}
 
-class SignInSuccess extends SignInState {
+class LoginSuccess extends LoginState {
   final UserEntity user;
-  SignInSuccess(this.user);
+  LoginSuccess(this.user);
 }
 
-class SignInFailure extends SignInState {
+class LoginFailure extends LoginState {
   final String errorMessage;
-  SignInFailure(this.errorMessage);
+  LoginFailure(this.errorMessage);
 }
 
+class ChangePasswordState extends LoginState {}

@@ -1,19 +1,38 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/feature/auth/domain/repos/auth_repo.dart';
 import 'package:todo_app/feature/auth/presentation/cubit/sign_up_cubit/sign_up_state.dart';
 
-class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit(this.authRepo) : super(SignUpitial());
+class RegisterCubit extends Cubit<RegisterState> {
+  RegisterCubit(this.authRepo) : super(Registeritial());
 
   final AuthRepo authRepo;
   Future<void> register(String email, String pass) async {
-    emit(SignUpLoading());
+    emit(RegisterLoading());
 
     try {
       final user = await authRepo.register(email, pass);
-      emit(SignUpSuccess(user));
+      emit(RegisterSuccess(user));
     } catch (e) {
-      emit(SignUpFailure(e.toString()));
+      emit(RegisterFailure(e.toString()));
     }
+  }
+
+  static RegisterCubit get(context) => BlocProvider.of(context);
+
+  var usernameController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
+  bool passwordSecure = true;
+  bool confirmPasswordSecure = true;
+
+  void changePasswordVisibility() {
+    passwordSecure = !passwordSecure;
+    emit(ChangePasswordState());
+  }
+
+  void changeConfirmPasswordVisibility() {
+    confirmPasswordSecure = !confirmPasswordSecure;
+    emit(ChangeConfirmPassworState());
   }
 }

@@ -18,26 +18,29 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignUpCubit(AuthRepoImpl(FirebaseAuthService())),
+      create: (context) => RegisterCubit(AuthRepoImpl(FirebaseAuthService())),
 
       child: Builder(
         builder: (context) {
-          return BlocConsumer<SignUpCubit, SignUpState>(
+          return BlocConsumer<RegisterCubit, RegisterState>(
             listener: (context, state) {
-              if (state is SignUpFailure) {
+              if (state is RegisterFailure) {
                 ScaffoldMessenger.of(
                   context,
                 ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
               }
-              if (state is SignUpSuccess) {
-                ShowSnackBar(context: context, text: S.of(context).RegistrationSuccessful);
+              if (state is RegisterSuccess) {
+                ShowSnackBar(
+                  context: context,
+                  text: S.of(context).RegistrationSuccessful,
+                );
 
                 AppRouter.router.go(AppRouter.homeView);
               }
             },
             builder: (context, state) {
               return ModalProgressHUD(
-                inAsyncCall: state is SignUpLoading ? true : false,
+                inAsyncCall: state is RegisterLoading ? true : false,
                 child: Scaffold(
                   body: SingleChildScrollView(
                     child: Column(
@@ -45,7 +48,7 @@ class RegisterView extends StatelessWidget {
                         CustomImage(),
                         CustomRegisterForm(),
                         AuthPrompt(
-                          text:S.of(context).AlreadyHaveAnAccount,
+                          text: S.of(context).AlreadyHaveAnAccount,
                           textButton: S.of(context).Login,
                           onPressed: () {
                             GoRouter.of(context).push(AppRouter.loginView);

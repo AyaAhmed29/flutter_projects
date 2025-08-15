@@ -9,8 +9,8 @@ class AuthRepoImpl extends AuthRepo {
   AuthRepoImpl(this.firebaseAuthService);
 
   @override
-  Future<UserEntity> signIn(String email, String password) async {
-    final user = await firebaseAuthService.signIn(email, password);
+  Future<UserEntity> login(String email, String password) async {
+    final user = await firebaseAuthService.login(email, password);
     return UserEntity(
       uid: user.uid,
       name: user.displayName ?? '',
