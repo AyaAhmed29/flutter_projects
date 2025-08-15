@@ -22,7 +22,7 @@ class TaskItemWidget extends StatelessWidget {
 
   Color getStatusColor() {
     switch (status) {
-      case 'Done':
+      case 'Done'|| 'تمت':
         return AppColors.primaryColor;
       case 'Missed':
         return Colors.red;

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_padding.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -32,10 +33,10 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Please enter $text';
+            return '${S.of( context).PleaseEnter} $text';
           } else if (keyboardType == TextInputType.visiblePassword &&
               value.length < 8) {
-            return 'Password too short';
+            return S.of(  context).PasswordTooShort;
           }
           if (validator != null) {
             return validator!(value);

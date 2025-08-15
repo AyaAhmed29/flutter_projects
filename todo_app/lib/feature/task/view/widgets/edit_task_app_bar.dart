@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class EditTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
   const EditTaskAppBar({super.key});
@@ -14,7 +14,7 @@ class EditTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       centerTitle: true,
       title: Text(
-        'Edit Task',
+        S.of(context).EditTask,
         style: AppStyle.light19.copyWith(color: Colors.black),
       ),
       leading: IconButton(
@@ -38,10 +38,9 @@ class EditTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               children: [
                 SvgPicture.asset(Assets.assetsImagesIconsDelete),
-                SizedBox(width: 5.
-                w),
+                SizedBox(width: 5.w),
                 Text(
-                  'Delete',
+                  S.of( context).Delete,
                   style: AppStyle.extraLight14.copyWith(color: Colors.white),
                 ),
               ],

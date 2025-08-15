@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class CustomTaskField extends StatelessWidget {
   const CustomTaskField({
@@ -35,8 +35,8 @@ class CustomTaskField extends StatelessWidget {
         onSaved: onSaved,
         minLines: 1,
         onTap: onTap,
-        readOnly: text == 'End Time' ? true : false,
-        maxLines: text == 'Description' ? null : 1,
+        readOnly: text == S.of(context).EndTime ? true : false,
+        maxLines: text == S.of(context).Description ? null : 1,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           prefixIcon: prefixIcon != null

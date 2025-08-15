@@ -9,6 +9,7 @@ import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/feature/profile/view/widgets/custom_field.dart';
 import 'package:todo_app/feature/task/view/widgets/display_field_task.dart';
 import 'package:todo_app/feature/task/view/widgets/edit_task_app_bar.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class EditTaskView extends StatelessWidget {
   const EditTaskView({super.key});
@@ -34,11 +35,11 @@ class EditTaskView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('In Progress', style: AppStyle.light12),
+                      Text(S.of(context).InProgress, style: AppStyle.light12),
                       Text(
                         softWrap: true,
                         overflow: TextOverflow.visible,
-                        'Believe you can, and you\'re halfway there.',
+                        S.of(context).BelieveYouCan,
                         style: AppStyle.light12.copyWith(fontSize: 16.sp),
                       ),
                     ],
@@ -48,16 +49,12 @@ class EditTaskView extends StatelessWidget {
             ),
           ),
           CustomField(
-            text: 'rfeHomergr',
+            text: S.of(context).Home,
             prefixIcon: Assets.assetsImagesIconsHome,
             suffixIcon: SvgPicture.asset(Assets.assetsImagesIconsDownArro),
           ),
-          DisplayfieldTask(widget: Text('Grocery Shopping App')),
-          DisplayfieldTask(
-            widget: Text(
-              'Go for grocery to buy some products. Go for grocery to buy some products. Go for grocery to buy some products. Go for grocery to buy some products.',
-            ),
-          ),
+          DisplayfieldTask(widget: Text(S.of(context).GroceryShoppingApp)),
+          DisplayfieldTask(widget: Text(S.of(context).GroceryDescription)),
           DisplayfieldTask(
             widget: Row(
               children: [
@@ -69,7 +66,7 @@ class EditTaskView extends StatelessWidget {
           ),
 
           SizedBox(height: 18.h),
-          CustomButton(text: 'Mark as Done', onPressed: () {}),
+          CustomButton(text: S.of(context).MarkAsDone, onPressed: () {}),
           SizedBox(height: 20.h),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -84,7 +81,7 @@ class EditTaskView extends StatelessWidget {
             ),
             onPressed: () {},
             child: Text(
-              'Update',
+              S.of(context).Update,
               style: AppStyle.light19.copyWith(color: AppColors.primaryColor),
             ),
           ),

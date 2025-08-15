@@ -10,6 +10,7 @@ import 'package:todo_app/core/service/firebase_auth_servise.dart';
 import 'package:todo_app/feature/auth/data/repo/auth_repo_imp.dart';
 import 'package:todo_app/feature/auth/presentation/cubit/sign_in_cubit/sign_in_cubit.dart';
 import 'package:todo_app/feature/auth/presentation/cubit/sign_in_cubit/sign_in_state.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -26,7 +27,10 @@ class LoginView extends StatelessWidget {
                 ShowSnackBar(context: context, text: state.errorMessage);
               }
               if (state is SignInSuccess) {
-                ShowSnackBar(context: context, text: 'Login successfully');
+                ShowSnackBar(
+                  context: context,
+                  text: S.of(context).LoginSuccessfully,
+                );
 
                 AppRouter.router.go(AppRouter.homeView);
               }
@@ -41,8 +45,8 @@ class LoginView extends StatelessWidget {
                         CustomImage(),
                         CustomLoginForm(),
                         AuthPrompt(
-                          text: 'Don’t Have An Account?',
-                          textButton: 'Register',
+                          text: S.of(context).DontHaveAnAccount,
+                          textButton: S.of(context).Register,
                         ),
                       ],
                     ),

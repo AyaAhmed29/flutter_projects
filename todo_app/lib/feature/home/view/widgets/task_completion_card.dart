@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class TaskCompletionCard extends StatelessWidget {
   const TaskCompletionCard({super.key});
@@ -24,7 +25,7 @@ class TaskCompletionCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Your today’s tasks\nalmost done!', style: AppStyle.regular14),
+            Text(S.of(context).TasksAlmostDone, style: AppStyle.regular14),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -48,7 +49,7 @@ class TaskCompletionCard extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        'View Tasks',
+                        S.of(context).ViewTasks,
                         style: AppStyle.regular16.copyWith(
                           color: AppColors.primaryColor,
                         ),

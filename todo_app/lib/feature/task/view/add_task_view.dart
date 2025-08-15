@@ -6,6 +6,7 @@ import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/feature/home/view/widgets/custom_dropdown_field.dart';
 import 'package:todo_app/feature/task/view/widgets/custom_datetime_picker.dart';
 import 'package:todo_app/feature/task/view/widgets/custom_task_field.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class AddTaskViwe extends StatefulWidget {
   const AddTaskViwe({super.key});
@@ -20,10 +21,9 @@ class _AddTaskViweState extends State<AddTaskViwe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(titile: 'Add Task'),
+      appBar: CustomAppBar(titile: S.of(context).AddTask),
       body: SingleChildScrollView(
         child: Form(
-          
           key: key,
           child: Column(
             children: [
@@ -34,13 +34,13 @@ class _AddTaskViweState extends State<AddTaskViwe> {
                   child: Image.asset(Assets.assetsImagesProfile),
                 ),
               ),
-              CustomTaskField(text: 'Title'),
-              CustomTaskField(text: 'Description'),
+              CustomTaskField(text: S.of(context).Title),
+              CustomTaskField(text: S.of(context).Description),
               CustomDropdownField(),
               CustomDateTimePicker(),
               SizedBox(height: 18.h),
               CustomButton(
-                text: 'Add Task',
+                text: S.of(context).AddTask,
                 onPressed: () {
                   if (key.currentState!.validate()) {}
                 },

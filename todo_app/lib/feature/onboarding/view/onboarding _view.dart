@@ -5,6 +5,7 @@ import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/utils/app_style.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
@@ -16,7 +17,7 @@ class OnboardingView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 90.h),
+            SizedBox(height: 60.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 36.0.w),
               child: Image.asset(
@@ -26,20 +27,21 @@ class OnboardingView extends StatelessWidget {
                 width: 301.w,
               ),
             ),
-            SizedBox(height: 60.h),
+            SizedBox(height: 40.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 100.w),
               child: Text(
-                'Welcome To \nDo It !',
+                S.of(context).WelcomeToDoIt,
+
                 textAlign: TextAlign.center,
                 style: AppStyle.regular25,
               ),
             ),
-            SizedBox(height: 40.h),
+            SizedBox(height: 30.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: Text(
-                'Ready to conquer your tasks? Let\'s Do \nIt together.',
+                S.of(context).ReadyToConquerYourTasks,
                 textAlign: TextAlign.center,
                 style: AppStyle.medium16,
                 softWrap: true,
@@ -48,7 +50,7 @@ class OnboardingView extends StatelessWidget {
             ),
             SizedBox(height: 35.h),
             CustomButton(
-              text: 'Let’s Start',
+              text: S.of(context).LetsStart,
               onPressed: () {
                 GoRouter.of(context).go(AppRouter.registerView);
               },

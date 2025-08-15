@@ -11,6 +11,7 @@ import 'package:todo_app/feature/auth/presentation/cubit/sign_up_cubit/sign_up_s
 import 'package:todo_app/feature/auth/presentation/view/widgets/auth_prompt.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/custom_image.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/custom_register_form.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -29,7 +30,7 @@ class RegisterView extends StatelessWidget {
                 ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
               }
               if (state is SignUpSuccess) {
-                ShowSnackBar(context: context, text: 'Registration successful');
+                ShowSnackBar(context: context, text: S.of(context).RegistrationSuccessful);
 
                 AppRouter.router.go(AppRouter.homeView);
               }
@@ -44,8 +45,8 @@ class RegisterView extends StatelessWidget {
                         CustomImage(),
                         CustomRegisterForm(),
                         AuthPrompt(
-                          text: 'Already Have An Account?',
-                          textButton: 'Login',
+                          text:S.of(context).AlreadyHaveAnAccount,
+                          textButton: S.of(context).Login,
                           onPressed: () {
                             GoRouter.of(context).push(AppRouter.loginView);
                           },

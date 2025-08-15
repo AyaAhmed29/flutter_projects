@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class CustomConfirmPassField extends StatelessWidget {
   const CustomConfirmPassField({
@@ -29,9 +29,9 @@ class CustomConfirmPassField extends StatelessWidget {
       child: TextFormField(
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Please enter $text';
+            return '${S.of(context).PleaseEnter} $text';
           } else if (value.length < 8) {
-            return 'Password too short';
+            return S.of(context).PasswordTooShort;
           }
           if (validator != null) {
             return validator!(value);

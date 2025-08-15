@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class CustomDropdownField extends StatelessWidget {
   const CustomDropdownField({super.key});
@@ -16,12 +16,12 @@ class CustomDropdownField extends StatelessWidget {
       child: DropdownButtonFormField(
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Please Select item ';
+            return S.of(context).PleaseSelectItem;
           }
           return null;
         },
         decoration: InputDecoration(
-          hintText: 'Group',
+          hintText: S.of(context).Group,
           hintStyle: AppStyle.extraLight14,
           border: _borderStyle(),
 
@@ -37,21 +37,21 @@ class CustomDropdownField extends StatelessWidget {
             value: 'Home',
             child: dropdownMenuItem(
               image: Assets.assetsImagesIconsHome,
-              text: 'Home',
+              text: S.of(context).Home,
             ),
           ),
           DropdownMenuItem(
             value: 'Personal',
             child: dropdownMenuItem(
               image: Assets.assetsImagesIconsPersonal,
-              text: 'Personal',
+              text: S.of(context).Personal,
             ),
           ),
           DropdownMenuItem(
             value: 'Work',
             child: dropdownMenuItem(
               image: Assets.assetsImagesIconsWork,
-              text: 'Work',
+              text: S.of(context).Work,
             ),
           ),
         ],
@@ -69,7 +69,11 @@ class CustomDropdownField extends StatelessWidget {
 
   Row dropdownMenuItem({required String image, required String text}) {
     return Row(
-      children: [SvgPicture.asset(image), SizedBox(width: 20.w), Text(text)],
+      children: [
+        SvgPicture.asset(image),
+        SizedBox(width: 20.w),
+        Text(text),
+      ],
     );
   }
 }

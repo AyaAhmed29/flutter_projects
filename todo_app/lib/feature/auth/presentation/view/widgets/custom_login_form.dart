@@ -4,6 +4,7 @@ import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/feature/auth/presentation/cubit/sign_in_cubit/sign_in_cubit.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/custom_text_field.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class CustomLoginForm extends StatefulWidget {
   const CustomLoginForm({super.key});
@@ -24,14 +25,14 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
       child: Column(
         children: [
           CustomTextField(
-            text: 'Username',
+            text: S.of(  context).Username,
             icon: Assets.assetsImagesIconsProfile,
             keyboardType: TextInputType.name,
             onSaved: (p0) => email = "$p0@example.com",
           ),
           CustomTextField(
             isPasswordVisible: isPasswordVisible,
-            text: 'Password',
+            text: S.of(  context).Password,
             onSaved: (p0) => pass = p0!,
 
             icon: Assets.assetsImagesIconsPassword,
@@ -47,7 +48,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
           ),
 
           CustomButton(
-            text: 'Login',
+            text: S.of(  context).Login ,
             onPressed: () {
               formKey.currentState!.save();
               if (formKey.currentState!.validate()) {

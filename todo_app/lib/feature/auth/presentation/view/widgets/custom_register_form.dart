@@ -4,6 +4,7 @@ import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/feature/auth/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/custom_text_field.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class CustomRegisterForm extends StatefulWidget {
   const CustomRegisterForm({super.key});
@@ -25,14 +26,15 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
       child: Column(
         children: [
           CustomTextField(
-            text: 'Username',
+            text: S.of(  context).Username,
             icon: Assets.assetsImagesIconsProfile,
             keyboardType: TextInputType.name,
             onSaved: (p0) => email = '$p0@example.com',
           ),
           CustomTextField(
             isPasswordVisible: isPasswordVisible,
-            text: 'Password',
+            text:S.of(  context).Password
+             ,
             onSaved: (pass) {
               password = pass ?? '';
             },
@@ -50,13 +52,13 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
           CustomTextField(
             validator: (value) {
               if (value != password) {
-                return 'Passwords do not match';
+                return S.of(context).PasswordsDoNotMatch;
               }
               return null;
             },
 
             isPasswordVisible: isConfirmPasswordVisible,
-            text: 'Confirm Password',
+            text: S.of(context).ConfirmPassword,
             icon: Assets.assetsImagesIconsPassword,
             keyboardType: TextInputType.visiblePassword,
             suffixIconOnPressed: () {
@@ -70,14 +72,11 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
           ),
 
           CustomButton(
-            text: 'Register',
+            text: S.of(context).Register,
             onPressed: () {
               formKey.currentState!.save();
               if (formKey.currentState!.validate()) {
-                context.read<SignUpCubit>().register(
-                  email,
-                  password,
-                );
+                context.read<SignUpCubit>().register(email, password);
               }
             },
           ),

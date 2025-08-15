@@ -10,6 +10,7 @@ import 'package:todo_app/feature/task/view/widgets/custom_elevated_button.dart';
 import 'package:todo_app/feature/task/view/widgets/task_item_widget.dart';
 import 'package:todo_app/feature/task/view/widgets/task_search.dart';
 import 'package:todo_app/feature/task/view/widgets/task_status_indicator.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class TodayTasksView extends StatelessWidget {
   const TodayTasksView({super.key});
@@ -29,25 +30,25 @@ class TodayTasksView extends StatelessWidget {
         child: Column(
           children: [
             TaskSearch(),
-            TaskStatusIndicator(text: 'Results', number: 4),
+            TaskStatusIndicator(text: S.of(context).Results, number: 4),
             TaskItemWidget(
-              title: 'Go to supermarket to buy some milk & eggs',
-              status: 'Done',
+              title: S.of(context).GoToSupermarket,
+              status: S.of(context).Done,
               icon: Assets.assetsImagesIconsHome,
             ),
             TaskItemWidget(
-              title: 'Go to supermarket to buy some milk & eggs',
-              status: 'In Progress',
+              title: S.of(context).GoToSupermarket,
+              status: S.of(context).InProgress,
               icon: Assets.assetsImagesIconsHome,
             ),
             TaskItemWidget(
-              title: 'Go to supermarket to buy some milk & eggs',
-              status: 'Missed',
+              title: S.of(context).GoToSupermarket,
+              status: S.of(context).Missed,
               icon: Assets.assetsImagesIconsHome,
             ),
             TaskItemWidget(
-              title: 'Go to supermarket to buy some milk & eggs',
-              status: 'In Progress',
+              title: S.of(context).GoToSupermarket,
+              status: S.of(context).InProgress,
               icon: Assets.assetsImagesIconsHome,
             ),
           ],
@@ -86,7 +87,12 @@ class TodayTasksView extends StatelessWidget {
                       children: [
                         for (int i = 0; i < 4; i++)
                           CustomElevatedButton(
-                            text: ['All', 'Work', 'Home', 'Personal'][i],
+                            text: [
+                              S.of(context).All,
+                              S.of(context).Work,
+                              S.of(context).Home,
+                              S.of(context).Personal,
+                            ][i],
                             isSelected: selectedTopIndex == i,
                             onTap: () {
                               setState(() {
@@ -102,7 +108,12 @@ class TodayTasksView extends StatelessWidget {
                       children: [
                         for (int i = 0; i < 4; i++)
                           CustomElevatedButton(
-                            text: ['All', 'In Progress', 'Missed', 'Done'][i],
+                            text: [
+                              S.of(context).All,
+                              S.of(context).InProgress,
+                              S.of(context).Missed,
+                              S.of(context).Done,
+                            ][i],
                             isSelected: selectedBottomIndex == i,
                             onTap: () {
                               setState(() {
@@ -115,7 +126,7 @@ class TodayTasksView extends StatelessWidget {
                     SizedBox(height: 25.h),
                     CustomDateTimePicker(),
                     CustomButton(
-                      text: 'Filter',
+                      text: S.of( context).Filter,
                       onPressed: () {
                         Navigator.pop(context);
                       },

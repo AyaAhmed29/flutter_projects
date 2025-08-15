@@ -3,31 +3,34 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/feature/home/view/widgets/in_progress_card.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class InProgressListView extends StatelessWidget {
   InProgressListView({super.key});
-  final List item = [
-    [
-      AppColors.black,
-      'Work Task',
-      'Add New Features',
-      Assets.assetsImagesIconsWorkGreen,
-    ],
-    [
-      AppColors.primaryColor.withValues(alpha: .15),
-      'Personal Task',
-      'Improve my English skills by trying to speek',
-      Assets.assetsImagesIconsPersonal,
-    ],
-    [
-      AppColors.pink.withValues(alpha: .15),
-      'Personal Task',
-      'Add New Features',
-      Assets.assetsImagesIconsWork,
-    ],
-  ];
+
   @override
   Widget build(BuildContext context) {
+    final List item = [
+      [
+        AppColors.black,
+        S.of(context).WorkTask,
+        S.of(context).AddNewFeatures,
+
+        Assets.assetsImagesIconsWorkGreen,
+      ],
+      [
+        AppColors.primaryColor.withValues(alpha: .15),
+        S.of(context).PersonalTask,
+        S.of(context).ImproveEnglishSkills,
+        Assets.assetsImagesIconsPersonal,
+      ],
+      [
+        AppColors.pink.withValues(alpha: .15),
+        S.of(context).PersonalTask,
+        S.of(context).AddNewFeatures,
+        Assets.assetsImagesIconsWork,
+      ],
+    ];
     return SizedBox(
       height: 110.h,
       child: ListView.builder(

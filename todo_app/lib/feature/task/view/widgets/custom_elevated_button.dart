@@ -32,7 +32,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: Text(
         text,
         style: AppStyle.light12.copyWith(
-          color: isSelected ? Colors.white : AppColors.black,
+          color: isSelected ? AppColors.white : AppColors.black,
         ),
       ),
     );

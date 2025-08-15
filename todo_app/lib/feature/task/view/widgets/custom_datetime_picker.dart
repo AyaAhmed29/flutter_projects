@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/feature/task/view/widgets/custom_task_field.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class CustomDateTimePicker extends StatefulWidget {
   const CustomDateTimePicker({super.key});
@@ -44,7 +45,7 @@ class _CustomDateTimePickerState extends State<CustomDateTimePicker> {
         });
       },
       text: selectedDateTime == null
-          ? 'End Time'
+          ? S.of(context).EndTime
           : DateFormat("d MMMM, y     h:mm a").format(selectedDateTime!),
       prefixIcon: Assets.assetsImagesIconsCalendar,
     );

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo_app/core/utils/app_colors.dart';
 
 class DisplayfieldTask extends StatelessWidget {
   const DisplayfieldTask({super.key, required this.widget});
@@ -12,7 +13,7 @@ class DisplayfieldTask extends StatelessWidget {
       constraints: BoxConstraints(minHeight: 50.h),
       width: 350.w,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color:AppColors.white,
         borderRadius: BorderRadius.circular(15.r),
       ),
       child: Padding(

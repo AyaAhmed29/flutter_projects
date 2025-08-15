@@ -42,8 +42,8 @@ class InProgressCard extends StatelessWidget {
                   taskType,
                   style: TextStyle(
                     color: color == AppColors.black
-                        ? Colors.white
-                        : Colors.black,
+                        ? AppColors.white
+                        : AppColors.black,
                   ),
                 ),
                 SvgPicture.asset(icon),
@@ -54,7 +54,7 @@ class InProgressCard extends StatelessWidget {
               softWrap: true,
               overflow: TextOverflow.visible,
               style: AppStyle.light12.copyWith(
-                color: color == AppColors.black ? Colors.white : Colors.black,
+                color: color == AppColors.black ? AppColors.white : AppColors.black,
               ),
             ),
           ],

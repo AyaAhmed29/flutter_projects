@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class UpdateProfileView extends StatelessWidget {
   const UpdateProfileView({super.key});
@@ -25,7 +26,7 @@ class UpdateProfileView extends StatelessWidget {
               enabled: false,
 
               decoration: InputDecoration(
-                hintText: 'Username',
+                hintText: S.of(context).Username,
                 hintStyle: AppStyle.extraLight14,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.r),

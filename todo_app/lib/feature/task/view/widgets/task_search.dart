@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class TaskSearch extends StatelessWidget {
   const TaskSearch({super.key});
@@ -25,7 +26,7 @@ class TaskSearch extends StatelessWidget {
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search...',
+                hintText: S.of(context).Search,
                 hintStyle: AppStyle.extraLight14,
                 border: InputBorder.none,
                 suffixIcon: Transform.scale(
