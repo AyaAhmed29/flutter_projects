@@ -18,10 +18,17 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
 <<<<<<< HEAD
+<<<<<<< HEAD
       create: (context) => RegisterCubit(AuthRepoImpl(FirebaseAuthService())),
 =======
       create: (context) => RegisterCubit(AuthRepo ()),
 >>>>>>> a9103be (Improve auth code)
+=======
+      create: (context) => RegisterCubit(AuthRepo ()),
+=======
+      create: (context) => RegisterCubit(AuthRepoImpl(FirebaseAuthService())),
+>>>>>>> 0c81967c441e7c738a2ffecdedb8bf36fa374dd7
+>>>>>>> 3e00782 (update auth views)
 
       child: Builder(
         builder: (context) {
