@@ -16,7 +16,13 @@ class CustomTextField extends StatelessWidget {
     this.suffixIconOnPressed,
     this.isPasswordVisible,
     this.onSaved,
+<<<<<<< HEAD
     this.validator,  this.controller, this.obscureText,
+=======
+    this.validator,
+    this.controller,
+    this.obscureText,
+>>>>>>> a9103be (Improve auth code)
   });
   final TextEditingController? controller;
   final String text;
@@ -27,31 +33,54 @@ class CustomTextField extends StatelessWidget {
   final bool? isPasswordVisible;
   final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
+<<<<<<< HEAD
   final  bool? obscureText ;
+=======
+  final bool? obscureText;
+>>>>>>> a9103be (Improve auth code)
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: AppPadding.symmetricH22V5,
       child: TextFormField(
+<<<<<<< HEAD
         controller:controller ,
+=======
+        controller: controller,
+>>>>>>> a9103be (Improve auth code)
         validator: (value) {
+          if (keyboardType == TextInputType.emailAddress &&
+              !RegExp(
+                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+              ).hasMatch(value ?? "")) {
+            return S.of(context).InvalidEmail;
+          }
+
           if (value == null || value.isEmpty) {
-            return '${S.of( context).PleaseEnter} $text';
+            return '${S.of(context).PleaseEnter} $text';
           } else if (keyboardType == TextInputType.visiblePassword &&
               value.length < 8) {
-            return S.of(  context).PasswordTooShort;
+            return S.of(context).PasswordTooShort;
           }
           if (validator != null) {
             return validator!(value);
           }
           return null;
         },
+<<<<<<< HEAD
         
         cursorColor: AppColors.primaryColor,
         cursorErrorColor: Colors.red,
         onSaved: onSaved,
         obscureText:obscureText??false,
         // isPasswordVisible ?? false,
+=======
+
+        cursorColor: AppColors.primaryColor,
+        cursorErrorColor: Colors.red,
+        onSaved: onSaved,
+        obscureText: obscureText ?? false,
+>>>>>>> a9103be (Improve auth code)
         obscuringCharacter: '*',
         keyboardType: keyboardType,
         decoration: InputDecoration(
@@ -61,9 +90,9 @@ class CustomTextField extends StatelessWidget {
                   icon: SvgPicture.asset(suffixIcon!),
                 )
               : null,
-          prefixIcon: Transform.scale(
-            scale: 0.6,
-            child: SvgPicture.asset(icon),
+          prefixIcon: IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(icon, height: 20, width: 20),
           ),
           labelText: text,
           labelStyle: AppStyle.extraLight14,

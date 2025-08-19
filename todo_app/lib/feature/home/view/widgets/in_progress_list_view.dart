@@ -6,7 +6,7 @@ import 'package:todo_app/feature/home/view/widgets/in_progress_card.dart';
 import 'package:todo_app/generated/l10n.dart';
 
 class InProgressListView extends StatelessWidget {
-  InProgressListView({super.key});
+  const InProgressListView({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -519,6 +519,21 @@ class S {
       args: [],
     );
   }
+
+  /// `Invalid Email`
+  String get InvalidEmail {
+    return Intl.message(
+      'Invalid Email',
+      name: 'InvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get Email {
+    return Intl.message('Email', name: 'Email', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

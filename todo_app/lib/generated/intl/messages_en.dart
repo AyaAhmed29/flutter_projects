@@ -49,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "EN": MessageLookupByLibrary.simpleMessage("EN"),
     "EditTask": MessageLookupByLibrary.simpleMessage("Edit Task"),
+    "Email": MessageLookupByLibrary.simpleMessage("Email"),
     "EndTime": MessageLookupByLibrary.simpleMessage("End Time"),
     "Filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "GoToSupermarket": MessageLookupByLibrary.simpleMessage(
@@ -68,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Improve my English skills by trying to speak",
     ),
     "InProgress": MessageLookupByLibrary.simpleMessage("In Progress"),
+    "InvalidEmail": MessageLookupByLibrary.simpleMessage("Invalid Email"),
     "Language": MessageLookupByLibrary.simpleMessage("Language"),
     "LetsStart": MessageLookupByLibrary.simpleMessage("Let’s Start"),
     "Login": MessageLookupByLibrary.simpleMessage("Login"),

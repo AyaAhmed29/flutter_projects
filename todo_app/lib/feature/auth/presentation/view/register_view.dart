@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:todo_app/core/service/firebase_auth_servise.dart';
 import 'package:todo_app/core/service/show_snack_bar.dart';
 import 'package:todo_app/core/utils/app_router.dart';
-import 'package:todo_app/feature/auth/data/repo/auth_repo_imp.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/sign_up_cubit/sign_up_cubit.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/sign_up_cubit/sign_up_state.dart';
+import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
+import 'package:todo_app/feature/auth/presentation/cubit/register_cubit/register_cubit.dart';
+import 'package:todo_app/feature/auth/presentation/cubit/register_cubit/register_state.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/auth_prompt.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/custom_image.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/custom_register_form.dart';
@@ -18,7 +17,11 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+<<<<<<< HEAD
       create: (context) => RegisterCubit(AuthRepoImpl(FirebaseAuthService())),
+=======
+      create: (context) => RegisterCubit(AuthRepo ()),
+>>>>>>> a9103be (Improve auth code)
 
       child: Builder(
         builder: (context) {

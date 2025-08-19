@@ -51,22 +51,20 @@
   "NewPassword": "كلمة المرور الجديدة",
   "Congrats": "تهانينا!",
   "BelieveYouCan": "صدق أنك تستطيع، وأنت في منتصف الطريق.",
-   "EditTask": "تعديل المهمة",
-     "Delete": "حذف",
-     
+  "EditTask": "تعديل المهمة",
+  "Delete": "حذف",
   "PasswordsDoNotMatch": " كلمات المرور غير متطابقة",
   "Save": "حفظ",
-  "RegistrationSuccessful": "تم التسجيل بنجاح"
-
-,
+  "RegistrationSuccessful": "تم التسجيل بنجاح",
   "PleaseEnter": "الرجاء الإدخال",
-  "PasswordTooShort": " كلمة المرور قصيرة جدًا"
-,  "PleaseSelectItem": "الرجاء اختيار عنصر",
+  "PasswordTooShort": " كلمة المرور قصيرة جدًا",
+  "PleaseSelectItem": "الرجاء اختيار عنصر",
   "LoginSuccessfully": "تم تسجيل الدخول بنجاح",
   "NoUserFound": " لم يتم العثور على مستخدم بهذا الاسم",
   "WrongPassword": " كلمة المرور المقدمة خاطئة لهذا المستخدم",
   "PasswordTooWeak": " كلمة المرور المقدمة ضعيفة جدًا",
-  "AccountAlreadyExists": " الحساب موجود بالفعل لهذا الاسم"
-
+  "AccountAlreadyExists": " الحساب موجود بالفعل لهذا الاسم",
+  "InvalidEmail": "البريد الإلكتروني غير صالح",
+  "Email":"البريد الإلكتروني"
 
 }

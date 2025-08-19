@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/core/service/show_snack_bar.dart';
 import 'package:todo_app/core/utils/app_router.dart';
+import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/auth_prompt.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/custom_image.dart';
 import 'package:todo_app/feature/auth/presentation/view/widgets/custom_login_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:todo_app/core/service/firebase_auth_servise.dart';
-import 'package:todo_app/feature/auth/data/repo/auth_repo_imp.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/sign_in_cubit/sign_in_cubit.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/sign_in_cubit/sign_in_state.dart';
+import 'package:todo_app/feature/auth/presentation/cubit/login_cubit/login_cubit.dart';
+import 'package:todo_app/feature/auth/presentation/cubit/login_cubit/login_state.dart';
 import 'package:todo_app/generated/l10n.dart';
 
 class LoginView extends StatelessWidget {
@@ -18,7 +17,11 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
+<<<<<<< HEAD
       create: (context) => LoginCubit(AuthRepoImpl(FirebaseAuthService())),
+=======
+      create: (context) => LoginCubit(AuthRepo()),
+>>>>>>> a9103be (Improve auth code)
       child: Builder(
         builder: (context) {
           return BlocConsumer<LoginCubit, LoginState>(

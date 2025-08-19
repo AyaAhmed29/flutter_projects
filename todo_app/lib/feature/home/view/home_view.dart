@@ -14,7 +14,7 @@ import 'package:todo_app/feature/home/view/widgets/task_group_list_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +74,7 @@ class HomeTasks extends StatelessWidget {
           child: Row(
             children: [
               Text('In Progress', style: AppStyle.light14),
+              SizedBox(width: 10.w),
               NumberContainer(number: 5, color: AppColors.primaryColor),
             ],
           ),

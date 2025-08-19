@@ -49,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "DontHaveAnAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "EN": MessageLookupByLibrary.simpleMessage("إنجليزي"),
     "EditTask": MessageLookupByLibrary.simpleMessage("تعديل المهمة"),
+    "Email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "EndTime": MessageLookupByLibrary.simpleMessage("وقت الانتهاء"),
     "Filter": MessageLookupByLibrary.simpleMessage("تصفية"),
     "GoToSupermarket": MessageLookupByLibrary.simpleMessage(
@@ -66,6 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "تحسين مهاراتي في الإنجليزية عن طريق التحدث",
     ),
     "InProgress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
+    "InvalidEmail": MessageLookupByLibrary.simpleMessage(
+      "البريد الإلكتروني غير صالح",
+    ),
     "Language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "LetsStart": MessageLookupByLibrary.simpleMessage("لنبدأ"),
     "Login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),

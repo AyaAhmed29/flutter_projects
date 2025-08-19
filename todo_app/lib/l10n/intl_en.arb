@@ -51,19 +51,19 @@
   "NewPassword": "New Password",
   "Congrats": "Congrats!",
   "BelieveYouCan": "Believe you can, and you're halfway there.",
-   "EditTask": "Edit Task",
-     "Delete": "Delete",
+  "EditTask": "Edit Task",
+  "Delete": "Delete",
   "PasswordsDoNotMatch": "Passwords do not match ",
   "Save": "Save",
-  "RegistrationSuccessful": "Registration successful "
-,
+  "RegistrationSuccessful": "Registration successful ",
   "PleaseEnter": "Please enter ",
   "PasswordTooShort": "Password too short ",
   "PleaseSelectItem": "Please Select item ",
-    "LoginSuccessfully": "Login successfully "
-,"NoUserFound": "No user found for that Username",
+  "LoginSuccessfully": "Login successfully ",
+  "NoUserFound": "No user found for that Username",
   "WrongPassword": "Wrong password provided for that user.",
   "PasswordTooWeak": "The password provided is too weak. ",
-  "AccountAlreadyExists": "The account already exists for that Username. "
-
+  "AccountAlreadyExists": "The account already exists for that Username. ",
+"InvalidEmail": "Invalid Email",
+"Email":"Email"
 }
