@@ -17,18 +17,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-<<<<<<< HEAD
-<<<<<<< HEAD
-      create: (context) => LoginCubit(AuthRepoImpl(FirebaseAuthService())),
-=======
       create: (context) => LoginCubit(AuthRepo()),
->>>>>>> a9103be (Improve auth code)
-=======
-      create: (context) => LoginCubit(AuthRepo()),
-=======
-      create: (context) => LoginCubit(AuthRepoImpl(FirebaseAuthService())),
->>>>>>> 0c81967c441e7c738a2ffecdedb8bf36fa374dd7
->>>>>>> 3e00782 (update auth views)
       child: Builder(
         builder: (context) {
           return BlocConsumer<LoginCubit, LoginState>(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/feature/auth/domain/repos/auth_repo.dart';
+import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
 import 'package:todo_app/feature/auth/presentation/cubit/sign_in_cubit/sign_in_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -10,8 +10,11 @@ class LoginCubit extends Cubit<LoginState> {
   Future<void> login(String email, String pass) async {
     emit(LoginLoading());
     try {
-      final user = await authRepo.login(email, pass);
-      emit(LoginSuccess(user));
+      final result = await authRepo.login(email, pass);
+      result.fold(
+        (failure) => emit(LoginFailure(failure)),
+        (user) => emit(LoginSuccess(user)),
+      );
     } catch (e) {
       emit(LoginFailure(e.toString()));
     }

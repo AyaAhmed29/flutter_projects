@@ -1,5 +1,6 @@
 
-import 'package:todo_app/feature/auth/domain/entites/user_entity.dart';
+
+import 'package:todo_app/feature/auth/data/model/user_model.dart';
 
 abstract class RegisterState {}
 
@@ -8,7 +9,7 @@ class Registeritial extends RegisterState {}
 class RegisterLoading extends RegisterState {}
 
 class RegisterSuccess extends RegisterState {
-  final UserEntity user;
+  final UserModel user;
   RegisterSuccess(this.user);
 }
 

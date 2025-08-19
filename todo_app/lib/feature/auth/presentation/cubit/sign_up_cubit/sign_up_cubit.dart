@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app/feature/auth/domain/repos/auth_repo.dart';
+import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
 import 'package:todo_app/feature/auth/presentation/cubit/sign_up_cubit/sign_up_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
@@ -11,8 +11,11 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(RegisterLoading());
 
     try {
-      final user = await authRepo.register(email, pass);
-      emit(RegisterSuccess(user));
+      final result = await authRepo.register(email, pass);
+      result.fold(
+        (failure) => emit(RegisterFailure(failure)),
+        (user) => emit(RegisterSuccess(user)),
+      );
     } catch (e) {
       emit(RegisterFailure(e.toString()));
     }

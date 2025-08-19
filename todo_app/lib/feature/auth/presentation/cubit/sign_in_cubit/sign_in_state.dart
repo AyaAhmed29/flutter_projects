@@ -1,4 +1,4 @@
-import 'package:todo_app/feature/auth/domain/entites/user_entity.dart';
+import 'package:todo_app/feature/auth/data/model/user_model.dart';
 
 abstract class LoginState {}
 
@@ -7,7 +7,7 @@ class Loginitial extends LoginState {}
 class LoginLoading extends LoginState {}
 
 class LoginSuccess extends LoginState {
-  final UserEntity user;
+  final UserModel user;
   LoginSuccess(this.user);
 }
 
