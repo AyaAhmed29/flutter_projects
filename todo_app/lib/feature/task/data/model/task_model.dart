@@ -1,9 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
+
 class TaskModel {
   final String title;
   final String description;
   final String group;
   final DateTime endTime;
   final String userId;
+  final bool isDone;
 
   TaskModel({
     required this.title,
@@ -11,6 +15,7 @@ class TaskModel {
     required this.group,
     required this.endTime,
     required this.userId,
+    this.isDone = false,
   });
 
   Map<String, dynamic> toMap() {
@@ -18,8 +23,9 @@ class TaskModel {
       'title': title,
       'description': description,
       'group': group,
-      'endTime': endTime.toIso8601String(),
+      'endTime': endTime,
       'userId': userId,
+      'isDone': isDone,
     };
   }
 
@@ -28,8 +34,19 @@ class TaskModel {
       title: map['title'],
       description: map['description'],
       group: map['group'],
-      endTime: DateTime.parse(map['endTime']),
+      endTime: (map['endTime'] as Timestamp).toDate(),
       userId: map['userId'],
+      isDone: map['isDone'] ?? false,
     );
+  }
+
+  String get status {
+    if (isDone) return "Done";
+    if (endTime.isBefore(DateTime.now())) return "Missed";
+    return "In Progress";
+  }
+
+  String get formattedEndTime {
+    return DateFormat('d MMMM, y     h:mm a').format(endTime);
   }
 }

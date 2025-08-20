@@ -40,23 +40,12 @@ class TaskCubit extends Cubit<TaskState> {
     }
   }
 
-  void fetchTasks() async {
+  Future<void> getTasks() async {
     emit(LoadingTask());
-
-  
-    // if (userId == null) {
-    //   emit(TaskFailure("User ID not found"));
-    //   return;
-    // }
-
-    // taskRepo.fetchTasks(userId).listen((either) {
-    //   either.fold((failure) => emit(TaskFailure(failure)), (tasks) {
-    //     if (tasks.isEmpty) {
-    //       emit(TaskFailure('No tasks found, add new task'));
-    //     } else {
-    //       emit(GetTaskSuccess(tasks));
-    //     }
-    //   });
-    // }, onError: (e) => emit(TaskFailure(e.toString())));
+    final result = await taskRepo.getTasks();
+    result.fold(
+      (error) => emit(TaskFailure(error)),
+      (tasks) => emit(GetTaskSuccess(tasks)),
+    );
   }
 }

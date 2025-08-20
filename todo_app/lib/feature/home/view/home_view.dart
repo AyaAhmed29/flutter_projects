@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
@@ -7,10 +8,13 @@ import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/utils/app_style.dart';
 import 'package:todo_app/core/widgets/custom_floating_action_button.dart';
 import 'package:todo_app/core/widgets/custom_userInf_app_bar.dart';
+import 'package:todo_app/feature/home/view/cubit/home_cubit.dart';
+import 'package:todo_app/feature/home/view/cubit/home_state.dart';
 import 'package:todo_app/feature/home/view/widgets/in_progress_list_view.dart';
 import 'package:todo_app/feature/home/view/widgets/number_container.dart';
 import 'package:todo_app/feature/home/view/widgets/task_completion_card.dart';
 import 'package:todo_app/feature/home/view/widgets/task_group_list_view.dart';
+import 'package:todo_app/feature/task/data/model/task_model.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -33,7 +37,34 @@ class HomeView extends StatelessWidget {
           ),
           SliverToBoxAdapter(child: SizedBox(height: 30.h)),
 
-          SliverToBoxAdapter(child: HomeTasks()),
+          BlocProvider(
+            create: (context) => HomeCubit()..loadTasks(),
+            child: Builder(
+              builder: (context) {
+                return SliverToBoxAdapter(
+                  child: BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      if (state is HomeLoading) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (state is HomeFailure) {
+                        return Center(
+                          child: Text("Error: ${state.errorMessage}"),
+                        );
+                      } else if (state is HomeEmpty) {
+                        return HomeEmptyWidget(); // عرض رسالة فاضية
+                      } else if (state is HomeTasksLoaded) {
+                        final tasks = state.tasks;
+                        return HomeTasks(
+                          tasks: tasks,
+                        ); // تمرير المهام للـ HomeTasks
+                      }
+                      return Container();
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -61,7 +92,8 @@ class HomeEmptyWidget extends StatelessWidget {
 }
 
 class HomeTasks extends StatelessWidget {
-  const HomeTasks({super.key});
+  final List<TaskModel> tasks;
+  HomeTasks({super.key, required this.tasks});
 
   @override
   Widget build(BuildContext context) {
@@ -75,17 +107,20 @@ class HomeTasks extends StatelessWidget {
             children: [
               Text('In Progress', style: AppStyle.light14),
               SizedBox(width: 10.w),
-              NumberContainer(number: 5, color: AppColors.primaryColor),
+              NumberContainer(
+                number: tasks.length,
+                color: AppColors.primaryColor,
+              ),
             ],
           ),
         ),
-        InProgressListView(),
-        SizedBox(height: 25.h),
+        InProgressListView(tasks: tasks),
+        // SizedBox(height: 25.h),
         Padding(
-          padding: EdgeInsets.only(left: 16.0.w, bottom: 8.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.0.w),
           child: Text('Task Groups'),
         ),
-        TaskGroupListView(),
+        TaskGroupListView(tasks: tasks),
       ],
     );
   }

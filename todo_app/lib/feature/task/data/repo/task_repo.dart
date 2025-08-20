@@ -20,21 +20,39 @@ class TaskRepo {
     }
   }
 
-  Stream<Either<String, List<TaskModel>>> fetchTasks(String userId) {
+  Future<Either<String, List<TaskModel>>> getTasks() async {
     try {
-      return FirebaseFirestore.instance
+      final snapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection('tasks')
-          .where('userId', isEqualTo: userId)
-          .snapshots()
-          .map(
-            (snapshot) => right(
-              snapshot.docs
-                  .map((doc) => TaskModel.fromMap(doc.data()))
-                  .toList(),
-            ),
-          );
+          .get();
+
+      final tasks = snapshot.docs
+          .map((doc) => TaskModel.fromMap(doc.data()))
+          .toList();
+
+      return right(tasks);
     } catch (e) {
-      return Stream.value(left(e.toString()));
+      return left(e.toString());
     }
   }
+
+  // Stream<Either<String, List<TaskModel>>> fetchTasks(String userId) {
+  //   try {
+  //     return FirebaseFirestore.instance
+  //         .collection('tasks')
+  //         .where('userId', isEqualTo: userId)
+  //         .snapshots()
+  //         .map(
+  //           (snapshot) => right(
+  //             snapshot.docs
+  //                 .map((doc) => TaskModel.fromMap(doc.data()))
+  //                 .toList(),
+  //           ),
+  //         );
+  //   } catch (e) {
+  //     return Stream.value(left(e.toString()));
+  //   }
+  // }
 }
