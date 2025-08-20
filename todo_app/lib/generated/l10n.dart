@@ -480,10 +480,10 @@ class S {
     );
   }
 
-  /// `No user found for that Username`
+  /// `No user found for that Email`
   String get NoUserFound {
     return Intl.message(
-      'No user found for that Username',
+      'No user found for that Email',
       name: 'NoUserFound',
       desc: '',
       args: [],
@@ -510,10 +510,10 @@ class S {
     );
   }
 
-  /// `The account already exists for that Username. `
+  /// `The account already exists for that Email. `
   String get AccountAlreadyExists {
     return Intl.message(
-      'The account already exists for that Username. ',
+      'The account already exists for that Email. ',
       name: 'AccountAlreadyExists',
       desc: '',
       args: [],

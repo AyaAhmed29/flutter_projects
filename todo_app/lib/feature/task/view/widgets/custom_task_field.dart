@@ -10,14 +10,15 @@ class CustomTaskField extends StatelessWidget {
     super.key,
     required this.text,
     this.prefixIcon,
-    this.onSaved,
     this.onTap,
+    this.readOnly,
+    required this.controller,
   });
   final String text;
   final String? prefixIcon;
   final void Function()? onTap;
-  final void Function(String?)? onSaved;
-
+  final bool? readOnly;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,12 +31,13 @@ class CustomTaskField extends StatelessWidget {
 
           return null;
         },
+        controller: controller,
         cursorColor: AppColors.primaryColor,
         cursorErrorColor: Colors.red,
-        onSaved: onSaved,
         minLines: 1,
         onTap: onTap,
-        readOnly: text == S.of(context).EndTime ? true : false,
+        readOnly: readOnly ?? false,
+
         maxLines: text == S.of(context).Description ? null : 1,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(

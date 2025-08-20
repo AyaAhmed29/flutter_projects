@@ -35,7 +35,6 @@ class TaskSearch extends StatelessWidget {
                   child: SvgPicture.asset(Assets.assetsImagesIconsSearch),
                 ),
               ),
-              onChanged: (value) {},
             ),
           ),
         ],

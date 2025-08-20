@@ -60,10 +60,10 @@
   "PasswordTooShort": "Password too short ",
   "PleaseSelectItem": "Please Select item ",
   "LoginSuccessfully": "Login successfully ",
-  "NoUserFound": "No user found for that Username",
+  "NoUserFound": "No user found for that Email",
   "WrongPassword": "Wrong password provided for that user.",
   "PasswordTooWeak": "The password provided is too weak. ",
-  "AccountAlreadyExists": "The account already exists for that Username. ",
+  "AccountAlreadyExists": "The account already exists for that Email. ",
 "InvalidEmail": "Invalid Email",
 "Email":"Email"
 }

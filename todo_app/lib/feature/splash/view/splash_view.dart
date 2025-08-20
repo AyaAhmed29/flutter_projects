@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,7 +19,13 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
-      GoRouter.of(context).go(AppRouter.onboardingView);
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user == null) {
+          GoRouter.of(context).go(AppRouter.onboardingView);
+        } else {
+          GoRouter.of(context).go(AppRouter.homeView);
+        }
+      });
     });
   }
 

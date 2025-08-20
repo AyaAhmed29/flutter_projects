@@ -38,7 +38,9 @@ class CustomRegisterForm extends StatelessWidget {
                     children: [
                       CustomTextField(
                         obscureText: RegisterCubit.get(context).passwordSecure,
-                        controller: RegisterCubit.get(context).passwordController,
+                        controller: RegisterCubit.get(
+                          context,
+                        ).passwordController,
                         text: S.of(context).Password,
                         icon: Assets.assetsImagesIconsPassword,
                         keyboardType: TextInputType.visiblePassword,
@@ -50,15 +52,16 @@ class CustomRegisterForm extends StatelessWidget {
                             : Assets.assetsImagesIconsLock,
                       ),
                       CustomTextField(
-                        controller:
-                            RegisterCubit.get(context).confirmPasswordController,
+                        controller: RegisterCubit.get(
+                          context,
+                        ).confirmPasswordController,
                         validator: (value) {
-                          if (RegisterCubit.get(context)
-                                  .confirmPasswordController
-                                  .text !=
-                              RegisterCubit.get(context)
-                                  .passwordController
-                                  .text) {
+                          if (RegisterCubit.get(
+                                context,
+                              ).confirmPasswordController.text !=
+                              RegisterCubit.get(
+                                context,
+                              ).passwordController.text) {
                             return S.of(context).PasswordsDoNotMatch;
                           }
                           return null;
@@ -66,16 +69,18 @@ class CustomRegisterForm extends StatelessWidget {
                         text: S.of(context).ConfirmPassword,
                         icon: Assets.assetsImagesIconsPassword,
                         keyboardType: TextInputType.visiblePassword,
-                        obscureText:
-                            RegisterCubit.get(context).confirmPasswordSecure,
+                        obscureText: RegisterCubit.get(
+                          context,
+                        ).confirmPasswordSecure,
                         suffixIconOnPressed: () {
-                          RegisterCubit.get(context)
-                              .changeConfirmPasswordVisibility();
+                          RegisterCubit.get(
+                            context,
+                          ).changeConfirmPasswordVisibility();
                         },
                         suffixIcon:
                             RegisterCubit.get(context).confirmPasswordSecure
-                                ? Assets.assetsImagesIconsUnlock
-                                : Assets.assetsImagesIconsLock,
+                            ? Assets.assetsImagesIconsUnlock
+                            : Assets.assetsImagesIconsLock,
                       ),
                     ],
                   );
@@ -83,13 +88,11 @@ class CustomRegisterForm extends StatelessWidget {
               ),
               CustomButton(
                 text: S.of(context).Register,
-                onPressed: () {
-                  formKey.currentState!.save();
-
+                onPressed: () async {
                   if (formKey.currentState!.validate()) {
-                    RegisterCubit.get(context).register(
-                      RegisterCubit.get(context).emailController.text,
-                      RegisterCubit.get(context).passwordController.text,
+                    await RegisterCubit.get(context).register(
+                      email: RegisterCubit.get(context).emailController.text,
+                      pass: RegisterCubit.get(context).passwordController.text,
                     );
                   }
                 },

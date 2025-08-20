@@ -28,7 +28,7 @@ class RegisterView extends StatelessWidget {
                 ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
               }
               if (state is RegisterSuccess) {
-                ShowSnackBar(
+                showSnackBar(
                   context: context,
                   text: S.of(context).RegistrationSuccessful,
                 );

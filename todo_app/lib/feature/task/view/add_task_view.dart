@@ -1,53 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:todo_app/core/utils/app_assets.dart';
-import 'package:todo_app/core/widgets/custom_app_bar.dart';
-import 'package:todo_app/core/widgets/custom_button.dart';
-import 'package:todo_app/feature/home/view/widgets/custom_dropdown_field.dart';
-import 'package:todo_app/feature/task/view/widgets/custom_datetime_picker.dart';
-import 'package:todo_app/feature/task/view/widgets/custom_task_field.dart';
-import 'package:todo_app/generated/l10n.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:todo_app/core/service/show_snack_bar.dart';
+import 'package:todo_app/feature/task/cubit/task_state.dart';
+import 'package:todo_app/feature/task/view/widgets/add_task_view_body.dart';
+import 'package:todo_app/feature/task/cubit/task_cubit.dart';
 
-class AddTaskViwe extends StatefulWidget {
+class AddTaskViwe extends StatelessWidget {
   const AddTaskViwe({super.key});
 
   @override
-  State<AddTaskViwe> createState() => _AddTaskViweState();
-}
-
-class _AddTaskViweState extends State<AddTaskViwe> {
-  final key = GlobalKey<FormState>();
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(titile: S.of(context).AddTask),
-      body: SingleChildScrollView(
-        child: Form(
-          key: key,
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20.r),
-                  child: Image.asset(Assets.assetsImagesProfile),
-                ),
-              ),
-              CustomTaskField(text: S.of(context).Title),
-              CustomTaskField(text: S.of(context).Description),
-              CustomDropdownField(),
-              CustomDateTimePicker(),
-              SizedBox(height: 18.h),
-              CustomButton(
-                text: S.of(context).AddTask,
-                onPressed: () {
-                  if (key.currentState!.validate()) {}
-                },
-              ),
-            ],
-          ),
-        ),
+    return BlocProvider(
+      create: (context) => TaskCubit(),
+      child: Builder(
+        builder: (context) {
+          return BlocConsumer<TaskCubit, TaskState>(
+            listener: (context, state) {
+              if (state is AddTaskSuccess) {
+                showSnackBar(context: context, text: state.successMessage);
+                GoRouter.of(context).pop();
+              }
+              if (state is TaskFailure) {
+                showSnackBar(context: context, text: state.errorMessage);
+              }
+            },
+            builder: (context, state) {
+              return ModalProgressHUD(
+                inAsyncCall: state is LoadingTask ? true : false,
+                child: AddTaskViewBody(),
+              );
+            },
+          );
+        },
       ),
     );
   }

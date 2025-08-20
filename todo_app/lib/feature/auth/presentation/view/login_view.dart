@@ -23,10 +23,10 @@ class LoginView extends StatelessWidget {
           return BlocConsumer<LoginCubit, LoginState>(
             listener: (context, state) {
               if (state is LoginFailure) {
-                ShowSnackBar(context: context, text: state.errorMessage);
+                showSnackBar(context: context, text: state.errorMessage);
               }
               if (state is LoginSuccess) {
-                ShowSnackBar(
+                showSnackBar(
                   context: context,
                   text: S.of(context).LoginSuccessfully,
                 );

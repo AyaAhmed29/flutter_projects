@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "AR": MessageLookupByLibrary.simpleMessage("عربي"),
     "AccountAlreadyExists": MessageLookupByLibrary.simpleMessage(
-      " الحساب موجود بالفعل لهذا الاسم",
+      " الحساب موجود بالفعل لهذا البريد الإلكتروني",
     ),
     "AddFeatureForDoIt": MessageLookupByLibrary.simpleMessage(
       "إضافة ميزة جديدة لتطبيق Do It وحفظها",
@@ -83,7 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "لا توجد مهام حتى الآن،\nاضغط على الزر\nلإضافة مهمة جديدة",
     ),
     "NoUserFound": MessageLookupByLibrary.simpleMessage(
-      " لم يتم العثور على مستخدم بهذا الاسم",
+      " لم يتم العثور على مستخدم بهذا البريد الإلكتروني",
     ),
     "OldPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
     "Password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),

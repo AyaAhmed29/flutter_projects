@@ -5,7 +5,6 @@ import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/widgets/custom_app_bar.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/core/widgets/custom_floating_action_button.dart';
-import 'package:todo_app/feature/task/view/widgets/custom_datetime_picker.dart';
 import 'package:todo_app/feature/task/view/widgets/custom_elevated_button.dart';
 import 'package:todo_app/feature/task/view/widgets/task_item_widget.dart';
 import 'package:todo_app/feature/task/view/widgets/task_search.dart';
@@ -124,7 +123,7 @@ class TodayTasksView extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 25.h),
-                    CustomDateTimePicker(),
+                    // CustomDateTimePicker(),
                     CustomButton(
                       text: S.of( context).Filter,
                       onPressed: () {
