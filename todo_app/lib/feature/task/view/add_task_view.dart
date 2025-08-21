@@ -20,7 +20,7 @@ class AddTaskViwe extends StatelessWidget {
             listener: (context, state) {
               if (state is AddTaskSuccess) {
                 showSnackBar(context: context, text: state.successMessage);
-                GoRouter.of(context).pop();
+                GoRouter.of(context).pop(true);
               }
               if (state is TaskFailure) {
                 showSnackBar(context: context, text: state.errorMessage);

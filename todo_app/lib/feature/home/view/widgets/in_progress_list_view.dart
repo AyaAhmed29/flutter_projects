@@ -4,7 +4,6 @@ import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/feature/home/view/widgets/in_progress_card.dart';
 import 'package:todo_app/feature/task/data/model/task_model.dart';
-import 'package:todo_app/generated/l10n.dart';
 
 class InProgressListView extends StatelessWidget {
   final List<TaskModel> tasks;
