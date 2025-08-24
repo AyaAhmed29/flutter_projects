@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/login_cubit/login_cubit.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/login_cubit/login_state.dart';
-import 'package:todo_app/feature/auth/presentation/view/widgets/custom_text_field.dart';
+import 'package:todo_app/feature/auth/cubit/login_cubit/login_cubit.dart';
+import 'package:todo_app/feature/auth/cubit/login_cubit/login_state.dart';
+import 'package:todo_app/feature/auth/view/widgets/custom_text_field.dart';
 import 'package:todo_app/generated/l10n.dart';
 
 class CustomLoginForm extends StatelessWidget {

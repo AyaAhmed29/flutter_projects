@@ -11,7 +11,7 @@ class TaskCubit extends Cubit<TaskState> {
 
   var titleController = TextEditingController();
   var descriptionController = TextEditingController();
-  final endTimeController = TextEditingController();
+  late final endTimeController = TextEditingController();
   DateTime? endTime;
   String? selectedGroup;
   void setEndTime(DateTime dateTime) {
@@ -33,7 +33,7 @@ class TaskCubit extends Cubit<TaskState> {
       final result = await taskRepo.addTask(task);
       result.fold(
         (failure) => emit(TaskFailure(failure)),
-        (_) => emit(AddTaskSuccess("Task added successfully")),
+        (_) => emit(AddTaskSuccess("Task added successfully", task)),
       );
     } catch (e) {
       emit(TaskFailure(e.toString()));
@@ -47,5 +47,32 @@ class TaskCubit extends Cubit<TaskState> {
       (error) => emit(TaskFailure(error)),
       (tasks) => emit(GetTaskSuccess(tasks)),
     );
+  }
+
+  // تعديل تاسك
+  Future<void> updateTask(TaskModel task) async {
+    emit(LoadingTask());
+    try {
+      final result = await taskRepo.updateTask(task);
+      result.fold(
+        (failure) => emit(TaskFailure(failure)),
+        (task) => emit(UpdateTaskSuccess("Task added successfully", task)),
+      );
+    } catch (e) {
+      emit(TaskFailure(e.toString()));
+    }
+  }
+
+  Future<void> deleteTask(String taskId) async {
+    emit(LoadingTask());
+    try {
+      final result = await taskRepo.deleteTask(taskId);
+      result.fold(
+        (failure) => emit(TaskFailure(failure)),
+        (_) => emit(DeleteTaskSuccess("Task deleted successfully")),
+      );
+    } catch (e) {
+      emit(TaskFailure(e.toString()));
+    }
   }
 }

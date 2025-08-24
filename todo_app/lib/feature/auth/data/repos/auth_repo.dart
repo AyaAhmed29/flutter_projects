@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,15 +15,10 @@ class AuthRepo {
           .collection('users')
           .doc(credential.user!.uid)
           .get();
-      return right(
-        UserModel(
-          userName: data["username"],
-          email: data["email"],
-          uid: data["uid"], // Removed the extra lines
-
-        ),
-      );
+      UserModel user = UserModel.fromJson(data.data()!);
       
+      return right(user);
+      // if (credential.user!.emailVerified) return right(user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         return left('No user found for that email.');
@@ -44,19 +38,24 @@ class AuthRepo {
     try {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
-      final user = credential.user!;
-      await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
-        'uid': user.uid,
-        'email': email,
-        'username': name,
-      });
-      return right(
-        UserModel(
-          uid: user.uid,
-          email: user.email!,
-          userName: user.displayName ?? '',
-        ),
+      UserModel user = UserModel(
+        userName: name,
+        uid: credential.user!.uid,
+        email: email,
       );
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .set(user.toJson());
+
+      // if (!user.) {
+      //   await user.sendEmailVerification();
+      //   await FirebaseAuth.instance.signOut();
+      //   return left('Check your email to verify your account.');
+      // }
+
+      return right(UserModel(uid: user.uid, email: user.email, userName: name));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         return left('The password provided is too weak.');

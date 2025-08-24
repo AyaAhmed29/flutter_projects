@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/feature/auth/data/model/user_model.dart';
 
 class CustomUserInfAppBar extends StatelessWidget {
-  const CustomUserInfAppBar({super.key, this.onTap});
+  const CustomUserInfAppBar({super.key, this.onTap, required this.userModel});
   final void Function()? onTap;
+  final UserModel userModel;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,7 +16,7 @@ class CustomUserInfAppBar extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 16.0.w),
+              padding: EdgeInsets.symmetric(horizontal: 16.0.w),
               child: CircleAvatar(
                 radius: 30.r,
                 backgroundImage: AssetImage(Assets.assetsImagesProfile),
@@ -25,7 +27,7 @@ class CustomUserInfAppBar extends StatelessWidget {
               children: [
                 Text('Hello!', style: AppStyle.light12),
                 Text(
-                  'Aya Ahmed',
+                  userModel.userName,
                   style: AppStyle.light12.copyWith(fontSize: 16.sp),
                 ),
               ],

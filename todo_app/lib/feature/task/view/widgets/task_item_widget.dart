@@ -36,7 +36,7 @@ class TaskItemWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Padding(
@@ -61,7 +61,11 @@ class TaskItemWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: Text(title, style: AppStyle.light14),
+                    child: Text(title, style: AppStyle.light14,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                    
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,

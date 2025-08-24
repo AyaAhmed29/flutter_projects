@@ -65,6 +65,20 @@
   "PasswordTooWeak": " كلمة المرور المقدمة ضعيفة جدًا",
   "AccountAlreadyExists": " الحساب موجود بالفعل لهذا البريد الإلكتروني",
   "InvalidEmail": "البريد الإلكتروني غير صالح",
-  "Email":"البريد الإلكتروني"
+  "Email":"البريد الإلكتروني",
+  "Youdidntchangeanything": "لم تقم بتغيير أي شيء",
+  "TaskUpdatedSuccessfully": "تم تحديث المهمة بنجاح",
+  "TaskDeletedSuccessfully": "تم حذف المهمة بنجاح",
+  "TaskAddedSuccessfully": "تمت إضافة المهمة بنجاح",
+  "Confirm Deletion": "تأكيد الحذف",
+  "AreYouSureYouWantToDeleteThisTask": "هل أنت متأكد أنك تريد حذف هذه المهمة؟",
+  "yes": "نعم", 
+  "no": "لا",
+  "ThisTaskIsAlreadyMarkedAsDone": "هذه المهمة تم وضع علامة عليها بالفعل كمنجزة",
+  "TaskAlreadyDone": "هذه المهمة قد اكتملت بالفعل",
+  "taskismissing": "المهمة مفقودة",
+  "task is in progress": "المهمة قيد التنفيذ",
+  "Logout": "تسجيل الخروج",
+  "LogoutSuccessfully": "تم تسجيل الخروج بنجاح"
 
 }

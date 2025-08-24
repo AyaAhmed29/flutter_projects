@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
@@ -9,12 +10,28 @@ class TaskRepo {
   TaskRepo();
   Future<Either<String, TaskModel>> addTask(TaskModel task) async {
     try {
-      await FirebaseFirestore.instance
+      final docRef = FirebaseFirestore.instance
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection('tasks')
-          .add(task.toMap());
-      return right(task);
+          .doc();
+
+      final taskWithId = TaskModel(
+        taskId: docRef.id,
+        title: task.title,
+        description: task.description,
+        group: task.group,
+        endTime: task.endTime,
+        userId: task.userId,
+        isDone: task.isDone,
+        status: task.status,
+      );
+
+      await docRef.set(taskWithId.toMap());
+
+      log('task added: ${taskWithId.toMap()}');
+
+      return right(taskWithId);
     } catch (e) {
       return left(e.toString());
     }
@@ -38,21 +55,31 @@ class TaskRepo {
     }
   }
 
-  // Stream<Either<String, List<TaskModel>>> fetchTasks(String userId) {
-  //   try {
-  //     return FirebaseFirestore.instance
-  //         .collection('tasks')
-  //         .where('userId', isEqualTo: userId)
-  //         .snapshots()
-  //         .map(
-  //           (snapshot) => right(
-  //             snapshot.docs
-  //                 .map((doc) => TaskModel.fromMap(doc.data()))
-  //                 .toList(),
-  //           ),
-  //         );
-  //   } catch (e) {
-  //     return Stream.value(left(e.toString()));
-  //   }
-  // }
+  Future<Either<String, void>> updateTask(TaskModel task) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(task.userId)
+          .collection('tasks')
+          .doc(task.taskId) // لازم يكون هو نفسه docId
+          .update(task.toMap()); // استخدم update هنا
+      return Right(null);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  Future<Either<String, void>> deleteTask(String taskId) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('tasks')
+          .doc(taskId)
+          .delete();
+      return Right(null);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
 }

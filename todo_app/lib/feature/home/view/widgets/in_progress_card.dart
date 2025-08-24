@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -52,9 +51,13 @@ class InProgressCard extends StatelessWidget {
             Text(
               description,
               softWrap: true,
-              overflow: TextOverflow.visible,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+
               style: AppStyle.light12.copyWith(
-                color: color == AppColors.black ? AppColors.white : AppColors.black,
+                color: color == AppColors.black
+                    ? AppColors.white
+                    : AppColors.black,
               ),
             ),
           ],

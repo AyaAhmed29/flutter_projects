@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/register_cubit/register_cubit.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/register_cubit/register_state.dart';
-import 'package:todo_app/feature/auth/presentation/view/widgets/custom_text_field.dart';
+import 'package:todo_app/feature/auth/cubit/register_cubit/register_cubit.dart';
+import 'package:todo_app/feature/auth/cubit/register_cubit/register_state.dart';
+import 'package:todo_app/feature/auth/view/widgets/custom_text_field.dart';
 import 'package:todo_app/generated/l10n.dart';
 
 class CustomRegisterForm extends StatelessWidget {

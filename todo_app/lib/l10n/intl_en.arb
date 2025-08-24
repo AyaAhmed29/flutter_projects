@@ -65,5 +65,19 @@
   "PasswordTooWeak": "The password provided is too weak. ",
   "AccountAlreadyExists": "The account already exists for that Email. ",
 "InvalidEmail": "Invalid Email",
-"Email":"Email"
+"Email":"Email",
+"Youdidntchangeanything": "You didn't change anything",
+  "TaskUpdatedSuccessfully": "Task updated successfully",
+  "TaskDeletedSuccessfully": "Task deleted successfully",
+  "TaskAddedSuccessfully": "Task added successfully",
+  "ConfirmDeletion": "Confirm Deletion",
+  "AreYouSureYouWantToDeleteThisTask": "Are you sure you want to delete this task?",
+  "yes": "yes",
+  "no": "no",
+  "ThisTaskIsAlreadyMarkedAsDone": "This task is already marked as done",
+  "TaskAlreadyDone": "This task is already done",
+  "taskismissing": "task is missing",
+  "task is in progress": "task is in progress",
+  "Logout": "Logout",
+  "LogoutSuccessfully":"Logout Successfully"
 }

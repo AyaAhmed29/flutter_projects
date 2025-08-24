@@ -13,7 +13,7 @@ final class LoadingTask extends TaskState {}
 final class AddTaskSuccess extends TaskState {
   final String successMessage;
 
-  AddTaskSuccess(this.successMessage);
+  AddTaskSuccess(this.successMessage, void task);
 }
 
 final class GetTaskSuccess extends TaskState {
@@ -26,4 +26,17 @@ final class TaskFailure extends TaskState {
   final String errorMessage;
 
   TaskFailure(this.errorMessage);
+}
+
+final class UpdateTaskSuccess extends TaskState {
+  String successMessage;
+
+  
+
+  UpdateTaskSuccess(this.successMessage, void task );
+
+}
+final class DeleteTaskSuccess extends TaskState {
+  final String successMessage;
+  DeleteTaskSuccess(this.successMessage);
 }

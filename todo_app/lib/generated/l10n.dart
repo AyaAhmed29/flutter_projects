@@ -534,6 +534,123 @@ class S {
   String get Email {
     return Intl.message('Email', name: 'Email', desc: '', args: []);
   }
+
+  /// `You didn't change anything`
+  String get Youdidntchangeanything {
+    return Intl.message(
+      'You didn\'t change anything',
+      name: 'Youdidntchangeanything',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task updated successfully`
+  String get TaskUpdatedSuccessfully {
+    return Intl.message(
+      'Task updated successfully',
+      name: 'TaskUpdatedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task deleted successfully`
+  String get TaskDeletedSuccessfully {
+    return Intl.message(
+      'Task deleted successfully',
+      name: 'TaskDeletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task added successfully`
+  String get TaskAddedSuccessfully {
+    return Intl.message(
+      'Task added successfully',
+      name: 'TaskAddedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Deletion`
+  String get ConfirmDeletion {
+    return Intl.message(
+      'Confirm Deletion',
+      name: 'ConfirmDeletion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this task?`
+  String get AreYouSureYouWantToDeleteThisTask {
+    return Intl.message(
+      'Are you sure you want to delete this task?',
+      name: 'AreYouSureYouWantToDeleteThisTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `yes`
+  String get yes {
+    return Intl.message('yes', name: 'yes', desc: '', args: []);
+  }
+
+  /// `no`
+  String get no {
+    return Intl.message('no', name: 'no', desc: '', args: []);
+  }
+
+  /// `This task is already marked as done`
+  String get ThisTaskIsAlreadyMarkedAsDone {
+    return Intl.message(
+      'This task is already marked as done',
+      name: 'ThisTaskIsAlreadyMarkedAsDone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This task is already done`
+  String get TaskAlreadyDone {
+    return Intl.message(
+      'This task is already done',
+      name: 'TaskAlreadyDone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `task is missing`
+  String get taskismissing {
+    return Intl.message(
+      'task is missing',
+      name: 'taskismissing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'task is in progress' key
+
+  /// `Logout`
+  String get Logout {
+    return Intl.message('Logout', name: 'Logout', desc: '', args: []);
+  }
+
+  /// `Logout Successfully`
+  String get LogoutSuccessfully {
+    return Intl.message(
+      'Logout Successfully',
+      name: 'LogoutSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -55,7 +55,7 @@ class TodayTasksView extends StatelessWidget {
                             final task = tasks[index];
                             return TaskItemWidget(
                               title: task.description,
-                              status: task.status, // خليها من الـ model
+                              status: task.status,
                               icon: task.group == 'Work'
                                   ? Assets.assetsImagesIconsWork
                                   : task.group == 'Home'

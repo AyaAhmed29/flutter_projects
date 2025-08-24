@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/core/service/show_snack_bar.dart';
 import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
-import 'package:todo_app/feature/auth/presentation/view/widgets/auth_prompt.dart';
-import 'package:todo_app/feature/auth/presentation/view/widgets/custom_image.dart';
-import 'package:todo_app/feature/auth/presentation/view/widgets/custom_login_form.dart';
+import 'package:todo_app/feature/auth/view/widgets/auth_prompt.dart';
+import 'package:todo_app/feature/auth/view/widgets/custom_image.dart';
+import 'package:todo_app/feature/auth/view/widgets/custom_login_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/login_cubit/login_cubit.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/login_cubit/login_state.dart';
+import 'package:todo_app/feature/auth/cubit/login_cubit/login_cubit.dart';
+import 'package:todo_app/feature/auth/cubit/login_cubit/login_state.dart';
 import 'package:todo_app/generated/l10n.dart';
 
 class LoginView extends StatelessWidget {
@@ -30,8 +30,9 @@ class LoginView extends StatelessWidget {
                   context: context,
                   text: S.of(context).LoginSuccessfully,
                 );
-
-                AppRouter.router.go(AppRouter.homeView);
+                
+                // UserCubit.get(context).userModel = state.user;
+                AppRouter.router.go(AppRouter.homeView,extra: state.user);
               }
             },
             builder: (context, state) {

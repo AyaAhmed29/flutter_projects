@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "AlreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
     ),
+    "AreYouSureYouWantToDeleteThisTask": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد حذف هذه المهمة؟",
+    ),
     "BelieveYouCan": MessageLookupByLibrary.simpleMessage(
       "صدق أنك تستطيع، وأنت في منتصف الطريق.",
     ),
@@ -76,6 +79,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "LoginSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح",
     ),
+    "Logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "LogoutSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل الخروج بنجاح",
+    ),
     "MarkAsDone": MessageLookupByLibrary.simpleMessage("وضع علامة تم"),
     "Missed": MessageLookupByLibrary.simpleMessage("فاتت"),
     "NewPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
@@ -114,10 +121,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "Save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "Search": MessageLookupByLibrary.simpleMessage("بحث...."),
     "Settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "TaskAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تمت إضافة المهمة بنجاح",
+    ),
+    "TaskAlreadyDone": MessageLookupByLibrary.simpleMessage(
+      "هذه المهمة قد اكتملت بالفعل",
+    ),
+    "TaskDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم حذف المهمة بنجاح",
+    ),
     "TaskGroups": MessageLookupByLibrary.simpleMessage("مجموعات المهام"),
+    "TaskUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم تحديث المهمة بنجاح",
+    ),
     "Tasks": MessageLookupByLibrary.simpleMessage("المهام"),
     "TasksAlmostDone": MessageLookupByLibrary.simpleMessage(
       "مهامك اليوم قريبة من الاكتمال!",
+    ),
+    "ThisTaskIsAlreadyMarkedAsDone": MessageLookupByLibrary.simpleMessage(
+      "هذه المهمة تم وضع علامة عليها بالفعل كمنجزة",
     ),
     "Title": MessageLookupByLibrary.simpleMessage("العنوان"),
     "Update": MessageLookupByLibrary.simpleMessage("تحديث"),
@@ -131,5 +153,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "WrongPassword": MessageLookupByLibrary.simpleMessage(
       " كلمة المرور المقدمة خاطئة لهذا المستخدم",
     ),
+    "Youdidntchangeanything": MessageLookupByLibrary.simpleMessage(
+      "لم تقم بتغيير أي شيء",
+    ),
+    "no": MessageLookupByLibrary.simpleMessage("لا"),
+    "taskismissing": MessageLookupByLibrary.simpleMessage("المهمة مفقودة"),
+    "yes": MessageLookupByLibrary.simpleMessage("نعم"),
   };
 }

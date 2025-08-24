@@ -63,7 +63,8 @@ class AddTaskViewBody extends StatelessWidget {
                         ).descriptionController.text,
                         group: TaskCubit.get(context).selectedGroup!,
                         endTime: TaskCubit.get(context).endTime!,
-                        userId: FirebaseAuth.instance.currentUser!.uid,
+                        userId: FirebaseAuth.instance.currentUser!.uid, 
+                        status: getstatus(endTime: TaskCubit.get(context).endTime!, isDone: false),
                       ),
                     );
                   }

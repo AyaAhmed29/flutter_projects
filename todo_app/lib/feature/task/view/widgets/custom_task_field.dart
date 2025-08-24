@@ -67,3 +67,55 @@ class CustomTaskField extends StatelessWidget {
     );
   }
 }
+class CustomEditTask extends StatelessWidget {
+  const CustomEditTask({
+    super.key,
+    required this.text,
+    this.prefixIcon,
+    this.onTap,
+    this.readOnly,
+    required this.controller,
+  });
+  final String text;
+  final String? prefixIcon;
+  final void Function()? onTap;
+  final bool? readOnly;
+  final TextEditingController controller;
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      cursorColor: AppColors.primaryColor,
+      cursorErrorColor: Colors.red,
+      minLines: 1,
+      onTap: onTap,
+      readOnly: readOnly ?? false,
+
+      maxLines: text == S.of(context).Description ? null : 1,
+      keyboardType: TextInputType.text,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: AppColors.white,
+        prefixIcon: prefixIcon != null
+            ? Transform.scale(scale: .6, child: SvgPicture.asset(prefixIcon!))
+            : null,
+
+        hintText: text,
+
+        border: _borderStyle(),
+        enabledBorder: _borderStyle(),
+        errorBorder: InputBorder.none,
+        disabledBorder: InputBorder.none,
+
+        focusedBorder: _borderStyle(),
+      ),
+    );
+  }
+
+  OutlineInputBorder _borderStyle() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15.r),
+      borderSide: BorderSide(color: AppColors.white),
+    );
+  }
+}

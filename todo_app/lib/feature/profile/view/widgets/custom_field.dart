@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,11 +12,13 @@ class CustomField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.onPressed,
+    this.controller,
   });
   final String text;
   final String? prefixIcon;
   final Widget? suffixIcon;
   final void Function()? onPressed;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return IconButton(
@@ -34,13 +35,13 @@ class CustomField extends StatelessWidget {
           children: [
             if (prefixIcon != null)
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 16.0.w),
+                padding: EdgeInsets.symmetric(horizontal: 16.0.w),
                 child: SvgPicture.asset(prefixIcon!),
               ),
             Text(text, style: AppStyle.regular16),
             Spacer(flex: 1),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 16.0.w),
+              padding: EdgeInsets.symmetric(horizontal: 16.0.w),
               child:
                   suffixIcon ?? SvgPicture.asset(Assets.assetsImagesIconsArrow),
             ),

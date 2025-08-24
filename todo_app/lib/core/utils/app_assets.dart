@@ -6,6 +6,10 @@ class Assets {
   /// assets/images/icons/Arrow.svg
   static const String assetsImagesIconsArrow = "assets/images/icons/Arrow.svg";
 
+  /// Assets for assetsImagesIconsArrowDown
+  /// assets/images/icons/ArrowDown.svg
+  static const String assetsImagesIconsArrowDown = "assets/images/icons/ArrowDown.svg";
+
   /// Assets for assetsImagesIconsBackArrow
   /// assets/images/icons/BackArrow.svg
   static const String assetsImagesIconsBackArrow = "assets/images/icons/BackArrow.svg";
@@ -102,4 +106,3 @@ class Assets {
   /// assets/images/splash.svg
   static const String assetsImagesSplash = "assets/images/splash.svg";
 }
-

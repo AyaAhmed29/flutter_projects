@@ -7,8 +7,8 @@ import 'package:todo_app/core/utils/app_style.dart';
 import 'package:todo_app/generated/l10n.dart';
 
 class EditTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const EditTaskAppBar({super.key});
-
+  const EditTaskAppBar({super.key, required this.onPressed});
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -34,13 +34,13 @@ class EditTaskAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
 
-            onPressed: () {},
+            onPressed: onPressed,
             child: Row(
               children: [
                 SvgPicture.asset(Assets.assetsImagesIconsDelete),
                 SizedBox(width: 5.w),
                 Text(
-                  S.of( context).Delete,
+                  S.of(context).Delete,
                   style: AppStyle.extraLight14.copyWith(color: Colors.white),
                 ),
               ],

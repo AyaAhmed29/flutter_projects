@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:todo_app/core/service/show_snack_bar.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_router.dart';
-import 'package:todo_app/core/widgets/custom_userInf_App_bar.dart';
 import 'package:todo_app/feature/profile/view/widgets/custom_field.dart';
 import 'package:todo_app/generated/l10n.dart';
 
@@ -15,7 +16,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          CustomUserInfAppBar(),
+          // CustomUserInfAppBar(),
           SizedBox(height: 20.h),
           CustomField(
             text: S.of(context).Profile,
@@ -36,6 +37,18 @@ class ProfileView extends StatelessWidget {
             prefixIcon: Assets.assetsImagesIconsSetting,
             onPressed: () {
               GoRouter.of(context).push(AppRouter.settingView);
+            },
+          ),
+          CustomField(
+            text: S.of(context).Logout,
+            prefixIcon: Assets.assetsImagesIconsSetting,
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              showSnackBar(
+                context: context,
+                text: S.of(context).LogoutSuccessfully,
+              );
+              GoRouter.of(context).push(AppRouter.registerView);
             },
           ),
         ],

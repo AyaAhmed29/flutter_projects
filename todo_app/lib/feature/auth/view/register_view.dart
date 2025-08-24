@@ -5,18 +5,18 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:todo_app/core/service/show_snack_bar.dart';
 import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/register_cubit/register_cubit.dart';
-import 'package:todo_app/feature/auth/presentation/cubit/register_cubit/register_state.dart';
-import 'package:todo_app/feature/auth/presentation/view/widgets/auth_prompt.dart';
-import 'package:todo_app/feature/auth/presentation/view/widgets/custom_image.dart';
-import 'package:todo_app/feature/auth/presentation/view/widgets/custom_register_form.dart';
+import 'package:todo_app/feature/auth/cubit/register_cubit/register_cubit.dart';
+import 'package:todo_app/feature/auth/cubit/register_cubit/register_state.dart';
+import 'package:todo_app/feature/auth/view/widgets/auth_prompt.dart';
+import 'package:todo_app/feature/auth/view/widgets/custom_image.dart';
+import 'package:todo_app/feature/auth/view/widgets/custom_register_form.dart';
 import 'package:todo_app/generated/l10n.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
   @override
-  Widget build(BuildContext context) { 
-    return BlocProvider( 
+  Widget build(BuildContext context) {
+    return BlocProvider(
       create: (context) => RegisterCubit(AuthRepo()),
       child: Builder(
         builder: (context) {
@@ -32,8 +32,8 @@ class RegisterView extends StatelessWidget {
                   context: context,
                   text: S.of(context).RegistrationSuccessful,
                 );
-
-                AppRouter.router.go(AppRouter.homeView);
+                // UserCubit.get(context).userModel = state.user;
+                AppRouter.router.go(AppRouter.homeView,extra: state.user);
               }
             },
             builder: (context, state) {

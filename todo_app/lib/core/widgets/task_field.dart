@@ -11,7 +11,7 @@ class TaskField extends StatelessWidget {
     required this.text,
     required this.prefixIcon,
 
-    this.onPressed,
+   required  this.onPressed,
     required this.color,
     required this.number,
   });
@@ -19,14 +19,14 @@ class TaskField extends StatelessWidget {
   final String prefixIcon;
 
   final Color color;
-  final void Function()? onPressed;
+  final void Function() onPressed;
   final int number;
+  
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: onPressed,
       icon: Container(
-        // margin: EdgeInsets.all(8),
         height: 63.h,
         decoration: BoxDecoration(
           color: AppColors.white,
@@ -61,6 +61,7 @@ class TaskField extends StatelessWidget {
           ],
         ),
       ),
-    );
+    )
+    ;
   }
 }

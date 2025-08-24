@@ -7,5 +7,6 @@ abstract class AppColors {
   static final Color black = Color(0xff1D1C1B);
   static final Color white = Color(0xffFFFFFF);
   static final Color pink = Color(0xffFF0084);
+  static final Color errorColor = Color(0xffFF0000);
   
 }

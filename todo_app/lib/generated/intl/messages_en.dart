@@ -35,10 +35,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "AlreadyHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Already Have An Account?",
     ),
+    "AreYouSureYouWantToDeleteThisTask": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to delete this task?",
+    ),
     "BelieveYouCan": MessageLookupByLibrary.simpleMessage(
       "Believe you can, and you\'re halfway there.",
     ),
     "ChangePassword": MessageLookupByLibrary.simpleMessage("Change Password"),
+    "ConfirmDeletion": MessageLookupByLibrary.simpleMessage("Confirm Deletion"),
     "ConfirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "Congrats": MessageLookupByLibrary.simpleMessage("Congrats!"),
     "Delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -75,6 +79,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "Login": MessageLookupByLibrary.simpleMessage("Login"),
     "LoginSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Login successfully ",
+    ),
+    "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "LogoutSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Logout Successfully",
     ),
     "MarkAsDone": MessageLookupByLibrary.simpleMessage("Mark as Done"),
     "Missed": MessageLookupByLibrary.simpleMessage("Missed"),
@@ -114,10 +122,25 @@ class MessageLookup extends MessageLookupByLibrary {
     "Save": MessageLookupByLibrary.simpleMessage("Save"),
     "Search": MessageLookupByLibrary.simpleMessage("Search...."),
     "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "TaskAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Task added successfully",
+    ),
+    "TaskAlreadyDone": MessageLookupByLibrary.simpleMessage(
+      "This task is already done",
+    ),
+    "TaskDeletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Task deleted successfully",
+    ),
     "TaskGroups": MessageLookupByLibrary.simpleMessage("Task Groups"),
+    "TaskUpdatedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Task updated successfully",
+    ),
     "Tasks": MessageLookupByLibrary.simpleMessage("Tasks"),
     "TasksAlmostDone": MessageLookupByLibrary.simpleMessage(
       "Your today’s tasks almost done!",
+    ),
+    "ThisTaskIsAlreadyMarkedAsDone": MessageLookupByLibrary.simpleMessage(
+      "This task is already marked as done",
     ),
     "Title": MessageLookupByLibrary.simpleMessage("Title"),
     "Update": MessageLookupByLibrary.simpleMessage("Update"),
@@ -131,5 +154,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "WrongPassword": MessageLookupByLibrary.simpleMessage(
       "Wrong password provided for that user.",
     ),
+    "Youdidntchangeanything": MessageLookupByLibrary.simpleMessage(
+      "You didn\'t change anything",
+    ),
+    "no": MessageLookupByLibrary.simpleMessage("no"),
+    "taskismissing": MessageLookupByLibrary.simpleMessage("task is missing"),
+    "yes": MessageLookupByLibrary.simpleMessage("yes"),
   };
 }
