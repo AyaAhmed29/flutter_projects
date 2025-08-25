@@ -12,9 +12,8 @@ class CustomLoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
     return Form(
-      key: formKey,
+      key: LoginCubit.get(context).formKey,
       child: Column(
         children: [
           CustomTextField(
@@ -30,7 +29,9 @@ class CustomLoginForm extends StatelessWidget {
                 text: S.of(context).Password,
                 icon: Assets.assetsImagesIconsPassword,
                 keyboardType: TextInputType.visiblePassword,
-                suffixIconOnPressed: LoginCubit.get(context).changePasswordVisibility,
+                suffixIconOnPressed: LoginCubit.get(
+                  context,
+                ).changePasswordVisibility,
                 suffixIcon: LoginCubit.get(context).passwordSecure
                     ? Assets.assetsImagesIconsUnlock
                     : Assets.assetsImagesIconsLock,
@@ -41,13 +42,7 @@ class CustomLoginForm extends StatelessWidget {
           CustomButton(
             text: S.of(context).Login,
             onPressed: () {
-              formKey.currentState!.save();
-              if (formKey.currentState!.validate()) {
-                LoginCubit.get(context).login(
-                  LoginCubit.get(context).emailController.text,
-                  LoginCubit.get(context).passwordController.text,
-                );
-              }
+              LoginCubit.get(context).onLoginPressed();
             },
           ),
         ],

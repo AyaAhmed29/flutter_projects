@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:todo_app/core/service/show_snack_bar.dart';
+import 'package:todo_app/core/helper/app_pop_up.dart';
 import 'package:todo_app/core/utils/app_router.dart';
-import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
 import 'package:todo_app/feature/auth/cubit/register_cubit/register_cubit.dart';
 import 'package:todo_app/feature/auth/cubit/register_cubit/register_state.dart';
 import 'package:todo_app/feature/auth/view/widgets/auth_prompt.dart';
@@ -17,7 +16,7 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegisterCubit(AuthRepo()),
+      create: (context) => RegisterCubit(),
       child: Builder(
         builder: (context) {
           return BlocConsumer<RegisterCubit, RegisterState>(
@@ -27,8 +26,8 @@ class RegisterView extends StatelessWidget {
                   context,
                 ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
               }
-              if (state is RegisterSuccess) {
-                showSnackBar(
+              if (state is RegisterSuccess) { 
+                AppPopUp.showSnackBar(
                   context: context,
                   text: S.of(context).RegistrationSuccessful,
                 );

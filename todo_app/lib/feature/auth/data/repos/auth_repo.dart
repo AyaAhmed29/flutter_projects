@@ -5,7 +5,7 @@ import 'package:todo_app/feature/auth/data/model/user_model.dart';
 
 class AuthRepo {
   AuthRepo();
-  Future<Either<String, UserModel>> login(String email, String password) async {
+Future<Either<String, UserModel>> login({required String email,required String password}) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -18,7 +18,6 @@ class AuthRepo {
       UserModel user = UserModel.fromJson(data.data()!);
       
       return right(user);
-      // if (credential.user!.emailVerified) return right(user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         return left('No user found for that email.');
@@ -34,6 +33,7 @@ class AuthRepo {
     String email,
     String password,
     String name,
+    String? image, 
   ) async {
     try {
       final credential = await FirebaseAuth.instance
@@ -42,6 +42,7 @@ class AuthRepo {
         userName: name,
         uid: credential.user!.uid,
         email: email,
+        image: image,
       );
 
       await FirebaseFirestore.instance

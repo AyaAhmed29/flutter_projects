@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/core/service/show_snack_bar.dart';
+import 'package:todo_app/core/helper/app_pop_up.dart';
 import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
 import 'package:todo_app/feature/auth/view/widgets/auth_prompt.dart';
@@ -23,11 +23,11 @@ class LoginView extends StatelessWidget {
           return BlocConsumer<LoginCubit, LoginState>(
             listener: (context, state) {
               if (state is LoginFailure) {
-                showSnackBar(context: context, text: state.errorMessage);
+                AppPopUp.showSnackBar(context: context, text: state.errorMessage);
               }
               if (state is LoginSuccess) {
-                showSnackBar(
-                  context: context,
+                AppPopUp.showSnackBar(
+                  context: context, 
                   text: S.of(context).LoginSuccessfully,
                 );
                 

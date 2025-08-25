@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
-import 'package:todo_app/generated/l10n.dart';
 
 class CustomConfirmPassField extends StatelessWidget {
   const CustomConfirmPassField({
@@ -12,36 +11,26 @@ class CustomConfirmPassField extends StatelessWidget {
     this.suffixIcon,
     this.suffixIconOnPressed,
     this.isPasswordVisible,
-    this.onSaved,
     this.validator,
+    this.controller,  this.obscureText,
   });
+  final bool? obscureText;
   final String text;
-
+  final TextEditingController? controller;
   final String? suffixIcon;
   final void Function()? suffixIconOnPressed;
   final bool? isPasswordVisible;
-  final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return '${S.of(context).PleaseEnter} $text';
-          } else if (value.length < 8) {
-            return S.of(context).PasswordTooShort;
-          }
-          if (validator != null) {
-            return validator!(value);
-          }
-          return null;
-        },
+        validator: validator,
         cursorColor: AppColors.primaryColor,
         cursorErrorColor: Colors.red,
-        onSaved: onSaved,
-        obscureText: isPasswordVisible ?? false,
+        controller: controller,
+        obscureText: obscureText ?? true,
         obscuringCharacter: '*',
         keyboardType: TextInputType.visiblePassword,
         decoration: InputDecoration(

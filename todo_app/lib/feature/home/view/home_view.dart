@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
- import 'package:todo_app/core/utils/app_router.dart';
+import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/widgets/custom_floating_action_button.dart';
 import 'package:todo_app/core/widgets/custom_userInf_App_bar.dart';
 import 'package:todo_app/feature/auth/data/model/user_model.dart';
@@ -22,10 +22,11 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final extra = GoRouterState.of(context).extra;
     final user = extra != null ? extra as UserModel : null;
+    
     return Scaffold(
       floatingActionButton: CustomFloatingActionButton(
         onPressed: () {
-          GoRouter.of(context).push(AppRouter.addTaskView);
+          GoRouter.of(context).push(AppRouter.addTaskView, extra: user);
         },
         icon: Assets.assetsImagesIconsFile,
       ),
@@ -44,8 +45,9 @@ class HomeView extends StatelessWidget {
                     return
                     // CustomUserInfAppBarShimmer();
                     CustomUserInfAppBar(
-                      onTap: () =>
-                          GoRouter.of(context).push(AppRouter.profileView),
+                      onTap: () => GoRouter.of(
+                        context,
+                      ).push(AppRouter.profileView, extra: state.user),
                       userModel: state.user,
                     );
                   }
@@ -80,53 +82,4 @@ class HomeView extends StatelessWidget {
       ),
     );
   }
-  }
-
-// class CustomUserInfAppBarShimmer extends StatelessWidget {
-//   const CustomUserInfAppBarShimmer({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Row(
-//         children: [
-//           Padding(
-//             padding: EdgeInsets.symmetric(horizontal: 16.0.w),
-//             child: Shimmer.fromColors(
-//               baseColor: AppColors.lightGray,
-//               highlightColor: AppColors.lightGray.withValues(alpha: .5),
-//               child: CircleAvatar(
-//                 radius: 30.r,
-//                 backgroundColor: AppColors.white,
-//               ),
-//             ),
-//           ),
-//           Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Shimmer.fromColors(
-//                 baseColor: AppColors.lightGray,
-//                 highlightColor: AppColors.lightGray.withValues(alpha: .5),
-//                 child: Container(
-//                   width: 100.w,
-//                   height: 12.h,
-//                   color: AppColors.white,
-//                 ),
-//               ),
-//               SizedBox(height: 6.h),
-//               Shimmer.fromColors(
-//                 baseColor: AppColors.lightGray,
-//                 highlightColor: AppColors.lightGray.withValues(alpha: .5),
-//                 child: Container(
-//                   width: 200.w,
-//                   height: 16.h,
-//                   color: AppColors.white,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+}

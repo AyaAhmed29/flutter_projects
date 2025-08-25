@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:todo_app/core/service/show_snack_bar.dart';
+import 'package:todo_app/core/helper/app_pop_up.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
@@ -35,10 +35,10 @@ class EditTaskView extends StatelessWidget {
           return BlocConsumer<TaskCubit, TaskState>(
             listener: (context, state) {
               if (state is UpdateTaskSuccess) {
-                showSnackBar(context: context, text: state.successMessage);
+              AppPopUp.  showSnackBar(context: context, text: state.successMessage);
                 Navigator.pop(context);
               } else if (state is TaskFailure) {
-                showSnackBar(context: context, text: state.errorMessage);
+               AppPopUp.   showSnackBar(context: context, text: state.errorMessage);
               }
             },
             builder: (context, state) {
@@ -72,7 +72,7 @@ class EditTaskView extends StatelessWidget {
                                   cubit.deleteTask(task.taskId!);
                                   Navigator.of(context).pop();
                                   Navigator.of(context).pop();
-                                  showSnackBar(
+                             AppPopUp.       showSnackBar(
                                     context: context,
                                     text: S.of(context).TaskDeletedSuccessfully,
                                   );
@@ -203,7 +203,7 @@ class EditTaskView extends StatelessWidget {
                           text: S.of(context).MarkAsDone,
                           onPressed: () {
                             if (task.isDone) {
-                              errorShowSnackBar(
+                              AppPopUp. errorShowSnackBar(
                                 context: context,
                                 text: S
                                     .of(context)
@@ -212,7 +212,7 @@ class EditTaskView extends StatelessWidget {
                               return;
                             }
                             if (task.status == 'Missed') {
-                              errorShowSnackBar(
+                              AppPopUp. errorShowSnackBar(
                                 context: context,
                                 text: S.of(context).taskismissing,
                               );
@@ -234,7 +234,7 @@ class EditTaskView extends StatelessWidget {
                             );
 
                             TaskCubit.get(context).updateTask(updatedTask);
-                            showSnackBar(
+                          AppPopUp.    showSnackBar(
                               context: context,
                               text: S.of(context).TaskAlreadyDone,
                             );
@@ -251,7 +251,7 @@ class EditTaskView extends StatelessWidget {
                                 selectedDate == task.endTime &&
                                 TaskCubit.get(context).selectedGroup ==
                                     task.group) {
-                              showSnackBar(
+                            AppPopUp.    showSnackBar(
                                 context: context,
                                 text: S.of(context).Youdidntchangeanything,
                               );

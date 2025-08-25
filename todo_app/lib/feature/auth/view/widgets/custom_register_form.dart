@@ -12,10 +12,8 @@ class CustomRegisterForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-
     return Form(
-      key: formKey,
+      key: RegisterCubit.get(context).formKey,
       child: Builder(
         builder: (context) {
           return Column(
@@ -89,12 +87,7 @@ class CustomRegisterForm extends StatelessWidget {
               CustomButton(
                 text: S.of(context).Register,
                 onPressed: () async {
-                  if (formKey.currentState!.validate()) {
-                    await RegisterCubit.get(context).register(
-                      email: RegisterCubit.get(context).emailController.text,
-                      pass: RegisterCubit.get(context).passwordController.text,
-                    );
-                  }
+                  RegisterCubit.get(context).onRegisterPressed();
                 },
               ),
             ],

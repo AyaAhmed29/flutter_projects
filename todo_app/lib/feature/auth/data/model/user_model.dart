@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 class UserModel {
   String? uid;
   late String userName;
   late String email;
-  Image? image;
+  String? image;
 
   UserModel({
     required this.userName,

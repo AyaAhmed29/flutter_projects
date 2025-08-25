@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
     required this.keyboardType,
     this.suffixIconOnPressed,
     this.isPasswordVisible,
-   
+
     this.validator,
     this.controller,
     this.obscureText,
@@ -46,7 +46,7 @@ class CustomTextField extends StatelessWidget {
           if (value == null || value.isEmpty) {
             return '${S.of(context).PleaseEnter} $text';
           } else if (keyboardType == TextInputType.visiblePassword &&
-              value.length < 8) {
+              value.length < 6) {
             return S.of(context).PasswordTooShort;
           }
           if (validator != null) {

@@ -1,53 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/feature/auth/data/repos/auth_repo.dart';
-import 'package:todo_app/feature/auth/data/model/user_model.dart';
 import 'package:todo_app/feature/auth/cubit/register_cubit/register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit(this.authRepo) : super(Registeritial());
-  static RegisterCubit get(context) => BlocProvider.of(context);
-
+  RegisterCubit() : super(Registeritial());
+  static RegisterCubit get(context) => BlocProvider.of<RegisterCubit>(context);
+  bool passwordSecure = true;
+  bool confirmPasswordSecure = true;
   var usernameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
+  var formKey = GlobalKey<FormState>();
+  String? userImageUrl;
 
-  final AuthRepo authRepo;
-  Future<UserModel> register({required String email, required String pass}) async {
+  onRegisterPressed() async {
+   if (!formKey.currentState!.validate()) return;
+    
     emit(RegisterLoading());
-
-    try {
-      final result = await authRepo.register(email, pass, usernameController.text);
-
-      final user = result.fold(
-        (failure) {
-          emit(RegisterFailure(failure)); 
-          throw failure; 
-        },
-        (user) {
-          emit(
-            RegisterSuccess(
-              UserModel(
-                uid: user.uid,
-                email: user.email,
-                userName: user.userName,
-              ),
-            ),
-          );
-          return user; 
-        }, 
-      );
-      return user;
-    } catch (e) {
-      emit(RegisterFailure(e.toString()));
-      rethrow;
-    }
-   
+    AuthRepo repo = AuthRepo();
+    var response = await repo.register(
+      emailController.text,
+      passwordController.text,
+      usernameController.text,
+      userImageUrl,
+    );
+    response.fold(
+      (error) => emit(RegisterFailure(error)),
+      (userModel) => emit(RegisterSuccess(userModel)),
+    );
   }
-
-  bool passwordSecure = true;
-  bool confirmPasswordSecure = true;
 
   void changePasswordVisibility() {
     passwordSecure = !passwordSecure;

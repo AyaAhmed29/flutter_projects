@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo_app/core/helper/app_pop_up.dart';
+import 'package:todo_app/core/helper/app_validator.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
-import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
+import 'package:todo_app/feature/profile/cubit/change_pass/change_password_cubit.dart';
 import 'package:todo_app/feature/profile/view/widgets/custom_confirm_pass_field.dart';
 import 'package:todo_app/generated/l10n.dart';
 
@@ -14,80 +17,106 @@ class CustomConfirmPassForm extends StatefulWidget {
 }
 
 class _CustomConfirmPassFormState extends State<CustomConfirmPassForm> {
-  bool isPasswordVisible = true;
-  bool isConfirmPasswordVisible = true;
-  final formKey = GlobalKey<FormState>();
-  String password = '';
-
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        children: [
-          CustomConfirmPassField(
-            isPasswordVisible: isPasswordVisible,
-            text: S.of(context).OldPassword,
-
-            suffixIconOnPressed: () {
-              setState(() {
-                isPasswordVisible = !isPasswordVisible;
-              });
-            },
-            suffixIcon: isPasswordVisible
-                ? Assets.assetsImagesIconsUnlock
-                : Assets.assetsImagesIconsLock,
-          ),
-          CustomConfirmPassField(
-            isPasswordVisible: isPasswordVisible,
-            text: S.of(context).NewPassword,
-            onSaved: (pass) {
-              password = pass ?? '';
-            },
-            suffixIconOnPressed: () {
-              setState(() {
-                isPasswordVisible = !isPasswordVisible;
-              });
-            },
-            suffixIcon: isPasswordVisible
-                ? Assets.assetsImagesIconsUnlock
-                : Assets.assetsImagesIconsLock,
-          ),
-          CustomConfirmPassField(
-            validator: (value) {
-              if (value != password) {
-                return S.of(context).PasswordsDoNotMatch;
-              }
-              return null;
-            },
-
-            isPasswordVisible: isConfirmPasswordVisible,
-            text: S.of(context).ConfirmPassword,
-
-            suffixIconOnPressed: () {
-              setState(() {
-                isConfirmPasswordVisible = !isConfirmPasswordVisible;
-              });
-            },
-            suffixIcon: isPasswordVisible
-                ? Assets.assetsImagesIconsUnlock
-                : Assets.assetsImagesIconsLock,
-          ),
-          SizedBox(height: 20.h),
-          CustomButton(
-            text: S.of(context).Save,
-            onPressed: () {
-              formKey.currentState!.save();
-              if (formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(S.of(context).RegistrationSuccessful)),
+    return BlocProvider(
+      create: (context) => ChangePasswordCubit(),
+      child: BlocConsumer<ChangePasswordCubit, ChangePasswordState>(
+        listener: (context, state) {
+          if (state is ChangePasswordFailure) {
+            AppPopUp.errorShowSnackBar(
+              context: context,
+              text: state.errorMessage,
+            );
+          } else if (state is ChangePasswordSuccess) {
+            AppPopUp.showSnackBar(
+              context: context,
+              text: 'Change Password Success',
+            );
+          }
+        },
+        builder: (context, state) {
+          return state is ChangePasswordLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Form(
+                  key: ChangePasswordCubit.get(context).formKey,
+                  child: Column(
+                    children: [
+                      CustomConfirmPassField(
+                        text: S.of(context).OldPassword,
+                        controller: ChangePasswordCubit.get(
+                          context,
+                        ).oldPasswordController,
+                        validator: AppValidator.passwordValidator,
+                        obscureText: ChangePasswordCubit.get(
+                          context,
+                        ).oldPasswordSecure,
+                        suffixIconOnPressed: ChangePasswordCubit.get(
+                          context,
+                        ).oldPasswordControllerVisibility,
+                       
+                        suffixIcon:
+                            ChangePasswordCubit.get(context).oldPasswordSecure
+                            ? Assets.assetsImagesIconsUnlock
+                            : Assets.assetsImagesIconsLock,
+                      ),
+                      SizedBox(height: 20.h),
+                      CustomConfirmPassField(
+                        validator: AppValidator.passwordValidator,
+                        text: S.of(context).NewPassword,
+                        controller: ChangePasswordCubit.get(
+                          context,
+                        ).newPasswordController,
+                        suffixIcon:
+                            ChangePasswordCubit.get(context).newPasswordSecure
+                            ? Assets.assetsImagesIconsUnlock
+                            : Assets.assetsImagesIconsLock,
+                        obscureText: ChangePasswordCubit.get(
+                          context,
+                        ).newPasswordSecure,
+                        suffixIconOnPressed: ChangePasswordCubit.get(
+                          context,
+                        ).newPasswordControllerVisibility,
+                      ),
+                      CustomConfirmPassField(
+                        validator: (value) {
+                          return AppValidator.confirmPasswordValidator(
+                            password: value!,
+                            value: ChangePasswordCubit.get(
+                              context,
+                            ).newPasswordController.text,
+                          );
+                        },
+                        
+                        obscureText: ChangePasswordCubit.get(
+                          context,
+                        ).confirmPasswordSecure,
+                        suffixIconOnPressed: ChangePasswordCubit.get(
+                          context,
+                        ).confirmNewPasswordControllerVisibility,
+                        controller: ChangePasswordCubit.get(
+                          context,
+                        ).confirmNewpasswordController,
+                        text: S.of(context).ConfirmPassword,
+                        suffixIcon:
+                            ChangePasswordCubit.get(
+                              context,
+                            ).confirmPasswordSecure
+                            ? Assets.assetsImagesIconsUnlock
+                            : Assets.assetsImagesIconsLock,
+                      ),
+                      SizedBox(height: 20.h),
+                      CustomButton(
+                        text: S.of(context).Save,
+                        onPressed: () {
+                          ChangePasswordCubit.get(context).changePassword();
+                          
+                        },
+                      ),
+                    ],
+                  ),
                 );
-
-                AppRouter.router.pop();
-              }
-            },
-          ),
-        ],
+        },
       ),
     );
   }
