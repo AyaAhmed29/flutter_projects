@@ -5,18 +5,13 @@ import 'package:todo_app/core/helper/app_pop_up.dart';
 import 'package:todo_app/core/helper/app_validator.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
+import 'package:todo_app/feature/auth/view/widgets/custom_text_field.dart';
 import 'package:todo_app/feature/profile/cubit/change_pass/change_password_cubit.dart';
-import 'package:todo_app/feature/profile/view/widgets/custom_confirm_pass_field.dart';
 import 'package:todo_app/generated/l10n.dart';
 
-class CustomConfirmPassForm extends StatefulWidget {
+class CustomConfirmPassForm extends StatelessWidget {
   const CustomConfirmPassForm({super.key});
 
-  @override
-  State<CustomConfirmPassForm> createState() => _CustomConfirmPassFormState();
-}
-
-class _CustomConfirmPassFormState extends State<CustomConfirmPassForm> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -42,7 +37,7 @@ class _CustomConfirmPassFormState extends State<CustomConfirmPassForm> {
                   key: ChangePasswordCubit.get(context).formKey,
                   child: Column(
                     children: [
-                      CustomConfirmPassField(
+                      CustomTextField(
                         text: S.of(context).OldPassword,
                         controller: ChangePasswordCubit.get(
                           context,
@@ -54,14 +49,15 @@ class _CustomConfirmPassFormState extends State<CustomConfirmPassForm> {
                         suffixIconOnPressed: ChangePasswordCubit.get(
                           context,
                         ).oldPasswordControllerVisibility,
-                       
+
                         suffixIcon:
                             ChangePasswordCubit.get(context).oldPasswordSecure
                             ? Assets.assetsImagesIconsUnlock
                             : Assets.assetsImagesIconsLock,
+                        keyboardType: TextInputType.visiblePassword,
                       ),
-                      SizedBox(height: 20.h),
-                      CustomConfirmPassField(
+
+                      CustomTextField(
                         validator: AppValidator.passwordValidator,
                         text: S.of(context).NewPassword,
                         controller: ChangePasswordCubit.get(
@@ -77,8 +73,9 @@ class _CustomConfirmPassFormState extends State<CustomConfirmPassForm> {
                         suffixIconOnPressed: ChangePasswordCubit.get(
                           context,
                         ).newPasswordControllerVisibility,
+                        keyboardType: TextInputType.visiblePassword,
                       ),
-                      CustomConfirmPassField(
+                      CustomTextField(
                         validator: (value) {
                           return AppValidator.confirmPasswordValidator(
                             password: value!,
@@ -87,7 +84,7 @@ class _CustomConfirmPassFormState extends State<CustomConfirmPassForm> {
                             ).newPasswordController.text,
                           );
                         },
-                        
+
                         obscureText: ChangePasswordCubit.get(
                           context,
                         ).confirmPasswordSecure,
@@ -104,13 +101,13 @@ class _CustomConfirmPassFormState extends State<CustomConfirmPassForm> {
                             ).confirmPasswordSecure
                             ? Assets.assetsImagesIconsUnlock
                             : Assets.assetsImagesIconsLock,
+                        keyboardType: TextInputType.visiblePassword,
                       ),
                       SizedBox(height: 20.h),
                       CustomButton(
                         text: S.of(context).Save,
                         onPressed: () {
                           ChangePasswordCubit.get(context).changePassword();
-                          
                         },
                       ),
                     ],

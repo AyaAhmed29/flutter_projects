@@ -26,6 +26,14 @@ abstract class AppValidator {
     return null;
   }
 
+  static String? usernameValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter UserName';
+    }
+
+    return null;
+  }
+
   static String? confirmPasswordValidator({
     String? value,
     required String password,

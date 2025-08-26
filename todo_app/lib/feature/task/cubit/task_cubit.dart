@@ -49,7 +49,6 @@ class TaskCubit extends Cubit<TaskState> {
     );
   }
 
-  // تعديل تاسك
   Future<void> updateTask(TaskModel task) async {
     emit(LoadingTask());
     try {
@@ -74,5 +73,44 @@ class TaskCubit extends Cubit<TaskState> {
     } catch (e) {
       emit(TaskFailure(e.toString()));
     }
+  }
+
+  int selectedTopIndex = 0;
+  int selectedBottomIndex = 0;
+  void filterTasks() {
+    String selectedGroup = [
+      "All",
+      "Work",
+      "Home",
+      "Personal",
+    ][selectedTopIndex];
+    String selectedStatus = [
+      "All",
+      "In Progress",
+      "Missed",
+      "Done",
+    ][selectedBottomIndex];
+
+    getToday({
+      required String group,
+      required String status,
+    }) async {
+      emit(LoadingTask());
+      try {
+        final result = await taskRepo.getTodayTasks(
+          group: group,
+          status: status,
+        );
+
+        result.fold(
+          (failure) => emit(TaskFailure(failure)),
+          (tasks) => emit(GetTaskSuccess(tasks)),
+        );
+      } catch (e) {
+        emit(TaskFailure(e.toString()));
+      }
+    }
+
+    getToday(group: selectedGroup, status: selectedStatus);
   }
 }

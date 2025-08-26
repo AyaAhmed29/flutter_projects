@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo_app/core/helper/app_validator.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/feature/auth/cubit/register_cubit/register_cubit.dart';
@@ -19,12 +21,21 @@ class CustomRegisterForm extends StatelessWidget {
           return Column(
             children: [
               CustomTextField(
+                validator: (value) {
+                  return AppValidator.emailValidator(
+                    context: context,
+                    value: value,
+                  );
+                },
                 controller: RegisterCubit.get(context).emailController,
                 text: S.of(context).Email,
                 icon: Assets.assetsImagesIconsEmail,
                 keyboardType: TextInputType.emailAddress,
               ),
               CustomTextField(
+                validator: (value) {
+                  return AppValidator.usernameValidator(value);
+                },
                 controller: RegisterCubit.get(context).usernameController,
                 text: S.of(context).Username,
                 icon: Assets.assetsImagesIconsProfile,
@@ -35,6 +46,9 @@ class CustomRegisterForm extends StatelessWidget {
                   return Column(
                     children: [
                       CustomTextField(
+                        validator: (value) {
+                          return AppValidator.passwordValidator(value);
+                        },
                         obscureText: RegisterCubit.get(context).passwordSecure,
                         controller: RegisterCubit.get(
                           context,
@@ -54,15 +68,12 @@ class CustomRegisterForm extends StatelessWidget {
                           context,
                         ).confirmPasswordController,
                         validator: (value) {
-                          if (RegisterCubit.get(
-                                context,
-                              ).confirmPasswordController.text !=
-                              RegisterCubit.get(
-                                context,
-                              ).passwordController.text) {
-                            return S.of(context).PasswordsDoNotMatch;
-                          }
-                          return null;
+                          return AppValidator.confirmPasswordValidator(
+                            password: RegisterCubit.get(
+                              context,
+                            ).passwordController.text,
+                            value: value,
+                          );
                         },
                         text: S.of(context).ConfirmPassword,
                         icon: Assets.assetsImagesIconsPassword,
@@ -88,6 +99,7 @@ class CustomRegisterForm extends StatelessWidget {
                 text: S.of(context).Register,
                 onPressed: () async {
                   RegisterCubit.get(context).onRegisterPressed();
+                  GoRouter.of(context).pop();
                 },
               ),
             ],

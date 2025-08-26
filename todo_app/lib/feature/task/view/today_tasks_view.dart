@@ -19,19 +19,19 @@ class TodayTasksView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: CustomFloatingActionButton(
-        onPressed: () {
-          filterDialog(context);
-        },
-        icon: Assets.assetsImagesIconsFilter,
-      ),
-      appBar: CustomAppBar(titile: 'Tasks'),
-      body: BlocProvider(
-        create: (context) => TaskCubit()..getTasks(),
-        child: Builder(
-          builder: (context) {
-            return BlocBuilder<TaskCubit, TaskState>(
+    return BlocProvider(
+      create: (context) => TaskCubit()..filterTasks(),
+      child: Builder(
+        builder: (innerContext) {
+          return Scaffold(
+            floatingActionButton: CustomFloatingActionButton(
+              onPressed: () {
+                filterDialog(innerContext);
+              },
+              icon: Assets.assetsImagesIconsFilter,
+            ),
+            appBar: CustomAppBar(titile: 'Tasks'),
+            body: BlocBuilder<TaskCubit, TaskState>(
               builder: (context, state) {
                 if (state is LoadingTask) {
                   return const Center(child: CircularProgressIndicator());
@@ -50,7 +50,7 @@ class TodayTasksView extends StatelessWidget {
                         ListView.builder(
                           itemCount: tasks.length,
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
                             final task = tasks[index];
                             return TaskItemWidget(
@@ -63,7 +63,6 @@ class TodayTasksView extends StatelessWidget {
                                   : task.group == 'Personal'
                                   ? Assets.assetsImagesIconsPersonal
                                   : Assets.assetsImagesIconsWork,
-                              // time: task.endTime,
                             );
                           },
                         ),
@@ -73,20 +72,19 @@ class TodayTasksView extends StatelessWidget {
                 }
                 return Container();
               },
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 
   Future<dynamic> filterDialog(BuildContext context) {
-    int? selectedTopIndex;
-    int? selectedBottomIndex;
+    final taskCubit = TaskCubit.get(context);
 
     return showDialog(
       context: context,
-      barrierColor: Colors.black.withValues(alpha: .5),
+      barrierColor: Colors.black.withAlpha(100),
       builder: (context) {
         return StatefulBuilder(
           builder: (context, setState) {
@@ -116,10 +114,10 @@ class TodayTasksView extends StatelessWidget {
                               S.of(context).Home,
                               S.of(context).Personal,
                             ][i],
-                            isSelected: selectedTopIndex == i,
+                            isSelected: taskCubit.selectedTopIndex == i,
                             onTap: () {
                               setState(() {
-                                selectedTopIndex = i;
+                                taskCubit.selectedTopIndex = i;
                               });
                             },
                           ),
@@ -137,20 +135,20 @@ class TodayTasksView extends StatelessWidget {
                               S.of(context).Missed,
                               S.of(context).Done,
                             ][i],
-                            isSelected: selectedBottomIndex == i,
+                            isSelected: taskCubit.selectedBottomIndex == i,
                             onTap: () {
                               setState(() {
-                                selectedBottomIndex = i;
+                                taskCubit.selectedBottomIndex = i;
                               });
                             },
                           ),
                       ],
                     ),
                     SizedBox(height: 25.h),
-                    // CustomDateTimePicker(),
                     CustomButton(
                       text: S.of(context).Filter,
                       onPressed: () {
+                        taskCubit.filterTasks();
                         Navigator.pop(context);
                       },
                     ),

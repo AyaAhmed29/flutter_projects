@@ -56,7 +56,7 @@ abstract class AppRouter {
         path: changePasswordView,
       ),
       GoRoute(
-        builder: (context, state) => const TodayTasksView(),
+        builder: (context, state) =>  TodayTasksView(),
         path: todayTasksView,
       ),
       GoRoute(

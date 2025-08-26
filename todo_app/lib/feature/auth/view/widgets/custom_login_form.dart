@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app/core/helper/app_validator.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
 import 'package:todo_app/feature/auth/cubit/login_cubit/login_cubit.dart';
@@ -17,6 +18,8 @@ class CustomLoginForm extends StatelessWidget {
       child: Column(
         children: [
           CustomTextField(
+            validator: (value) =>
+                AppValidator.emailValidator(context: context, value: value),
             text: S.of(context).Email,
             icon: Assets.assetsImagesIconsEmail,
             keyboardType: TextInputType.emailAddress,
@@ -25,6 +28,7 @@ class CustomLoginForm extends StatelessWidget {
           BlocBuilder<LoginCubit, LoginState>(
             builder: (context, state) {
               return CustomTextField(
+                validator: (value) => AppValidator.passwordValidator(value),
                 obscureText: LoginCubit.get(context).passwordSecure,
                 text: S.of(context).Password,
                 icon: Assets.assetsImagesIconsPassword,

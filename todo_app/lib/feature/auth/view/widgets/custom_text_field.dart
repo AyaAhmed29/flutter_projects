@@ -4,13 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_padding.dart';
 import 'package:todo_app/core/utils/app_style.dart';
-import 'package:todo_app/generated/l10n.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.text,
-    required this.icon,
+    this.icon,
     this.suffixIcon,
     required this.keyboardType,
     this.suffixIconOnPressed,
@@ -22,7 +21,7 @@ class CustomTextField extends StatelessWidget {
   });
   final TextEditingController? controller;
   final String text;
-  final String icon;
+  final String? icon;
   final String? suffixIcon;
   final TextInputType keyboardType;
   final void Function()? suffixIconOnPressed;
@@ -35,25 +34,7 @@ class CustomTextField extends StatelessWidget {
       padding: AppPadding.symmetricH22V5,
       child: TextFormField(
         controller: controller,
-        validator: (value) {
-          if (keyboardType == TextInputType.emailAddress &&
-              !RegExp(
-                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-              ).hasMatch(value ?? "")) {
-            return S.of(context).InvalidEmail;
-          }
-
-          if (value == null || value.isEmpty) {
-            return '${S.of(context).PleaseEnter} $text';
-          } else if (keyboardType == TextInputType.visiblePassword &&
-              value.length < 6) {
-            return S.of(context).PasswordTooShort;
-          }
-          if (validator != null) {
-            return validator!(value);
-          }
-          return null;
-        },
+        validator: validator,
 
         cursorColor: AppColors.primaryColor,
         cursorErrorColor: Colors.red,
@@ -67,10 +48,12 @@ class CustomTextField extends StatelessWidget {
                   icon: SvgPicture.asset(suffixIcon!),
                 )
               : null,
-          prefixIcon: IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(icon, height: 20, width: 20),
-          ),
+          prefixIcon: icon != null
+              ? IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(icon!, height: 20, width: 20),
+                )
+              : null,
           labelText: text,
           labelStyle: AppStyle.extraLight14,
           border: _borderStyle(),

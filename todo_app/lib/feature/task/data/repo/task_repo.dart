@@ -1,6 +1,5 @@
 import 'dart:core';
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -37,6 +36,38 @@ class TaskRepo {
     }
   }
 
+  Future<Either<String, List<TaskModel>>> getTodayTasks({
+    String? group = "All",
+    String? status = "All",
+  }) async {
+    try {
+      final now = DateTime.now();
+      final startOfDay = DateTime(now.year, now.month, now.day, 0, 0, 0);
+      final endOfDay = DateTime(now.year, now.month, now.day, 23, 59, 59);
+
+      var query = FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection('tasks')
+          .where('endTime', isGreaterThanOrEqualTo: startOfDay)
+          .where('endTime', isLessThanOrEqualTo: endOfDay);
+
+      if (group != "All") query = query.where('group', isEqualTo: group);
+
+      if (status != "All") query = query.where('status', isEqualTo: status);
+
+      final snapshot = await query.get();
+
+      final tasks = snapshot.docs
+          .map((doc) => TaskModel.fromMap(doc.data()))
+          .toList();
+
+      return right(tasks);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
   Future<Either<String, List<TaskModel>>> getTasks() async {
     try {
       final snapshot = await FirebaseFirestore.instance
@@ -61,8 +92,8 @@ class TaskRepo {
           .collection('users')
           .doc(task.userId)
           .collection('tasks')
-          .doc(task.taskId) // لازم يكون هو نفسه docId
-          .update(task.toMap()); // استخدم update هنا
+          .doc(task.taskId)
+          .update(task.toMap());
       return Right(null);
     } catch (e) {
       return Left(e.toString());
