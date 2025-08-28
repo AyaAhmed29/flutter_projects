@@ -26,6 +26,10 @@ abstract class AppStyle {
     fontWeight: FontWeight.w400,
     fontSize: 14.sp,
     color: AppColors.graniteGray,
+  );  static final TextStyle regular12 = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 14.sp,
+    color: AppColors.black,
   );
   static final TextStyle bold14 = TextStyle(
     fontWeight: FontWeight.w700,
