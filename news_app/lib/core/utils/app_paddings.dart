@@ -11,5 +11,11 @@ abstract class AppPaddings {
   static const horizontal32vertical8 = EdgeInsets.symmetric(
     horizontal: 32,
     vertical: 8,
+  );static const horizontal16vertical8 = EdgeInsets.symmetric(
+    horizontal: 16,
+    vertical: 8,
+  );
+  static const all16 = EdgeInsets.all(
+   16
   );
 }

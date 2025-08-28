@@ -17,7 +17,14 @@ class MyApp extends StatelessWidget {
 
       builder: (_, child) {
         return MaterialApp.router(
-          theme: ThemeData(scaffoldBackgroundColor: AppColors.white),
+          theme: ThemeData(
+            scaffoldBackgroundColor: AppColors.white,
+            appBarTheme: AppBarTheme(
+              backgroundColor: AppColors.lavender,
+              elevation: 0,
+              // iconTheme: IconThemeData(color: AppColors.black),
+            ),
+          ),
           routerConfig: AppRouter.router,
           debugShowCheckedModeBanner: false,
         );

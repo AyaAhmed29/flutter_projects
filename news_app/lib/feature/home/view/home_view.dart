@@ -6,23 +6,10 @@ import 'package:news_app/core/widgets/custom_app_bar.dart';
 import 'package:news_app/feature/home/view/widgets/article_card_item.dart';
 import 'package:news_app/feature/home/view/widgets/most_popular_item.dart';
 
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const NewsHomePage();
-  }
-}
-
-class NewsHomePage extends StatefulWidget {
-  const NewsHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<NewsHomePage> createState() => _NewsHomePageState();
-}
-
-class _NewsHomePageState extends State<NewsHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

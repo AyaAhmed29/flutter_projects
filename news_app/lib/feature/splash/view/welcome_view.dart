@@ -67,7 +67,7 @@ class WelcomeView extends StatelessWidget {
                       CustomElevatedButton(
                         text: 'Explore',
                         onPressed: () {
-                          GoRouter.of(context).go(AppRouter.homeView);
+                          GoRouter.of(context).go(AppRouter.navigationViwe);
                         },
                         icon: Assets.assetsImagesIconsArrow,
                       ),

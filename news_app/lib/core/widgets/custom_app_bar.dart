@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/utils/app_assets.dart';
@@ -13,6 +11,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
+        height: 110.h,
         width: MediaQuery.of(context).size.width,
         color: AppColors.lavender,
         child: Row(
