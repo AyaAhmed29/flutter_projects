@@ -15,7 +15,7 @@ class CustomElevatedButton extends StatelessWidget {
 
   final String text;
   final String? icon;
-final  void Function() onPressed;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ final  void Function() onPressed;
         backgroundColor: AppColors.blue,
         foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24.r),
+          borderRadius: BorderRadius.circular(32.r),
         ),
       ),
       onPressed: onPressed,
