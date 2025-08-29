@@ -39,11 +39,14 @@ class AddTaskViewBody extends StatelessWidget {
                 text: S.of(context).Description,
                 controller: TaskCubit.get(context).descriptionController,
               ),
-              CustomDropdownField(
-                value: TaskCubit.get(context).selectedGroup,
-                onChanged: (value) {
-                  TaskCubit.get(context).setGroup(value);
-                },
+              Padding(
+                padding: const EdgeInsetsDirectional.symmetric(horizontal: 8),
+                child: CustomDropdownField(
+                  value: TaskCubit.get(context).selectedGroup,
+                  onChanged: (value) {
+                    TaskCubit.get(context).setGroup(value);
+                  },
+                ),
               ),
 
               CustomDateTimePicker(
@@ -63,8 +66,11 @@ class AddTaskViewBody extends StatelessWidget {
                         ).descriptionController.text,
                         group: TaskCubit.get(context).selectedGroup!,
                         endTime: TaskCubit.get(context).endTime!,
-                        userId: FirebaseAuth.instance.currentUser!.uid, 
-                        status: getstatus(endTime: TaskCubit.get(context).endTime!, isDone: false),
+                        userId: FirebaseAuth.instance.currentUser!.uid,
+                        status: getstatus(
+                          endTime: TaskCubit.get(context).endTime!,
+                          isDone: false,
+                        ),
                       ),
                     );
                   }

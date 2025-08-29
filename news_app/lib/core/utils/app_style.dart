@@ -62,5 +62,9 @@ abstract class AppStyle {
     fontWeight: FontWeight.w600,
     fontSize: 16.sp,
     color: AppColors.blue,
+  ); static final TextStyle semiBold12 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 12.sp,
+    color: AppColors.white,
   );
 }

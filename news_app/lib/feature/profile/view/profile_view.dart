@@ -15,12 +15,14 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(130.h),
-        child: Column(
-          children: [
-            Container(height: 20.h, color: AppColors.white),
-            CustomAppBar(),
-          ],
+        preferredSize: Size.fromHeight(110.h),
+        child: SafeArea(
+          child: Container(
+            height: 110.h,
+            width: MediaQuery.of(context).size.width,
+            color: AppColors.lavender,
+            child: CustomAppBar(),
+          ),
         ),
       ),
       body: Padding(

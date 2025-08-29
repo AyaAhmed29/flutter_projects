@@ -16,7 +16,7 @@ abstract class AppRouter {
   static const String profileView = '/ProfileView';
   static final router = GoRouter(
     routes: [
-      GoRoute(builder: (context, state) => const ProfileView(), path: '/'),
+      GoRoute(builder: (context, state) => const SplashView(), path: '/'),
       GoRoute(builder: (context, state) => const HomeView(), path: homeView),
       GoRoute(
         builder: (context, state) => const WelcomeView(),

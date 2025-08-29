@@ -8,4 +8,5 @@ abstract class AppColors {
   static final Color blue = Color(0xff2D5BD0);
   static final Color lavender = Color(0xffE9EEFA);
   static final Color gray = Color(0xffDEDBDB);
+  static final Color softRose = Color(0xffFCE9EECC);
 }

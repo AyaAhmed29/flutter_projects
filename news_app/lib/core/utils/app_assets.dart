@@ -11,8 +11,8 @@ class Assets {
   static const String assetsImagesIconsArrow = "assets/images/icons/Arrow.svg";
 
   /// Assets for assetsImagesIconsBookmark
-  /// assets/images/icons/Bookmark.svg
-  static const String assetsImagesIconsBookmark = "assets/images/icons/Bookmark.svg";
+  /// assets/images/icons/Bookmark.png
+  static const String assetsImagesIconsBookmark = "assets/images/icons/Bookmark.png";
 
   /// Assets for assetsImagesIconsExplore
   /// assets/images/icons/Explore.svg
@@ -38,6 +38,10 @@ class Assets {
   /// assets/images/icons/Pressure.svg
   static const String assetsImagesIconsPressure = "assets/images/icons/Pressure.svg";
 
+  /// Assets for assetsImagesIconsProfile
+  /// assets/images/icons/Profile.png
+  static const String assetsImagesIconsProfile = "assets/images/icons/Profile.png";
+
   /// Assets for assetsImagesIconsSearch
   /// assets/images/icons/search.svg
   static const String assetsImagesIconsSearch = "assets/images/icons/search.svg";
@@ -49,6 +53,14 @@ class Assets {
   /// Assets for assetsImagesIconsUVIndex
   /// assets/images/icons/UVIndex.svg
   static const String assetsImagesIconsUVIndex = "assets/images/icons/UVIndex.svg";
+
+  /// Assets for assetsImagesIconsVector1
+  /// assets/images/icons/Vector-1.png
+  static const String assetsImagesIconsVector1 = "assets/images/icons/Vector-1.png";
+
+  /// Assets for assetsImagesIconsVector2
+  /// assets/images/icons/Vector-2.png
+  static const String assetsImagesIconsVector2 = "assets/images/icons/Vector-2.png";
 
   /// Assets for assetsImagesModernBackground
   /// assets/images/modernBackground.png
