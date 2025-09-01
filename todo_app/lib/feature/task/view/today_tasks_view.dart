@@ -6,6 +6,7 @@ import 'package:todo_app/feature/task/cubit/task_cubit.dart';
 import 'package:todo_app/feature/task/view/widgets/task_body.dart';
 import 'package:todo_app/feature/task/view/widgets/task_filter_dialog.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
+import 'package:todo_app/generated/l10n.dart';
 
 class TodayTasksView extends StatelessWidget {
   const TodayTasksView({super.key});
@@ -21,9 +22,9 @@ class TodayTasksView extends StatelessWidget {
               onPressed: () {
                 filterDialog(innerContext);
               },
-              icon: Assets.assetsImagesIconsFilter,
+              icon: Assets.assetsImagesIconsFilter, 
             ),
-            appBar: const CustomAppBar(titile: 'Tasks'),
+            appBar: CustomAppBar(titile:S.of(context).Tasks),
             body: const TaskBody(),
           );
         },

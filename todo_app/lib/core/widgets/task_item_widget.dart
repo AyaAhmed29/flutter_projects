@@ -8,15 +8,15 @@ import 'package:todo_app/core/utils/app_style.dart';
 class TaskItemWidget extends StatelessWidget {
   final String title;
   final String status;
+  final String group;
 
   final String? image;
 
   const TaskItemWidget({
     super.key,
     required this.title,
-
     required this.status,
-
+    required this.group,
     this.image,
   });
 
@@ -48,7 +48,7 @@ class TaskItemWidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
-              child: image != null
+              child: (image != null && image!.isNotEmpty)
                   ? Image.network(
                       image!,
                       width: 60.w,
@@ -61,6 +61,19 @@ class TaskItemWidget extends StatelessWidget {
                       height: 60.h,
                       fit: BoxFit.cover,
                     ),
+
+              // ? Image.network(
+              //     image!,
+              //     width: 60.w,
+              //     height: 60.h,
+              //     fit: BoxFit.cover,
+              //   )
+              // : Image.asset(
+              //     Assets.assetsImagesProfile,
+              //     width: 60.w,
+              //     height: 60.h,
+              //     fit: BoxFit.cover,
+              //   ),
             ),
             SizedBox(width: 12.w),
 
@@ -94,13 +107,14 @@ class TaskItemWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: SvgPicture.asset(
-                          status == 'Work'
+                          group == 'Work'
                               ? Assets.assetsImagesIconsWork
-                              : status == 'Home'
+                              : group == 'Home'
                               ? Assets.assetsImagesIconsHome
-                              : status == 'Personal'
+                              : group == 'Personal'
                               ? Assets.assetsImagesIconsPersonal
                               : Assets.assetsImagesIconsWork,
+                          // time: task.endTime,
                           width: 24.w,
                           height: 24.h,
                         ),

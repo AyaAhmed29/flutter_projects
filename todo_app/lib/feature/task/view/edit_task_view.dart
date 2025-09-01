@@ -9,6 +9,7 @@ import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_style.dart';
 import 'package:todo_app/core/widgets/custom_button.dart';
+import 'package:todo_app/core/widgets/custom_dialog.dart';
 import 'package:todo_app/feature/task/cubit/task_cubit.dart';
 import 'package:todo_app/feature/task/cubit/task_state.dart';
 import 'package:todo_app/feature/task/data/model/task_model.dart';
@@ -57,9 +58,12 @@ class EditTaskView extends StatelessWidget {
                     child: Column(
                       children: [
                         TaskHeaderWidget(
-                          Image: (task.imageUrl != null && task.imageUrl!.isNotEmpty)
+                          Image:
+                              (task.imageUrl != null &&
+                                  task.imageUrl!.isNotEmpty)
                               ? NetworkImage(task.imageUrl!)
-                              : AssetImage(Assets.assetsImagesProfile) as ImageProvider,
+                              : AssetImage(Assets.assetsImagesProfile)
+                                    as ImageProvider,
                         ),
                         TaskGroupDropdown(task: task),
                         TaskTitleField(controller: titleController),
@@ -101,39 +105,52 @@ class EditTaskAppBarWidget extends StatelessWidget
         final cubit = TaskCubit.get(context);
         showDialog(
           context: context,
-          builder: (context) => AlertDialog(
-            title: Text(S.of(context).ConfirmDeletion),
-            content: Text(S.of(context).AreYouSureYouWantToDeleteThisTask),
-            actions: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text(
-                      S.of(context).no,
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      cubit.deleteTask(task.taskId!);
-                      Navigator.of(context).pop();
-                      Navigator.of(context).pop();
-                      AppPopUp.showSnackBar(
-                        context: context,
-                        text: S.of(context).TaskDeletedSuccessfully,
-                      );
-                    },
-                    child: Text(
-                      S.of(context).yes,
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+          builder: (context) => CustomDialog(
+            content: S.of(context).AreYouSureYouWantToDeleteThisTask,
+            onConfirm: () {
+              cubit.deleteTask(task.taskId!);
+              Navigator.of(context).pop();
+              AppPopUp.showSnackBar(
+                context: context,
+                text: S.of(context).TaskDeletedSuccessfully,
+              );
+            },
+            title: S.of(context).ConfirmDeletion,
           ),
+
+          // AlertDialog(
+          //   title: Text(S.of(context).ConfirmDeletion),
+          //   content: Text(S.of(context).AreYouSureYouWantToDeleteThisTask),
+          //   actions: [
+          //     Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       children: [
+          //         TextButton(
+          //           onPressed: () => Navigator.of(context).pop(),
+          //           child: Text(
+          //             S.of(context).no,
+          //             style: TextStyle(color: Colors.grey),
+          //           ),
+          //         ),
+          //         TextButton(
+          //           onPressed: () {
+          //             cubit.deleteTask(task.taskId!);
+          //             Navigator.of(context).pop();
+          //             Navigator.of(context).pop();
+          //             AppPopUp.showSnackBar(
+          //               context: context,
+          //               text: S.of(context).TaskDeletedSuccessfully,
+          //             );
+          //           },
+          //           child: Text(
+          //             S.of(context).yes,
+          //             style: TextStyle(color: Colors.red),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
         );
       },
     );
@@ -146,7 +163,7 @@ class EditTaskAppBarWidget extends StatelessWidget
 /// Header Widget
 class TaskHeaderWidget extends StatelessWidget {
   const TaskHeaderWidget({super.key, required this.Image});
- final ImageProvider  Image ;
+  final ImageProvider Image;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -155,10 +172,7 @@ class TaskHeaderWidget extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: CircleAvatar(
-              radius: 40.r,
-              backgroundImage: Image,
-            ),
+            child: CircleAvatar(radius: 40.r, backgroundImage: Image),
           ),
           Expanded(
             child: Column(

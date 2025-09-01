@@ -7,7 +7,6 @@ import 'package:todo_app/core/widgets/task_item_widget.dart';
 import 'package:todo_app/feature/task/view/widgets/task_search.dart';
 import 'package:todo_app/feature/task/view/widgets/task_status_indicator.dart';
 import 'package:todo_app/generated/l10n.dart';
-import 'package:todo_app/core/utils/app_assets.dart';
 
 class TaskBody extends StatelessWidget {
   const TaskBody({super.key});
@@ -41,6 +40,7 @@ class TaskBody extends StatelessWidget {
 
                       title: task.description,
                       status: task.status,
+                      group: task.group,
                     );
                   },
                 ),

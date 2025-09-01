@@ -106,7 +106,9 @@ class TaskImage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.r),
-        child: Image(image: image ?? AssetImage(Assets.assetsImagesProfile)),
+        child: (image != null)
+            ? Image(image: image!)
+            : Image.asset(Assets.assetsImagesProfile),
       ),
     );
   }

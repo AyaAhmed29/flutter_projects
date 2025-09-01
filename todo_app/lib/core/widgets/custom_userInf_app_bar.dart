@@ -19,9 +19,10 @@ class CustomUserInfAppBar extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 16.0.w),
               child: CircleAvatar(
                 radius: 30.r,
-                backgroundImage: userModel.image != null
+                backgroundImage:
+                    (userModel.image != null && userModel.image!.isNotEmpty)
                     ? NetworkImage(userModel.image!)
-                    : const AssetImage(Assets.assetsImagesProfile),
+                    : AssetImage(Assets.assetsImagesProfile),
               ),
             ),
             Column(

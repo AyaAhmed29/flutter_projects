@@ -11,6 +11,7 @@ class UpdateProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final extra = GoRouterState.of(context).extra;
     final user = extra != null ? extra as UserModel : null;
     return Scaffold(
@@ -21,9 +22,13 @@ class UpdateProfileView extends StatelessWidget {
               bottomLeft: Radius.circular(20.r),
               bottomRight: Radius.circular(20.r),
             ),
-            child: user?.image != null
-                ? Image.network(user!.image!)
-                : Image.asset(Assets.assetsImagesProfile),
+            child: (user?.image != null && user!.image!.isNotEmpty)
+                ? Image.network(user!.image!, fit: BoxFit.cover)
+                : Image.asset(Assets.assetsImagesProfile, fit: BoxFit.cover),
+
+            // user?.image != null
+            //     ? Image.network(user!.image!)
+            //     : Image.asset(Assets.assetsImagesProfile),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -31,7 +36,7 @@ class UpdateProfileView extends StatelessWidget {
               enabled: false,
 
               decoration: InputDecoration(
-                hintText: user?.userName ,
+                hintText: user?.userName,
                 hintStyle: AppStyle.extraLight14,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.r),
@@ -40,7 +45,7 @@ class UpdateProfileView extends StatelessWidget {
               ),
             ),
           ),
-        ], 
+        ],
       ),
     );
   }

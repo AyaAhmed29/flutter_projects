@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:todo_app/core/helper/app_pop_up.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 import 'package:todo_app/core/utils/app_router.dart';
+import 'package:todo_app/core/widgets/custom_dialog.dart';
 import 'package:todo_app/core/widgets/custom_userInf_app_bar.dart';
 import 'package:todo_app/feature/auth/data/model/user_model.dart';
 import 'package:todo_app/feature/profile/view/widgets/custom_field.dart';
@@ -50,14 +51,24 @@ class ProfileView extends StatelessWidget {
           CustomField(
             text: S.of(context).Logout,
             prefixIcon: Assets.assetsImagesIconsSetting,
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-
-              AppPopUp.showSnackBar(
+            onPressed: () {
+              showDialog(
                 context: context,
-                text: S.of(context).LogoutSuccessfully,
+                builder: (_) => CustomDialog(
+                  onConfirm: () async {
+                    await FirebaseAuth.instance.signOut();
+
+                    AppPopUp.showSnackBar(
+                      context: context,
+                      text: S.of(context).LogoutSuccessfully,
+                    );
+
+                    GoRouter.of(context).go(AppRouter.registerView);
+                  },
+                  title: 'Confirmation',
+                  content: 'Are you sure you want to log out?',
+                ),
               );
-              GoRouter.of(context).go(AppRouter.registerView,);
             },
           ),
         ],

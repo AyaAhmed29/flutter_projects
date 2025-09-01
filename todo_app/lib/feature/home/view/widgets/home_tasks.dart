@@ -20,7 +20,7 @@ class HomeTasks extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Center(child: TaskCompletionCard( tasks :tasks)),
+        Center(child: TaskCompletionCard(tasks: tasks)),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(

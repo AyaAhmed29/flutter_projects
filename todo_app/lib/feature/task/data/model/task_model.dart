@@ -47,11 +47,9 @@ class TaskModel {
       group: map['group'],
       endTime: (map['endTime'] as Timestamp).toDate(),
       userId: map['userId'],
-      // isDone: map['isDone'] ?? false,
-      status: getstatus(
-        endTime: (map['endTime'] as Timestamp).toDate(),
-        // isDone: map['isDone'] ?? false,
-      ),
+      status:
+          map['status'] ??
+          getstatus(endTime: (map['endTime'] as Timestamp).toDate()),
       imageUrl: map['imageUrl'],
     );
   }

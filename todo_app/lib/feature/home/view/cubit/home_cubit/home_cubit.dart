@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app/feature/home/data/repo/home_repo.dart';
 import 'package:todo_app/feature/home/view/cubit/home_cubit/home_state.dart';
+import 'package:todo_app/feature/task/data/model/task_model.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
@@ -8,7 +9,6 @@ class HomeCubit extends Cubit<HomeState> {
   static HomeCubit get(context) => BlocProvider.of(context);
 
   final HomeRepo homeRepo = HomeRepo();
-  
 
   void loadTasks() {
     emit(HomeLoading());
@@ -18,7 +18,7 @@ class HomeCubit extends Cubit<HomeState> {
         if (tasks.isEmpty) {
           emit(HomeEmpty());
         } else {
-          emit(HomeTasksLoaded(tasks));
+          emit(HomeTasksLoaded(List<TaskModel>.from(tasks)));
         }
       });
     });
@@ -35,5 +35,4 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeInProgressLoaded(tasks));
     });
   }
-
 }
