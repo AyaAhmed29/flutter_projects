@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/core/utils/app_assets.dart';
 
 class CustomImage extends StatelessWidget {
-  const CustomImage({super.key});
-
+  const CustomImage({super.key, this.image});
+  final ImageProvider? image;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +13,7 @@ class CustomImage extends StatelessWidget {
       width: 375.w,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(Assets.assetsImagesProfile),
+          image: image ?? AssetImage(Assets.assetsImagesProfile),
           fit: BoxFit.cover,
         ),
       ),

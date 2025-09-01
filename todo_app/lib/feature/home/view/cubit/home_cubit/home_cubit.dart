@@ -7,22 +7,33 @@ class HomeCubit extends Cubit<HomeState> {
 
   static HomeCubit get(context) => BlocProvider.of(context);
 
-  final  HomeRepo homeRepo = HomeRepo();
+  final HomeRepo homeRepo = HomeRepo();
+  
 
   void loadTasks() {
     emit(HomeLoading());
 
     homeRepo.getTasks().listen((either) {
-      either.fold(
-        (error) => emit(HomeFailure(error)),
-        (tasks) {
-          if (tasks.isEmpty) {
-            emit(HomeEmpty());
-          } else {
-            emit(HomeTasksLoaded(tasks));
-          }
-        },
-      );
+      either.fold((error) => emit(HomeFailure(error)), (tasks) {
+        if (tasks.isEmpty) {
+          emit(HomeEmpty());
+        } else {
+          emit(HomeTasksLoaded(tasks));
+        }
+      });
     });
   }
+
+  void getTasksInProgress() async {
+    emit(HomeLoading());
+
+    final result = await homeRepo.getTasksInProgress();
+    result.fold((failure) => emit(HomeFailure(failure)), (tasks) {
+      if (tasks.isEmpty) {
+        emit(HomeEmpty());
+      }
+      emit(HomeInProgressLoaded(tasks));
+    });
+  }
+
 }

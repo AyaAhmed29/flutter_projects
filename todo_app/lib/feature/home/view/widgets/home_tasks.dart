@@ -14,10 +14,13 @@ class HomeTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var inProgressTasks = tasks
+        .where((t) => t.status == 'In Progress')
+        .toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Center(child: TaskCompletionCard()),
+        Center(child: TaskCompletionCard( tasks :tasks)),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -25,13 +28,30 @@ class HomeTasks extends StatelessWidget {
               Text('In Progress', style: AppStyle.light14),
               SizedBox(width: 10.w),
               NumberContainer(
-                number: tasks.length,
+                number: inProgressTasks.length,
                 color: AppColors.primaryColor,
               ),
             ],
           ),
         ),
-        InProgressListView(tasks: tasks),
+
+        inProgressTasks.isEmpty
+            ? Container(
+                margin: EdgeInsets.all(8),
+                height: 100.h,
+                width: 250.w,
+                decoration: BoxDecoration(
+                  color: AppColors.lightGray,
+                  borderRadius: BorderRadius.circular(30.r),
+                ),
+                child: Center(
+                  child: Text(
+                    'No tasks in progress today',
+                    style: AppStyle.light14,
+                  ),
+                ),
+              )
+            : InProgressListView(tasks: inProgressTasks),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0.w),
           child: Text('Task Groups'),

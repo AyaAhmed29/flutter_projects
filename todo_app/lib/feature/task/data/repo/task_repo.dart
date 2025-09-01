@@ -17,12 +17,13 @@ class TaskRepo {
 
       final taskWithId = TaskModel(
         taskId: docRef.id,
+        imageUrl: task.imageUrl,
         title: task.title,
         description: task.description,
         group: task.group,
         endTime: task.endTime,
         userId: task.userId,
-        isDone: task.isDone,
+        // isDone: task.isDone,
         status: task.status,
       );
 
@@ -113,4 +114,5 @@ class TaskRepo {
       return Left(e.toString());
     }
   }
+  
 }

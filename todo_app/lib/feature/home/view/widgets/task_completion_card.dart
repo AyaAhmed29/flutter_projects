@@ -4,13 +4,19 @@ import 'package:go_router/go_router.dart';
 import 'package:todo_app/core/utils/app_colors.dart';
 import 'package:todo_app/core/utils/app_router.dart';
 import 'package:todo_app/core/utils/app_style.dart';
+import 'package:todo_app/feature/task/data/model/task_model.dart';
 import 'package:todo_app/generated/l10n.dart';
 
 class TaskCompletionCard extends StatelessWidget {
-  const TaskCompletionCard({super.key});
+  const TaskCompletionCard({super.key, required this.tasks});
+  final List<TaskModel> tasks;
 
   @override
   Widget build(BuildContext context) {
+    int done = tasks.where((t) => t.status == 'Done').length;
+    int total = tasks.length;
+    int percentage = total == 0 ? 0 : ((done / total) * 100).round();
+
     return Container(
       margin: EdgeInsets.all(2),
       height: 135.h,
@@ -31,8 +37,8 @@ class TaskCompletionCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text('80', style: AppStyle.medium40),
-                    Text('%', style: AppStyle.medium40),
+                    Text('$percentage', style: AppStyle.medium40),
+                    Text('%', style: AppStyle.medium24),
                   ],
                 ),
 

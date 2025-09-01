@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:todo_app/core/helper/app_pop_up.dart';
 import 'package:todo_app/core/utils/app_router.dart';
+import 'package:todo_app/core/widgets/image_picker/image_picker.dart';
 import 'package:todo_app/feature/auth/cubit/register_cubit/register_cubit.dart';
 import 'package:todo_app/feature/auth/cubit/register_cubit/register_state.dart';
 import 'package:todo_app/feature/auth/view/widgets/auth_prompt.dart';
@@ -26,13 +29,13 @@ class RegisterView extends StatelessWidget {
                   context,
                 ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
               }
-              if (state is RegisterSuccess) { 
+              if (state is RegisterSuccess) {
                 AppPopUp.showSnackBar(
                   context: context,
                   text: S.of(context).RegistrationSuccessful,
                 );
-                // UserCubit.get(context).userModel = state.user;
-                AppRouter.router.go(AppRouter.homeView,extra: state.user);
+
+                AppRouter.router.go(AppRouter.homeView, extra: state.user);
               }
             },
             builder: (context, state) {
@@ -42,7 +45,19 @@ class RegisterView extends StatelessWidget {
                   body: SingleChildScrollView(
                     child: Column(
                       children: [
-                        CustomImage(),
+                        
+                        // CustomImage(),
+                        ImagePicker(
+                          defaultBuilder: CustomImage(),
+                          imageBuilder: (image) {
+                            return CustomImage(
+                              image: FileImage(File(image.path)),
+                            );
+                          },
+                          onImagePicked: (image) {
+                            RegisterCubit.get(context).userImage = image;
+                          },
+                        ),
                         CustomRegisterForm(),
                         AuthPrompt(
                           text: S.of(context).AlreadyHaveAnAccount,

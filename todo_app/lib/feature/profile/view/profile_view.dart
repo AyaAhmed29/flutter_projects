@@ -15,8 +15,6 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     final extra = GoRouterState.of(context).extra;
     final user = extra != null ? extra as UserModel : null;
     return Scaffold(
@@ -28,14 +26,18 @@ class ProfileView extends StatelessWidget {
             text: S.of(context).Profile,
             prefixIcon: Assets.assetsImagesIconsProfile,
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.updateProfileView, extra: user);
+              GoRouter.of(
+                context,
+              ).push(AppRouter.updateProfileView, extra: user);
             },
           ),
           CustomField(
             text: S.of(context).ChangePassword,
             prefixIcon: Assets.assetsImagesIconsLock,
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.changePasswordView, extra: user);
+              GoRouter.of(
+                context,
+              ).push(AppRouter.changePasswordView, extra: user);
             },
           ),
           CustomField(
@@ -50,11 +52,12 @@ class ProfileView extends StatelessWidget {
             prefixIcon: Assets.assetsImagesIconsSetting,
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
+
               AppPopUp.showSnackBar(
-                context: context, // Changed from showSnackBar to AppPopUp.showSnackBar
+                context: context,
                 text: S.of(context).LogoutSuccessfully,
               );
-              GoRouter.of(context).push(AppRouter.registerView);
+              GoRouter.of(context).go(AppRouter.registerView,);
             },
           ),
         ],

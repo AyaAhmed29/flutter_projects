@@ -23,16 +23,19 @@ class LoginView extends StatelessWidget {
           return BlocConsumer<LoginCubit, LoginState>(
             listener: (context, state) {
               if (state is LoginFailure) {
-                AppPopUp.showSnackBar(context: context, text: state.errorMessage);
+                AppPopUp.showSnackBar(
+                  context: context,
+                  text: state.errorMessage,
+                );
               }
               if (state is LoginSuccess) {
                 AppPopUp.showSnackBar(
-                  context: context, 
+                  context: context,
                   text: S.of(context).LoginSuccessfully,
                 );
-                
+
                 // UserCubit.get(context).userModel = state.user;
-                AppRouter.router.go(AppRouter.homeView,extra: state.user);
+                AppRouter.router.go(AppRouter.homeView, extra: state.user);
               }
             },
             builder: (context, state) {

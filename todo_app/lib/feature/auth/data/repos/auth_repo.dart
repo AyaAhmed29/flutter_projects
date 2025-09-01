@@ -1,11 +1,17 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:todo_app/core/helper/cloudinary_service.dart';
 import 'package:todo_app/feature/auth/data/model/user_model.dart';
 
 class AuthRepo {
   AuthRepo();
-Future<Either<String, UserModel>> login({required String email,required String password}) async {
+  Future<Either<String, UserModel>> login({
+    required String email,
+    required String password,
+  }) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -16,7 +22,7 @@ Future<Either<String, UserModel>> login({required String email,required String p
           .doc(credential.user!.uid)
           .get();
       UserModel user = UserModel.fromJson(data.data()!);
-      
+
       return right(user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -33,16 +39,20 @@ Future<Either<String, UserModel>> login({required String email,required String p
     String email,
     String password,
     String name,
-    String? image, 
+    File? imagePath,
   ) async {
     try {
+      String? imageUrl = '';
+      if (imagePath != null) {
+        imageUrl = await CloudinaryService.uploadImage(imagePath);
+      }
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       UserModel user = UserModel(
         userName: name,
         uid: credential.user!.uid,
         email: email,
-        image: image,
+        image: imageUrl,
       );
 
       await FirebaseFirestore.instance
@@ -50,11 +60,14 @@ Future<Either<String, UserModel>> login({required String email,required String p
           .doc(user.uid)
           .set(user.toJson());
 
-      // if (!user.) {
-      //   await user.sendEmailVerification();
-      //   await FirebaseAuth.instance.signOut();
-      //   return left('Check your email to verify your account.');
-      // }
+      if (!(credential.user!.emailVerified)) {
+        await credential.user!.sendEmailVerification();
+        await credential.user!.reload();
+        credential.user!.reload();
+        await Future.delayed(const Duration(seconds: 1));
+        await FirebaseAuth.instance.signOut();
+        return left('Check your email to verify your account.');
+      }
 
       return right(UserModel(uid: user.uid, email: user.email, userName: name));
     } on FirebaseAuthException catch (e) {

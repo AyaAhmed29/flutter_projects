@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class TaskModel {
   final String? taskId;
@@ -7,19 +9,20 @@ class TaskModel {
   final String group;
   final DateTime endTime;
   final String userId;
-  final bool isDone;
+  // final bool isDone;
   final String status;
-
+  final String? imageUrl;
 
   TaskModel({
+    this.imageUrl,
     this.taskId,
     required this.title,
     required this.description,
     required this.group,
     required this.endTime,
     required this.userId,
-    this.isDone = false,
-  required  this.status ,
+    // this.isDone = false,
+    required this.status,
   });
 
   Map<String, dynamic> toMap() {
@@ -30,8 +33,9 @@ class TaskModel {
       'group': group,
       'endTime': endTime,
       'userId': userId,
-      'isDone': isDone,
+      // 'isDone': isDone,
       'status': status,
+      'imageUrl': imageUrl,
     };
   }
 
@@ -43,8 +47,12 @@ class TaskModel {
       group: map['group'],
       endTime: (map['endTime'] as Timestamp).toDate(),
       userId: map['userId'],
-      isDone: map['isDone'] ?? false,
-      status: getstatus(endTime: (map['endTime'] as Timestamp).toDate(), isDone: map['isDone'] ?? false),
+      // isDone: map['isDone'] ?? false,
+      status: getstatus(
+        endTime: (map['endTime'] as Timestamp).toDate(),
+        // isDone: map['isDone'] ?? false,
+      ),
+      imageUrl: map['imageUrl'],
     );
   }
 
@@ -55,7 +63,8 @@ class TaskModel {
     String? group,
     DateTime? endTime,
     String? status,
-    bool? isDone,
+    // bool? isDone,
+    String? imageUrl,
   }) {
     return TaskModel(
       taskId: taskId ?? this.taskId,
@@ -64,19 +73,36 @@ class TaskModel {
       group: group ?? this.group,
       endTime: endTime ?? this.endTime,
       userId: userId,
-      isDone: isDone ?? this.isDone,
+      // isDone: isDone ?? this.isDone,
       status: status ?? this.status,
+      imageUrl: imageUrl ?? this.imageUrl,
     );
   }
-
 }
 
-  String getstatus( {required DateTime endTime, bool isDone =false }) {
-    if (isDone) {
-      return 'Done';
-    } else if (endTime.isBefore(DateTime.now())) {
-      return 'Missed';
-    } else {
-      return 'In Progress';
-    }
+Future<Either<String, List<TaskModel>>> getTasksInProgress() async {
+  try {
+    final snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection('tasks')
+        .where('status', isEqualTo: 'In Progress')
+        .get();
+
+    final tasks = snapshot.docs
+        .map((doc) => TaskModel.fromMap(doc.data()))
+        .toList();
+
+    return right(tasks);
+  } catch (e) {
+    return left(e.toString());
   }
+}
+
+String getstatus({required DateTime endTime, bool isDone = false}) {
+  if (endTime.isBefore(DateTime.now())) {
+    return 'Missed';
+  } else {
+    return 'In Progress';
+  }
+}
