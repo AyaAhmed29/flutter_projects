@@ -1,14 +1,13 @@
-
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/utils/app_paddings.dart';
 import 'package:news_app/core/utils/app_style.dart';
-import 'package:news_app/feature/explor/view/widgets/author_info.dart';
+import 'package:news_app/core/widgets/author_info.dart';
+import 'package:news_app/feature/explor/data/model/articles_model.dart';
 
 class ExplorItem extends StatelessWidget {
-  const ExplorItem({
-    super.key,
-  });
+  const ExplorItem({super.key, this.article});
+  final List<ArticlesModel>? article;
 
   @override
   Widget build(BuildContext context) {
@@ -17,43 +16,57 @@ class ExplorItem extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return SizedBox(
-          height: 112.h,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Experience the Serenity of Japan's Traditional Countryside",
-                      style: AppStyle.semiBold18,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    const SizedBox(height: 8),
-                    AuthorInfo(),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 12),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: SizedBox(
-                  height: 80.h,
-                  width: 112.w,
-                  child: Image.network(
-                    "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=1200&q=80",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
+        return NewsCard(article: article?[index]);
       },
-      itemCount: 5,
+      itemCount: article?.length ?? 10,
+    );
+  }
+}
+
+class NewsCard extends StatelessWidget {
+  const NewsCard({super.key, required this.article});
+
+  final ArticlesModel? article;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 112.h,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  article?.title ??
+                      'Aya ahkjuyhgfdxcvbnmjkl;oiuythgrfbmnbv m,.med',
+
+                  style: AppStyle.semiBold18,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 8),
+                AuthorInfo(articales: article),
+              ],
+            ),
+          ),
+          const SizedBox(width: 12),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: SizedBox(
+              height: 80.h,
+              width: 112.w,
+              child: Image.network(
+                article?.urlToImage ??
+                    "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=1200&q=80",
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

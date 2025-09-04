@@ -6,7 +6,7 @@ import 'package:news_app/core/utils/app_style.dart';
 import 'package:news_app/feature/bookmark/view/bookmark_view.dart';
 import 'package:news_app/feature/explor/view/explor_view.dart';
 import 'package:news_app/feature/home/view/home_view.dart';
-import 'package:news_app/feature/profile/view/profile_view.dart';
+import 'package:news_app/feature/weather/view/weather_view.dart';
 
 class NavigationView extends StatefulWidget {
   const NavigationView({super.key});
@@ -22,7 +22,7 @@ class _NavigationViewState extends State<NavigationView> {
     HomeView(),
     ExplorView(),
     BookmarkView(),
-    ProfileView(),
+    WeatherView(),
   ];
 
   @override
