@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/core/helper/app_validator.dart';
 import 'package:ecommerce_app/core/utlis/app_assets.dart';
-import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/widget/custom_button.dart';
 import 'package:ecommerce_app/features/auth/cubit/login_cubit/login_cubit.dart';
 import 'package:ecommerce_app/features/auth/cubit/login_cubit/login_state.dart';
@@ -8,7 +7,6 @@ import 'package:ecommerce_app/features/auth/view/widgets/custom_text_field.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomLoginForm extends StatelessWidget {
   const CustomLoginForm({super.key});
@@ -51,7 +49,6 @@ class CustomLoginForm extends StatelessWidget {
             text: 'Login',
             ontap: () {
               LoginCubit.get(context).onTalogin();
-              GoRouter.of(context).go(AppRouter.navigationView);
             },
           ),
         ],

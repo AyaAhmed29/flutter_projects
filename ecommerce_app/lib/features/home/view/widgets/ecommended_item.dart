@@ -1,5 +1,4 @@
 import 'package:ecommerce_app/core/utlis/app_padding.dart';
-import 'package:ecommerce_app/core/widget/item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +16,7 @@ class RecommendedItem extends StatelessWidget {
         itemCount: 10,
         itemBuilder: (context, index) => Row(
           children: [
-            ItemWidget(),
+            // ItemWidget(),
             SizedBox(width: 16.w),
           ],
         ),

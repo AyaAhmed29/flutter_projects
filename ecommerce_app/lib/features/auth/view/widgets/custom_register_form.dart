@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/core/helper/app_validator.dart';
 import 'package:ecommerce_app/core/utlis/app_assets.dart';
-import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/widget/custom_button.dart';
 import 'package:ecommerce_app/features/auth/cubit/register_cubit/register_cubit.dart';
 import 'package:ecommerce_app/features/auth/cubit/register_cubit/register_state.dart';
@@ -9,7 +8,6 @@ import 'package:ecommerce_app/features/auth/view/widgets/register_agreement.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomRegisterForm extends StatelessWidget {
   const CustomRegisterForm({super.key});
@@ -121,7 +119,6 @@ class CustomRegisterForm extends StatelessWidget {
                 text: 'Create Account',
                 ontap: () {
                   RegisterCubit.get(context).onTapregister();
-                  GoRouter.of(context).go(AppRouter.navigationView);
                 },
               ),
             ],

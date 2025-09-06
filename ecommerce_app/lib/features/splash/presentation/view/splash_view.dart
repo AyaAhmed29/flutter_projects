@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -17,15 +18,18 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () async {
       GoRouter.of(context).go(AppRouter.onBoardingView);
-      // if (SharprefSingleton.getbool(konboardSeen)) {
-      //   GoRouter.of(context).go(AppRouter.signInView);
-      // } else {
-      //   GoRouter.of(context).go(AppRouter.onBoardingView);
-      // }
+      var sharedPref = await SharedPreferences.getInstance();
+      var accessToken = sharedPref.getString('access_token');
+
+      if (accessToken == null) {
+        GoRouter.of(context).go(AppRouter.loginView);
+      } else {
+        GoRouter.of(context).go(AppRouter.onBoardingView);
+      }
     });
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {

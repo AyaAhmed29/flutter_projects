@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/helper/app_pop_up.dart';
 import 'package:ecommerce_app/core/utlis/app_padding.dart';
+import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/widget/custom_appbar.dart';
 import 'package:ecommerce_app/features/auth/cubit/login_cubit/login_cubit.dart';
 import 'package:ecommerce_app/features/auth/cubit/login_cubit/login_state.dart';
@@ -8,6 +9,7 @@ import 'package:ecommerce_app/features/auth/view/widgets/custom_login_form.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -20,6 +22,7 @@ class LoginView extends StatelessWidget {
         listener: (context, state) {
           if (state is LoginSuccess) {
             AppPopUp.showSnackBar(context: context, text: 'sucess');
+            GoRouter.of(context).go(AppRouter.navigationView);
           } else if (state is LoginFailure) {
             AppPopUp.showSnackBar(context: context, text: state.errorMessage);
           }
