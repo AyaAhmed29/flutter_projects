@@ -7,6 +7,7 @@ class Registeritial extends RegisterState {}
 class RegisterLoading extends RegisterState {}
 
 class RegisterSuccess extends RegisterState {
+  
  
 }
 

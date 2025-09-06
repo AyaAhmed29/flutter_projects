@@ -52,13 +52,16 @@ class CustomTextField extends StatelessWidget {
           icon: SvgPicture.asset(icon, height: 20, width: 20),
         ),
         labelText: text,
-        labelStyle: AppStyle.medium12.copyWith(color: AppColors.darkGray),
+        labelStyle: AppStyle.medium12.copyWith(
+          color: Theme.of(context).inputDecorationTheme.hintStyle?.color,
+        ),
         border: _borderStyle(),
+        enabledBorder: _borderStyle(),
         focusedBorder: _borderStyle().copyWith(
-          borderSide: BorderSide(color: AppColors.pink),
+          borderSide: BorderSide(color: AppColors.pink, width: 2),
         ),
         errorBorder: _borderStyle().copyWith(
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: Colors.red, width: 2),
         ),
       ),
     );

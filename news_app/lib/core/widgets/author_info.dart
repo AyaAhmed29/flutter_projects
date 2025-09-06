@@ -28,6 +28,7 @@ class AuthorInfo extends StatelessWidget {
         SizedBox(width: 8.w),
 
         Text(
+          overflow: TextOverflow.ellipsis,
           dateformat(articales?.publishedAt ?? '2024-01-20T12:34:56Z'),
           style: AppStyle.regular12.copyWith(color: AppColors.graniteGray),
         ),

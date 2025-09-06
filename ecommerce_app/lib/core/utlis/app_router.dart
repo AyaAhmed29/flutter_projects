@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/features/auth/view/login_view.dart';
 import 'package:ecommerce_app/features/auth/view/register_view.dart';
 import 'package:ecommerce_app/features/home/view/home_view.dart';
-import 'package:ecommerce_app/features/items/view/product_view.dart';
+import 'package:ecommerce_app/features/items/view/items_view.dart';
 import 'package:ecommerce_app/features/navigation/view/navigation_view.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/view/get_started_view.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/view/on_boarding_view.dart';
@@ -15,10 +15,10 @@ abstract class AppRouter {
   static const loginView = '/LoginView';
   static const homeView = '/HomeView';
   static const navigationView = '/NavigationView';
-
+  static const itemsView = '/ItemsView';
   static final router = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => const ProductView()),
+      GoRoute(path: '/', builder: (context, state) => const SplashView()),
       GoRoute(
         path: onBoardingView,
         builder: (context, state) => const OnBoardingView(),
@@ -36,8 +36,8 @@ abstract class AppRouter {
       GoRoute(
         path: navigationView,
         builder: (context, state) => const NavigationView(),
-        
       ),
+      GoRoute(path: itemsView, builder: (context, state) => const ItemsView()),
     ],
   );
 }

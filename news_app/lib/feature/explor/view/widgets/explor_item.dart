@@ -40,8 +40,7 @@ class NewsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  article?.title ??
-                      'Aya ahkjuyhgfdxcvbnmjkl;oiuythgrfbmnbv m,.med',
+                  article?.title ?? 'Aya',
 
                   style: AppStyle.semiBold18,
                   maxLines: 2,

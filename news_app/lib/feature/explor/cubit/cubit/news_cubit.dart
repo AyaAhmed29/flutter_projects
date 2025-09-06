@@ -14,7 +14,7 @@ class NewsCubit extends Cubit<NewsState> {
     emit(NewsLoading());
     try {
       NewsRepo newsRepo = NewsRepo();
-      var result = await newsRepo.getAllNews(searchController.text,);
+      var result = await newsRepo.getAllNews(searchController.text);
       result.fold(
         (failure) => emit(NewsFailure(failure)),
         (articles) => emit(NewsSuccess(articles)),
@@ -24,10 +24,14 @@ class NewsCubit extends Cubit<NewsState> {
     }
   }
 
-  String selectedCategory = "science";
+  String selectedCategory = "";
 
   Future<void> fetchNewsByCategory(String category) async {
-    selectedCategory = category; // هنا بيتخزن آخر اختيار
+    if (selectedCategory == category) {
+      return;
+    }
+    selectedCategory = category;
+
     emit(NewsLoading());
     try {
       NewsRepo newsRepo = NewsRepo();

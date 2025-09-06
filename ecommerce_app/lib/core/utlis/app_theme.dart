@@ -37,8 +37,8 @@ class AppTheme {
         color: AppColors.white,
       ),
       inputDecorationTheme: _inputTheme(
-        fill: Colors.grey[850]!,
-        hint: Colors.grey[400]!,
+        fill: AppColors.lightGrey,
+        hint: AppColors.grey,
       ),
       textSelectionTheme: _textSelectionTheme(),
       iconTheme: const IconThemeData(color: Colors.white70),
