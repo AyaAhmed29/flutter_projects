@@ -28,7 +28,14 @@ class WeatherView extends StatelessWidget {
               height: 110.h,
               width: MediaQuery.of(context).size.width,
               color: AppColors.lavender,
-              child: CustomAppBar(),
+              child: BlocBuilder<WeatherCubit, WeatherState>(
+                builder: (context, state) {
+                  if (state is WeatherSuccess) {
+                    return CustomAppBar(weather: state.weatherModel);
+                  }
+                  return const SizedBox.shrink();
+                },
+              ),
             ),
           ),
         ),
@@ -45,8 +52,7 @@ class WeatherView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${state.weatherModel.name}-${state.weatherModel.sys?.country}' ??
-                          'Cairo - EG',
+                      '${state.weatherModel.name}-${state.weatherModel.sys?.country}',
                       style: AppStyle.medium32,
                     ),
                     Row(
@@ -57,13 +63,12 @@ class WeatherView extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      '${state.weatherModel.weather?[0].main}-${state.weatherModel.weather?[0].description}' ??
-                          'Clear - Clear Sky',
+                      '${state.weatherModel.weather?[0].main}-${state.weatherModel.weather?[0].description}',
                       style: AppStyle.medium32,
                     ),
                     Text(
                       state.weatherModel.weather?[0].description ??
-                          'Feels like ${(state.weatherModel.main?.feelsLike ?? 0 - 273.15).toStringAsFixed(0)} °C',
+                          'Feels like ${(state.weatherModel.main?.feelsLike)} °C',
                       style: AppStyle.semiBold16.copyWith(
                         color: AppColors.graniteGray,
                       ),
@@ -105,15 +110,12 @@ class UnitsSection extends StatelessWidget {
             children: [
               UnitInfo(
                 icon: Assets.assetsImagesIconsFahrenheit,
-                value:
-                
-                
-                 '72°',
+                value: '${weatherModel?.main?.temp}°',
                 title: 'Fahrenheit',
               ),
               UnitInfo(
                 icon: Assets.assetsImagesIconsPressure,
-                value: '134 mp/h',
+                value: '${weatherModel?.main?.pressure}134 mp/h',
                 title: 'Pressure',
               ),
             ],
@@ -129,7 +131,7 @@ class UnitsSection extends StatelessWidget {
               ),
               UnitInfo(
                 icon: Assets.assetsImagesIconsHumidity,
-                value: '48%',
+                value: '${weatherModel?.main?.humidity}%',
                 title: 'Humidity',
               ),
             ],

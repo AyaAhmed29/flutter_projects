@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:news_app/core/utils/app_assets.dart';
 import 'package:news_app/core/utils/app_colors.dart';
 import 'package:news_app/core/utils/app_style.dart';
+import 'package:news_app/feature/weather/data/model/weather_model.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, required this.weather});
+  final WeatherModel weather;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,10 @@ class CustomAppBar extends StatelessWidget {
                 width: 24.w,
               ),
               SizedBox(width: 8.w),
-              Text('Sunny 32°C', style: AppStyle.bold14),
+              Text(
+                '${weather.weather?[0].description}  ${weather.main?.temp}°C',
+                style: AppStyle.bold14,
+              ),
             ],
           ),
         ],

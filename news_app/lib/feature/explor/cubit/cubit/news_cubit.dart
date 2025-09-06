@@ -9,11 +9,29 @@ class NewsCubit extends Cubit<NewsState> {
   static NewsCubit get(context) => BlocProvider.of(context);
   int selectedTopIndex = 0;
   final searchController = TextEditingController();
+
   Future<void> fetchNews() async {
     emit(NewsLoading());
     try {
       NewsRepo newsRepo = NewsRepo();
-      var result = await newsRepo.getAllNews(searchController.text);
+      var result = await newsRepo.getAllNews(searchController.text,);
+      result.fold(
+        (failure) => emit(NewsFailure(failure)),
+        (articles) => emit(NewsSuccess(articles)),
+      );
+    } catch (e) {
+      emit(NewsFailure(e.toString()));
+    }
+  }
+
+  String selectedCategory = "science";
+
+  Future<void> fetchNewsByCategory(String category) async {
+    selectedCategory = category; // هنا بيتخزن آخر اختيار
+    emit(NewsLoading());
+    try {
+      NewsRepo newsRepo = NewsRepo();
+      var result = await newsRepo.getByCategory(category);
       result.fold(
         (failure) => emit(NewsFailure(failure)),
         (articles) => emit(NewsSuccess(articles)),

@@ -6,9 +6,9 @@ import 'package:news_app/core/widgets/author_info.dart';
 import 'package:news_app/feature/explor/data/model/articles_model.dart';
 
 class ExplorItem extends StatelessWidget {
-  const ExplorItem({super.key, this.article});
-  final List<ArticlesModel>? article;
+  const ExplorItem({super.key, required this.articles});
 
+  final List<ArticlesModel> articles;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -16,9 +16,9 @@ class ExplorItem extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return NewsCard(article: article?[index]);
+        return NewsCard(article: articles[index]);
       },
-      itemCount: article?.length ?? 10,
+      itemCount: articles.length,
     );
   }
 }

@@ -1,32 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/utils/app_style.dart';
-import 'package:news_app/feature/home/data/model/article_model.dart';
+import 'package:news_app/feature/explor/data/model/articles_model.dart';
 
 class MostPopularItem extends StatelessWidget {
-  MostPopularItem({super.key});
-  final List<ArticleModel> articles = [
-    ArticleModel(
-      title: 'The Pros and Cons of Remote Work',
-      author: 'Technology',
-      imageUrl:
-          'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=1200&q=80',
-    ),
-
-    ArticleModel(
-      title: 'Morning Routines That Work',
-      author: 'Lifestyle',
-      imageUrl:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200&q=80',
-    ),
-    ArticleModel(
-      title: 'Design Better Dashboards',
-      author: 'Design',
-      imageUrl:
-          'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80',
-    ),
-  ];
+  const MostPopularItem({super.key, required this.articles});
+  final List<ArticlesModel> articles;
 
   @override
   Widget build(BuildContext context) {
@@ -48,19 +27,20 @@ class MostPopularItem extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10.r),
                     child: Image.network(
-                      articles[index].imageUrl,
+                      articles[index].urlToImage ??
+                          "https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=1200&q=80",
                       fit: BoxFit.cover,
                       width: 240.w,
-                      height: 232.h,
+                      height: 230.h,
                     ),
                   ),
                   Text(
-                    articles[index].title,
+                    articles[index].title ?? '',
                     style: AppStyle.semiBold20,
-                    overflow: TextOverflow.visible,
-                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
-                  Text(articles[index].author, style: AppStyle.regular14),
+                  Text(articles[index].author ?? '', style: AppStyle.regular14),
                 ],
               ),
             ),
