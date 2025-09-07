@@ -18,7 +18,7 @@ class NewsRepo {
         endPoint: EndPoints.everything,
         queryParameters: {
           'q': q.isEmpty ? 'all' : q,
-          'apiKey': '12b9dc3b4b284dfaaa2a8369e06884ce',
+          'apiKey': '13d444451a7d42feaf7dcfaee17500ee',
           'sortBy': sortBy,
         },
       );
@@ -52,7 +52,7 @@ class NewsRepo {
         endPoint: EndPoints.topHeadlines,
         queryParameters: {
           'category': category,
-          'apiKey': '12b9dc3b4b284dfaaa2a8369e06884ce',
+          'apiKey': '13d444451a7d42feaf7dcfaee17500ee',
         },
       );
 

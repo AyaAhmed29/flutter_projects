@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/utils/app_paddings.dart';
 import 'package:news_app/core/utils/app_style.dart';
+import 'package:news_app/core/widgets/List_shimmer.dart';
 import 'package:news_app/core/widgets/custom_app_bar.dart';
 import 'package:news_app/feature/home/view/cubit/cubit/home_cubit.dart';
 import 'package:news_app/feature/home/view/widgets/article_card_item.dart';
@@ -33,7 +34,7 @@ class HomeView extends StatelessWidget {
               }
 
               if (state is WeatherSuccess) {
-                return CustomAppBar(weather: state.weatherModel,);
+                return CustomAppBar(weather: state.weatherModel);
               }
               return const SizedBox.shrink();
             },
@@ -61,9 +62,7 @@ class HomeView extends StatelessWidget {
                 BlocBuilder<HomeCubit, HomeState>(
                   builder: (context, state) {
                     if (state is HomeLoading) {
-                      return const SliverToBoxAdapter(
-                        child: Center(child: CircularProgressIndicator()),
-                      );
+                      return const SliverToBoxAdapter(child: ListShimmerh());
                     } else if (state is HomeFailure) {
                       return SliverToBoxAdapter(
                         child: Center(child: Text(state.errorMessage)),

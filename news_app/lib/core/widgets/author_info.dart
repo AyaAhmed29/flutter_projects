@@ -20,17 +20,32 @@ class AuthorInfo extends StatelessWidget {
                 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=256&q=80',
           ),
         ),
-        SizedBox(width: 2.w),
-        Text(
-          articales?.author ?? 'John Doe',
-          style: AppStyle.regular12.copyWith(color: AppColors.graniteGray),
-        ),
-        SizedBox(width: 8.w),
+        SizedBox(width: 4.w),
 
-        Text(
-          overflow: TextOverflow.ellipsis,
-          dateformat(articales?.publishedAt ?? '2024-01-20T12:34:56Z'),
-          style: AppStyle.regular12.copyWith(color: AppColors.graniteGray),
+        Expanded(
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  articales?.author ?? 'John Doe',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppStyle.regular12.copyWith(
+                    color: AppColors.graniteGray,
+                  ),
+                ),
+              ),
+              SizedBox(width: 6.w),
+              Text(
+                dateformat(articales?.publishedAt ?? '2024-01-20T12:34:56Z'),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppStyle.regular12.copyWith(
+                  color: AppColors.graniteGray,
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );

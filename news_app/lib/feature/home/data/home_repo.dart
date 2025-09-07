@@ -15,7 +15,7 @@ class HomeRepo {
         endPoint: EndPoints.everything,
         queryParameters: {
           'q': 'all',
-          'apiKey': '12b9dc3b4b284dfaaa2a8369e06884ce',
+          'apiKey': '13d444451a7d42feaf7dcfaee17500ee',
           'sortBy': 'popularity',
         },
       );

@@ -1,10 +1,13 @@
 import 'package:go_router/go_router.dart';
 import 'package:news_app/feature/bookmark/view/bookmark_view.dart';
+import 'package:news_app/feature/explor/view/article_view.dart';
 import 'package:news_app/feature/explor/view/explor_view.dart';
+import 'package:news_app/feature/explor/view/newsweb_view_page.dart';
 import 'package:news_app/feature/explor/view/search_view.dart';
 import 'package:news_app/feature/home/view/home_view.dart';
 import 'package:news_app/feature/location/view/location_view.dart';
 import 'package:news_app/feature/navigation/view/navigation_view.dart';
+import 'package:news_app/feature/splash/view/splash_view.dart';
 import 'package:news_app/feature/weather/view/weather_view.dart';
 import 'package:news_app/feature/splash/view/welcome_view.dart';
 
@@ -17,10 +20,13 @@ abstract class AppRouter {
   static const String profileView = '/ProfileView';
   static const String searchView = '/SearchView';
   static const String searchSesultsView = '/SearchSesultsView';
+  static const String articleView = '/ArticleView';
+  static const String webView = '/WebView';
+  static const String locationView = '/LocationView';
 
   static final router = GoRouter(
     routes: [
-      GoRoute(builder: (context, state) => const LocationView(), path: '/'),
+      GoRoute(builder: (context, state) => const SplashView(), path: '/'),
       GoRoute(builder: (context, state) => const HomeView(), path: homeView),
       GoRoute(
         builder: (context, state) => const WelcomeView(),
@@ -43,6 +49,9 @@ abstract class AppRouter {
         path: profileView,
       ),
       GoRoute(path: searchView, builder: (context, state) => SearchView()),
+      GoRoute(path: articleView, builder: (context, state) => ArticleView()),
+      GoRoute(path: webView, builder: (context, state) => NewsWebViewPage()),
+    GoRoute(path:   locationView, builder: (context, state) => const LocationView()),
     ],
   );
 }
