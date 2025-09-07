@@ -6,6 +6,7 @@ import 'package:ecommerce_app/features/items/view/product_view.dart';
 import 'package:ecommerce_app/features/navigation/view/navigation_view.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/view/get_started_view.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/view/on_boarding_view.dart';
+import 'package:ecommerce_app/features/profile/view/my_profile_view.dart';
 import 'package:ecommerce_app/features/splash/presentation/view/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,6 +19,7 @@ abstract class AppRouter {
   static const navigationView = '/NavigationView';
   static const itemsView = '/ItemsView';
   static const productView = '/ProductView';
+  static const myProfileView = '/MyProfileView';
   static final router = GoRouter(
     routes: [
       GoRoute(path: '/', builder: (context, state) => const SplashView()),
@@ -40,7 +42,14 @@ abstract class AppRouter {
         builder: (context, state) => const NavigationView(),
       ),
       GoRoute(path: itemsView, builder: (context, state) => const ItemsView()),
-      GoRoute(path: productView, builder: (context, state) => const ProductView()),
+      GoRoute(
+        path: productView,
+        builder: (context, state) => const ProductView(),
+      ),
+      GoRoute(
+        path: myProfileView,
+        builder: (context, state) => const MyProfileView(),
+      ),
     ],
   );
 }

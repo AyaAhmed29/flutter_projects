@@ -29,7 +29,7 @@ class _SplashViewState extends State<SplashView> {
         GoRouter.of(context).go(AppRouter.onBoardingView);
       }
     });
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {

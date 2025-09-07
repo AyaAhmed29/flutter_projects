@@ -1,31 +1,12 @@
 import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/core/network/api_helper.dart';
 import 'package:ecommerce_app/core/network/api_response.dart';
 import 'package:ecommerce_app/core/network/endpoint.dart';
-import 'package:ecommerce_app/features/auth/data/model/user_model.dart';
 import 'package:ecommerce_app/features/home/data/model/Category_moder.dart';
 
 class HomeRepo {
   ApiHelper apiHelper = ApiHelper();
-  Future<Either<String, UserModel>> getUser() async {
-    try {
-      var response = await apiHelper.getRequest(
-        endPoint: EndPoints.getUserData,
-        isProtected: true,
-      );
-      if (response.status) {
-        var data = response.data as Map<String, dynamic>;
-        LoginResponseModel responseModel = LoginResponseModel.fromJson(data);
-        return right(responseModel.user!);
-      } else {
-        return Left(response.message);
-      }
-    } catch (e) {
-      return Left(e.toString());
-    }
-  }
   Future<Either<String, List<CategoryModel>>> getFeatur() async {
     try {
       var response = await apiHelper.getRequest(

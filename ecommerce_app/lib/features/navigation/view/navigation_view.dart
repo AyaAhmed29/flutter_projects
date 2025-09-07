@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/features/home/view/home_view.dart';
 import 'package:ecommerce_app/features/items/view/items_view.dart';
+import 'package:ecommerce_app/features/profile/view/profle_view.dart';
 import 'package:flutter/material.dart';
 
 class NavigationView extends StatefulWidget {
@@ -15,7 +16,7 @@ class NavigationView extends StatefulWidget {
 class _NavigationViewState extends State<NavigationView> {
   int selectedIndex = 0;
 
-  final List<Widget> views = const [HomeView(), ItemsView(), HomeView()];
+  final List<Widget> views = const [HomeView(), ItemsView(), ProfleView()];
 
   @override
   Widget build(BuildContext context) {

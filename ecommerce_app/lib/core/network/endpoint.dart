@@ -7,4 +7,5 @@ abstract class EndPoints {
   static const String getFeatur = 'categories';
   static const String refreshToken = 'refresh_token';
   static const String addFavorite = 'add_to_favorite';
+  static const String updateProfile = 'update_profile';
 }
