@@ -8,4 +8,6 @@ abstract class EndPoints {
   static const String refreshToken = 'refresh_token';
   static const String addFavorite = 'add_to_favorite';
   static const String updateProfile = 'update_profile';
+  static const String getBestSeller = 'best_seller_products';
+  static const String sliders = 'sliders';
 }

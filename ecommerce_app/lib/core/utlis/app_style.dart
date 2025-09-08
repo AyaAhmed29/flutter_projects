@@ -7,6 +7,10 @@ abstract class AppStyle {
     fontWeight: FontWeight.bold,
     fontSize: 40.sp,
     color: AppColors.pink,
+  );static TextStyle bold20 = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 20.sp,
+    
   );
   static TextStyle bold18 = TextStyle(
     fontWeight: FontWeight.bold,

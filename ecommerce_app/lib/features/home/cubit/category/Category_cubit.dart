@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/features/home/cubit/cubit/Category_state.dart';
-import 'package:ecommerce_app/features/home/data/repo_home/Category_repo.dart';
+import 'package:ecommerce_app/features/home/cubit/category/Category_state.dart';
+import 'package:ecommerce_app/features/home/data/repo_home/home_repo.dart';
 import 'package:ecommerce_app/features/home/data/model/Category_moder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,9 +7,9 @@ class FeaturCubit extends Cubit<FeaturState> {
   FeaturCubit() : super(FeaturInitial());
   static FeaturCubit get(context) => BlocProvider.of(context);
 
-  int currentIndex = 0;
-
   List<CategoryModel> categories = [];
+
+  int currentIndex = 0;
 
   setCurrentIndex(int index) {
     currentIndex = index;

@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/core/widget/logo_appbar.dart';
-import 'package:ecommerce_app/features/home/cubit/cubit/Category_cubit.dart';
-import 'package:ecommerce_app/features/home/cubit/cubit/Category_state.dart';
+import 'package:ecommerce_app/features/home/cubit/category/Category_cubit.dart';
+import 'package:ecommerce_app/features/home/cubit/category/Category_state.dart';
 import 'package:ecommerce_app/features/items/view/widgets/products.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/features/home/view/widgets/all_featured_item.dart';

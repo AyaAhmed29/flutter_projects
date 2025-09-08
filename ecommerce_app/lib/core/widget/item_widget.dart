@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:ecommerce_app/core/utlis/app_assets.dart';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
-import 'package:ecommerce_app/features/home/cubit/cubit/Category_cubit.dart';
+import 'package:ecommerce_app/features/home/cubit/category/Category_cubit.dart';
 import 'package:ecommerce_app/features/home/data/model/Category_moder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -15,7 +17,8 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => GoRouter.of(context).push(AppRouter.productView, extra: products),
+      onTap: () =>
+          GoRouter.of(context).push(AppRouter.productView, extra: products),
       child: Stack(
         children: [
           Container(
@@ -39,7 +42,8 @@ class ItemWidget extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10.r),
                   child: Image.network(
-                    'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=1200&q=80',
+                    products.imagePath ??
+                        'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=1200&q=80',
                     fit: BoxFit.cover,
                     width: 163.w,
                     height: 180.h,
@@ -60,7 +64,10 @@ class ItemWidget extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Text('₹399', style: AppStyle.medium12),
+                      Text(
+                        products.price.toString() ?? '₹399',
+                        style: AppStyle.medium12,
+                      ),
                       Row(
                         children: [
                           RatingBarIndicator(
@@ -72,7 +79,7 @@ class ItemWidget extends StatelessWidget {
                           ),
                           SizedBox(width: 3.w),
                           Text(
-                            '1,52,344',
+                            products.rating.toString() ?? '1,52,344',
                             style: AppStyle.regular10.copyWith(
                               color: AppColors.grey,
                             ),
