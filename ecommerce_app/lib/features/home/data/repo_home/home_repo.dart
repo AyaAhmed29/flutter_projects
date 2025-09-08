@@ -5,7 +5,7 @@ import 'package:ecommerce_app/core/network/api_helper.dart';
 import 'package:ecommerce_app/core/network/api_response.dart';
 import 'package:ecommerce_app/core/network/endpoint.dart';
 import 'package:ecommerce_app/features/home/data/model/Category_moder.dart';
-import 'package:ecommerce_app/features/home/data/model/best_seller_model.dart';
+import 'package:ecommerce_app/features/home/data/model/prodect_model.dart';
 import 'package:ecommerce_app/features/home/data/model/slider_model.dart';
 
 class HomeRepo {
@@ -69,19 +69,19 @@ class HomeRepo {
     }
   }
 
-  Future<Either<String, BestSellerModel>> getBestCategory() async {
+  Future<Either<String, BestSellerModel>> getBestProdect() async {
     try {
       var response = await apiHelper.getRequest(
         endPoint: EndPoints.getBestSeller,
         isProtected: true,
       );
-      log('Response raw: ${response.data}');
+      // log('Response raw: ${response.data}');
       if (response.status) {
-        BestSellerModel bestCategory = BestSellerModel.fromJson(
+        BestSellerModel bestProdect = BestSellerModel.fromJson(
           response.data as Map<String, dynamic>,
         );
-        log(bestCategory.toString());
-        return Right(bestCategory);
+        log(bestProdect.toString());
+        return Right(bestProdect);
       } else {
         return Left(response.message);
       }
@@ -89,5 +89,26 @@ class HomeRepo {
       return Left(ApiResponse.fromError(e).message);
     }
   }
-  
+
+  Future<Either<String, ProductsModel>> searchProducts(String q) async {
+    try {
+      var response = await apiHelper.getRequest(
+        endPoint: EndPoints.search,
+        queryParameters: {'q': q},
+        isProtected: true,
+      );
+      // log('Response raw: ${response.data}');
+      if (response.status) {
+        ProductsModel bestProdect = ProductsModel.fromJson(
+          response.data as Map<String, dynamic>,
+        );
+        log(bestProdect.toString());
+        return Right(bestProdect);
+      } else {
+        return Left(response.message);
+      }
+    } catch (e) {
+      return Left(ApiResponse.fromError(e).message);
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/widget/logo_appbar.dart';
 import 'package:ecommerce_app/features/home/cubit/best_seller/best_seller_cubit.dart';
 import 'package:ecommerce_app/features/home/cubit/category/Category_cubit.dart';
@@ -8,6 +9,7 @@ import 'package:ecommerce_app/features/home/view/widgets/ecommended_item.dart';
 import 'package:ecommerce_app/features/home/view/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -25,7 +27,13 @@ class HomeView extends StatelessWidget {
 
         body: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(child: SearchWidget()),
+            SliverToBoxAdapter(
+              child: GestureDetector(
+                onTap: () => GoRouter.of(context).push(AppRouter.searchView),
+                child: const SearchWidget(),
+              ),
+            ),
+
             SliverToBoxAdapter(child: AllFeaturedItem()),
             SliverToBoxAdapter(child: SliderCardItem()),
             SliverToBoxAdapter(child: RecommendedItem()),

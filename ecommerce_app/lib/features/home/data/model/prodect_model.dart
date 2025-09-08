@@ -1,14 +1,40 @@
+class ProductsModel {
+  List<Product>? products;
+  bool? status;
+
+  ProductsModel({this.products, this.status});
+
+  ProductsModel.fromJson(Map<String, dynamic> json) {
+    if (json['products'] != null) {
+      products = [];
+      json['products'].forEach((v) {
+        products!.add(Product.fromJson(v));
+      });
+    }
+    status = json['status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    if (products != null) {
+      data['products'] = products!.map((v) => v.toJson()).toList();
+    }
+    data['status'] = status;
+    return data;
+  }
+}
+
 class BestSellerModel {
-  List<BestSellerProducts>? bestSellerProducts;
+  List<Product>? bestSellerProducts;
   bool? status;
 
   BestSellerModel({this.bestSellerProducts, this.status});
 
   BestSellerModel.fromJson(Map<String, dynamic> json) {
     if (json['best_seller_products'] != null) {
-      bestSellerProducts = <BestSellerProducts>[];
+      bestSellerProducts = [];
       json['best_seller_products'].forEach((v) {
-        bestSellerProducts!.add(BestSellerProducts.fromJson(v));
+        bestSellerProducts!.add(Product.fromJson(v));
       });
     }
     status = json['status'];
@@ -17,16 +43,15 @@ class BestSellerModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
     if (bestSellerProducts != null) {
-      data['best_seller_products'] = bestSellerProducts!
-          .map((v) => v.toJson())
-          .toList();
+      data['best_seller_products'] =
+          bestSellerProducts!.map((v) => v.toJson()).toList();
     }
     data['status'] = status;
     return data;
   }
 }
 
-class BestSellerProducts {
+class Product {
   int? bestSeller;
   Category? category;
   String? description;
@@ -37,7 +62,7 @@ class BestSellerProducts {
   double? price;
   double? rating;
 
-  BestSellerProducts({
+  Product({
     this.bestSeller,
     this.category,
     this.description,
@@ -49,11 +74,10 @@ class BestSellerProducts {
     this.rating,
   });
 
-  BestSellerProducts.fromJson(Map<String, dynamic> json) {
+  Product.fromJson(Map<String, dynamic> json) {
     bestSeller = json['best_seller'];
-    category = json['category'] != null
-        ? Category.fromJson(json['category'])
-        : null;
+    category =
+        json['category'] != null ? Category.fromJson(json['category']) : null;
     description = json['description'];
     id = json['id'];
     imagePath = json['image_path'];

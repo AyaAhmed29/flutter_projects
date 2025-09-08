@@ -38,7 +38,7 @@ class AppTheme {
         color: AppColors.white,
       ),
       inputDecorationTheme: _inputTheme(
-        fill: AppColors.lightGrey,
+        fill: AppColors.black.withValues(alpha: 0.8),
         hint: AppColors.grey,
       ),
       textSelectionTheme: _textSelectionTheme(),

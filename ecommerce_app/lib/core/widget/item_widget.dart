@@ -64,14 +64,11 @@ class ItemWidget extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Text(
-                        products.price.toString() ?? '₹399',
-                        style: AppStyle.medium12,
-                      ),
+                      Text(products.price.toString(), style: AppStyle.medium12),
                       Row(
                         children: [
                           RatingBarIndicator(
-                            rating: 4.5,
+                            rating: products.rating ?? 4.0,
                             itemCount: 5,
                             itemSize: 14,
                             itemBuilder: (context, _) =>
@@ -79,7 +76,7 @@ class ItemWidget extends StatelessWidget {
                           ),
                           SizedBox(width: 3.w),
                           Text(
-                            products.rating.toString() ?? '1,52,344',
+                            products.rating.toString(),
                             style: AppStyle.regular10.copyWith(
                               color: AppColors.grey,
                             ),

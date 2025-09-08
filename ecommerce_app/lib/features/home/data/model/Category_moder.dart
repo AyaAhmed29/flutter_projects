@@ -24,6 +24,7 @@ class MenuResponseModel {
   }
 }
 
+
 class CategoryModel {
   String? description;
   int? id;

@@ -8,28 +8,28 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: AppPadding.all16,
-      child: Container(
-        height: 40.h,
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(color: Colors.grey.withValues(alpha: 0.4), blurRadius: 6),
-          ],
-        ),
-        child: TextField(
-          textInputAction: TextInputAction.done,
-          onSubmitted: (value) {},
-
-          decoration: InputDecoration(
-            hintText: 'Search any Product..',
-            prefixIcon: IconButton(
-              onPressed: () {},
-              icon: Image.asset(Assets.imagesIconsSearch),
-            ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.all(Radius.circular(5)),
+    return SafeArea(
+      child: Padding(
+        padding: AppPadding.all24,
+        child: Container(
+          height: 60.h,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withValues(alpha: 0.4),
+                blurRadius: 6,
+              ),
+            ],
+          ),
+          child: TextField(
+            enabled: false,
+            decoration: InputDecoration(
+              hintText: 'Search any Product..',
+              prefixIcon: Image.asset(Assets.imagesIconsSearch),
+              border: const OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
             ),
           ),
         ),

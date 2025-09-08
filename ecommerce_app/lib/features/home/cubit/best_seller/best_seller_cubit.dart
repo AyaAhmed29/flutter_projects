@@ -1,7 +1,5 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_app/features/home/data/model/best_seller_model.dart';
+import 'package:ecommerce_app/features/home/data/model/prodect_model.dart';
 import 'package:ecommerce_app/features/home/data/repo_home/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
@@ -15,7 +13,7 @@ class BestSellerCubit extends Cubit<BestSellerState> {
   getBestSeller() async {
     emit(BestSellerLoading());
     try {
-      var response = await HomeRepo().getBestCategory();
+      var response = await HomeRepo().getBestProdect();
 
       response.fold(
         (error) => emit(BestSellerfailure(error: error)),

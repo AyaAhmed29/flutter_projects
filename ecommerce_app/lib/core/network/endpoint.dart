@@ -10,4 +10,5 @@ abstract class EndPoints {
   static const String updateProfile = 'update_profile';
   static const String getBestSeller = 'best_seller_products';
   static const String sliders = 'sliders';
+  static const String search = 'products/search';
 }
