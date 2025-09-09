@@ -1,9 +1,14 @@
 import 'package:ecommerce_app/core/utlis/App_theme.dart';
+import 'package:ecommerce_app/core/utlis/storage/prodect_model/app_local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await LocalStorage.init();
+
   runApp(const MyApp());
 }
 

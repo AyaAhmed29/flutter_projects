@@ -50,6 +50,14 @@ class Assets {
   /// assets/images/icons/increase.png
   static const String imagesIconsIncrease = "assets/images/icons/increase.png";
 
+  /// Assets for imagesIconsLocation
+  /// assets/images/icons/location.png
+  static const String imagesIconsLocation = "assets/images/icons/location.png";
+
+  /// Assets for imagesIconsLocationSVG
+  /// assets/images/icons/locationSVG.svg
+  static const String imagesIconsLocationSVG = "assets/images/icons/locationSVG.svg";
+
   /// Assets for imagesIconsLock
   /// assets/images/icons/lock.svg
   static const String imagesIconsLock = "assets/images/icons/lock.svg";
@@ -89,6 +97,10 @@ class Assets {
   /// Assets for imagesIconsWhiteHard
   /// assets/images/icons/whiteHard.png
   static const String imagesIconsWhiteHard = "assets/images/icons/whiteHard.png";
+
+  /// Assets for imagesNoProdect
+  /// assets/images/NoProdect.png
+  static const String imagesNoProdect = "assets/images/NoProdect.png";
 
   /// Assets for imagesPageViewItem1Image 
   /// assets/images/PageViewItem1Image .svg

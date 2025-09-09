@@ -8,19 +8,17 @@ class ProductCubit extends Cubit<ProductState> {
   ProductCubit() : super(ProductInitial());
   static ProductCubit get(context) => BlocProvider.of(context);
 
-  int count = 0;
+  int count = 1;
   increment() {
     count++;
     emit(ChangeCountSuccess());
   }
 
   decrement() {
-    if (count == 0) {
+    if (count == 1) {
       return;
     }
     count--;
     emit(ChangeCountSuccess());
   }
-  
-
 }

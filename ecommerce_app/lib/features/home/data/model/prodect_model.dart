@@ -43,8 +43,9 @@ class BestSellerModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
     if (bestSellerProducts != null) {
-      data['best_seller_products'] =
-          bestSellerProducts!.map((v) => v.toJson()).toList();
+      data['best_seller_products'] = bestSellerProducts!
+          .map((v) => v.toJson())
+          .toList();
     }
     data['status'] = status;
     return data;
@@ -76,8 +77,9 @@ class Product {
 
   Product.fromJson(Map<String, dynamic> json) {
     bestSeller = json['best_seller'];
-    category =
-        json['category'] != null ? Category.fromJson(json['category']) : null;
+    category = json['category'] != null
+        ? Category.fromJson(json['category'])
+        : null;
     description = json['description'];
     id = json['id'];
     imagePath = json['image_path'];

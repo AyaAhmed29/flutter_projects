@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:ecommerce_app/core/utlis/app_assets.dart';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';

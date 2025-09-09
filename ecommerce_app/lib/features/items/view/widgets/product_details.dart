@@ -1,9 +1,10 @@
+import 'package:ecommerce_app/core/utlis/storage/prodect_model/app_local_storage.dart';
 import 'package:ecommerce_app/features/home/data/model/Category_moder.dart';
 import 'package:ecommerce_app/features/items/view/cubit/cubit/product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:ecommerce_app/core/utlis/storage/prodect_model/product_model.dart';
 import 'package:ecommerce_app/core/utlis/app_assets.dart';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
@@ -68,9 +69,25 @@ class ProductDetails extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 50.h),
-
                 CustomButton(
-                  ontap: () {},
+                  ontap: () async {
+                    if (product != null) {
+                      final storage = LocalStorage();
+
+                      final productToSave = ProductHiveModel(
+                        id: product!.id?.toString() ?? '',
+                        name: product!.name,
+                        description: product!.description,
+                        imagePath: product!.imagePath,
+                        price: product!.price,
+                        rating: product!.rating,
+
+                        quantity: ProductCubit.get(context).count,
+                      );
+
+                      await storage.addProductToCart(productToSave, context);
+                    }
+                  },
                   text: 'Add To Cart',
                   icon: Assets.imagesIconsShopping,
                 ),
