@@ -4,9 +4,9 @@ import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/core/utlis/storage/prodect_model/product_model.dart';
 import 'package:ecommerce_app/core/widget/custom_button.dart';
-import 'package:ecommerce_app/features/checkout/cubit/order/cubit/order_cubit.dart';
-import 'package:ecommerce_app/features/checkout/view/widgets/cart_list_view.dart';
-import 'package:ecommerce_app/features/checkout/view/widgets/determine_location.dart';
+import 'package:ecommerce_app/features/orders/cubit/order/order_cubit.dart';
+import 'package:ecommerce_app/features/orders/view/widgets/cart_list_view.dart';
+import 'package:ecommerce_app/features/orders/view/widgets/determine_location.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

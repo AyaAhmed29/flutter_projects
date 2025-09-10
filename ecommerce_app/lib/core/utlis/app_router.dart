@@ -1,9 +1,10 @@
 import 'package:ecommerce_app/features/auth/view/login_view.dart';
 import 'package:ecommerce_app/features/auth/view/register_view.dart';
-import 'package:ecommerce_app/features/checkout/cubit/order/cubit/order_cubit.dart';
-import 'package:ecommerce_app/features/checkout/location/view/location_view.dart';
-import 'package:ecommerce_app/features/checkout/view/checkout_view.dart';
-import 'package:ecommerce_app/features/checkout/view/place_order_view.dart';
+import 'package:ecommerce_app/features/orders/cubit/order/order_cubit.dart';
+import 'package:ecommerce_app/features/location/view/location_view.dart';
+import 'package:ecommerce_app/features/orders/view/checkout_view.dart';
+import 'package:ecommerce_app/features/orders/view/my_order_view.dart';
+import 'package:ecommerce_app/features/orders/view/place_order_view.dart';
 import 'package:ecommerce_app/features/home/view/home_view.dart';
 import 'package:ecommerce_app/features/home/view/search_view.dart';
 import 'package:ecommerce_app/features/home/view/widgets/search_widget.dart';
@@ -37,7 +38,7 @@ abstract class AppRouter {
 
   static final router = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => const NavigationView()),
+      GoRoute(path: '/', builder: (context, state) => const MyOrderView()),
       GoRoute(
         path: onBoardingView,
         builder: (context, state) => const OnBoardingView(),

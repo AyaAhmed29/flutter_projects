@@ -6,9 +6,9 @@ import 'package:ecommerce_app/core/utlis/storage/prodect_model/app_local_storage
 import 'package:ecommerce_app/core/utlis/storage/prodect_model/product_model.dart';
 import 'package:ecommerce_app/core/widget/custom_appbar.dart';
 import 'package:ecommerce_app/core/widget/custom_button.dart';
-import 'package:ecommerce_app/features/checkout/view/widgets/cart_list_view.dart';
-import 'package:ecommerce_app/features/checkout/view/widgets/checkout_list.dart';
-import 'package:ecommerce_app/features/checkout/view/widgets/no_prodect.dart';
+import 'package:ecommerce_app/features/orders/view/widgets/cart_list_view.dart';
+import 'package:ecommerce_app/features/orders/view/widgets/checkout_list.dart';
+import 'package:ecommerce_app/core/widget/no_prodect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -31,7 +31,7 @@ class CheckoutView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: 'Cart'),
       body: cartProducts.isEmpty
-          ? NoProdect()
+          ? NoProdect(text: 'products')
           : Padding(
               padding: AppPadding.all16,
               child: Column(

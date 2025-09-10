@@ -1,4 +1,3 @@
-
 import 'package:ecommerce_app/core/utlis/app_assets.dart';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_padding.dart';
@@ -7,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NoProdect extends StatelessWidget {
-  const NoProdect({super.key});
+  const NoProdect({super.key, required this.text});
+  final String text;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +21,7 @@ class NoProdect extends StatelessWidget {
             Image.asset(Assets.imagesNoProdect),
             SizedBox(height: 16.h),
             Text(
-              'You don\'t have any active orders at this time',
+              'You don\'t have any $text at this time',
               style: AppStyle.semiBold20.copyWith(color: AppColors.pink),
               textAlign: TextAlign.center,
             ),

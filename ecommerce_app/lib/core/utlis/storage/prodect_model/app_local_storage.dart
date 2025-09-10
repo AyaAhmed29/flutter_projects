@@ -1,11 +1,8 @@
-import 'dart:developer';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
-import 'package:ecommerce_app/core/utlis/storage/prodect_model/order_model.dart';
 import 'package:ecommerce_app/core/utlis/storage/prodect_model/product_model.dart'
     hide ProductModel;
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:intl/intl.dart';
 
 class LocalStorage {
   static LocalStorage? _instance;
@@ -24,13 +21,7 @@ class LocalStorage {
     if (!Hive.isAdapterRegistered(0)) {
       Hive.registerAdapter(ProductHiveModelAdapter());
     }
-    // if (!Hive.isAdapterRegistered(1)) {
-    //   Hive.registerAdapter(OrderStatusAdapter());
-    // }
-    // if (!Hive.isAdapterRegistered(2)) {
-    //   Hive.registerAdapter(OrderHiveModelAdapter());
-    // }
-
+   
     _box = await Hive.openBox('myBox');
 
     List<ProductHiveModel> products =
@@ -106,31 +97,4 @@ class LocalStorage {
     await _box?.clear();
   }
 
-  // /////////////////////////////// Order ////////////////////////////////
-
-  // Future<void> placeOrder(List<ProductHiveModel> products) async {
-  //   var orderBox = await Hive.openBox<OrderHiveModel>('ordersBox');
-
-  //   int orderNumber = orderBox.length + 1;
-  //   String orderName = 'Order No. ${orderNumber.toString().padLeft(3, '0')}';
-  //   String formattedDate =
-  //       DateFormat('d MMM, hh:mm a').format(DateTime.now());
-
-  //   final newOrder = OrderHiveModel(
-  //     id: DateTime.now().millisecondsSinceEpoch.toString(),
-  //     products: products,
-  //     date: formattedDate,
-  //     orderName: orderName,
-  //     status: OrderStatus.active,
-  //   );
-
-  //   await orderBox.add(newOrder);
-
-  //   await saveProducts([]);
-  // }
-
-  // Future<List<OrderHiveModel>> getOrders() async {
-  //   var orderBox = await Hive.openBox<OrderHiveModel>('ordersBox');
-  //   return orderBox.values.toList();
-  // }
 }

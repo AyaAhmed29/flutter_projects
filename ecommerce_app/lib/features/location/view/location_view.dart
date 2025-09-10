@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/features/checkout/location/cubit/location_cubit.dart';
-import 'package:ecommerce_app/features/checkout/location/cubit/location_state.dart';
+import 'package:ecommerce_app/features/location/cubit/location_cubit.dart';
+import 'package:ecommerce_app/features/location/cubit/location_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

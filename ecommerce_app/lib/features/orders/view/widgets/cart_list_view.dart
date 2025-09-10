@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/core/utlis/storage/prodect_model/product_model.dart';
-import 'package:ecommerce_app/features/checkout/view/widgets/card_item.dart';
+import 'package:ecommerce_app/features/orders/view/widgets/card_item.dart';
 import 'package:flutter/material.dart';
 
 class CartListView extends StatelessWidget {
