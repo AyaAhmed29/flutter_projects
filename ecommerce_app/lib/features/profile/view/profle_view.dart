@@ -56,11 +56,19 @@ class ProfleView extends StatelessWidget {
                         ).push(AppRouter.myProfileView, extra: state.user);
                       },
                     ),
-                    ProfileItem(title: 'My Orders', icon: '', onPressed: () {}),
+                    ProfileItem(
+                      title: 'My Orders',
+                      icon: '',
+                      onPressed: () {
+                        GoRouter.of(context).push(AppRouter.ordersView);
+                      },
+                    ),
                     ProfileItem(
                       title: 'My Favorites',
                       icon: '',
-                      onPressed: () {},
+                      onPressed: () {
+                        GoRouter.of(context).push(AppRouter.myFavoritesView);
+                      },
                     ),
                     ProfileItem(title: 'Settings', icon: '', onPressed: () {}),
                     Padding(

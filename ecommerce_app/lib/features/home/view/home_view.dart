@@ -1,4 +1,6 @@
+import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';
+import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/core/widget/logo_appbar.dart';
 import 'package:ecommerce_app/features/home/cubit/best_seller/best_seller_cubit.dart';
 import 'package:ecommerce_app/features/home/cubit/category/Category_cubit.dart';
@@ -36,6 +38,12 @@ class HomeView extends StatelessWidget {
 
             SliverToBoxAdapter(child: AllFeaturedItem()),
             SliverToBoxAdapter(child: SliderCardItem()),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: AppPadding.horizontal18,
+                child: Text('Recommended', style: AppStyle.semiBold18),
+              ),
+            ),
             SliverToBoxAdapter(child: RecommendedItem()),
           ],
         ),

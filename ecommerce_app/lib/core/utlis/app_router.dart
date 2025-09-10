@@ -13,6 +13,7 @@ import 'package:ecommerce_app/features/items/view/product_view.dart';
 import 'package:ecommerce_app/features/navigation/view/navigation_view.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/view/get_started_view.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/view/on_boarding_view.dart';
+import 'package:ecommerce_app/features/profile/view/my_favorites_view.dart';
 import 'package:ecommerce_app/features/profile/view/my_profile_view.dart';
 import 'package:ecommerce_app/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -33,12 +34,12 @@ abstract class AppRouter {
   static const checkoutView = '/CheckoutView';
   static const placeOrderView = '/PlaceOrderView';
   static const locationView = '/locationView';
-
+static const myFavoritesView = '/MyFavoritesView';
   static const String ordersView = '/OrdersView';
 
   static final router = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => const MyOrderView()),
+      GoRoute(path: '/', builder: (context, state) => const NavigationView()),
       GoRoute(
         path: onBoardingView,
         builder: (context, state) => const OnBoardingView(),
@@ -82,6 +83,10 @@ abstract class AppRouter {
       GoRoute(
         path: locationView,
         builder: (context, state) => const LocationView(),
+      ),
+      GoRoute(
+        path: myFavoritesView,
+        builder: (context, state) => const MyFavoritesView(),
       ),
       // GoRoute(
       //   path: ordersView,
