@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/utlis/app_assets.dart';
 import 'package:ecommerce_app/core/utlis/app_padding.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +25,7 @@ class SearchWidget extends StatelessWidget {
           child: TextField(
             enabled: false,
             decoration: InputDecoration(
-              hintText: 'Search any Product..',
+              hintText:S.of(context).searchAnyProduct,
               prefixIcon: Image.asset(Assets.imagesIconsSearch),
               border: const OutlineInputBorder(
                 borderSide: BorderSide.none,

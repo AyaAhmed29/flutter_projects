@@ -2,6 +2,7 @@
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -36,7 +37,7 @@ class CustomSmoothPageIndicator extends StatelessWidget {
               );
             },
             child: Text(
-              'Prev',
+              S.of(context).prev,
               style: AppStyle.semiBold18.copyWith(color: AppColors.grey),
             ),
           ),
@@ -60,7 +61,7 @@ class CustomSmoothPageIndicator extends StatelessWidget {
                   GoRouter.of(context).go(AppRouter.getStartedView);
                 },
                 child: Text(
-                  'Get Started',
+                  S.of(context).getStarted,
                   style: AppStyle.semiBold18.copyWith(color: AppColors.pink),
                 ),
               )
@@ -72,7 +73,7 @@ class CustomSmoothPageIndicator extends StatelessWidget {
                   );
                 },
                 child: Text(
-                  'Next',
+                  S.of(context).next,
                   style: AppStyle.semiBold18.copyWith(color: AppColors.pink),
                 ),
               ),

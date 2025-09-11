@@ -7,6 +7,7 @@ import 'package:ecommerce_app/core/widget/custom_button.dart';
 import 'package:ecommerce_app/features/orders/cubit/order/order_cubit.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/cart_list_view.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/determine_location.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,13 +27,13 @@ class PlaceOrderBody extends StatelessWidget {
             children: [
               Icon(Icons.location_on, color: AppColors.pink),
               SizedBox(width: 10.w),
-              Text('Delivery Address', style: AppStyle.semiBold18),
+              Text(S.of(context).deliveryAddress, style: AppStyle.semiBold18),
             ],
           ),
           SizedBox(height: 12.h),
           DetermineLocation(),
           SizedBox(height: 16.h),
-          Text('Shopping List', style: AppStyle.semiBold16),
+          Text(S.of(  context).shoppingList, style: AppStyle.semiBold16),
           SizedBox(height: 16.h),
           Expanded(child: CartListView(cartProducts: cartProducts)),
           SizedBox(height: 16.h),
@@ -48,7 +49,7 @@ class PlaceOrderBody extends StatelessWidget {
               cubit.setOrderItems(items);
               await cubit.placeOrder();
             },
-            text: 'Place Order',
+            text: S.of(context).placeOrder,
           ),
           SizedBox(height: 18.h),
         ],

@@ -7,6 +7,6 @@ class AuthHeader extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Text('Welcome \nBack!', style: AppStyle.semiBold36);
+    return Text(text, style: AppStyle.semiBold36);
   }
 }

@@ -2,6 +2,7 @@ import 'package:ecommerce_app/core/utlis/app_assets.dart';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +22,7 @@ class NoProdect extends StatelessWidget {
             Image.asset(Assets.imagesNoProdect),
             SizedBox(height: 16.h),
             Text(
-              'You don\'t have any $text at this time',
+              '${S.of(context).noItemsPrefix} $text ${S.of(context).noItemsSuffix}',
               style: AppStyle.semiBold20.copyWith(color: AppColors.pink),
               textAlign: TextAlign.center,
             ),

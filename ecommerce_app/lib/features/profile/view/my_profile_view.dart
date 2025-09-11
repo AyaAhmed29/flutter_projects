@@ -11,6 +11,7 @@ import 'package:ecommerce_app/features/auth/view/widgets/image_picker/image_pick
 import 'package:ecommerce_app/features/profile/cubit/user/user_cubit.dart';
 import 'package:ecommerce_app/features/profile/cubit/user/user_state.dart';
 import 'package:ecommerce_app/features/profile/view/widgets/user_image.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,14 +31,14 @@ class MyProfileView extends StatelessWidget {
           if (state is UpdateUserSuccess) {
             AppPopUp.showSnackBar(
               context: context,
-              text: 'Data updated successfully',
+              text: S.of(context).dataUpdatedSuccessfully,
             );
           } else if (state is UserFailure) {
             AppPopUp.showSnackBar(context: context, text: state.error);
           }
         },
         child: Scaffold(
-          appBar: AppBar(title: const Text('My Profile')),
+          appBar: AppBar(title:  Text(S.of(  context).myProfile)),
           body: BlocBuilder<UserCubit, UserState>(
             builder: (context, state) {
               final cubit = UserCubit.get(context);
@@ -88,7 +89,7 @@ class MyProfileView extends StatelessWidget {
                         children: [
                           CustomTextField(
                             controller: cubit.usernameController,
-                            text: 'Full Name',
+                            text: S.of(context).fullName,
                             icon: Assets.imagesIconsUser,
                             keyboardType: TextInputType.name,
                             validator: (value) =>
@@ -97,7 +98,7 @@ class MyProfileView extends StatelessWidget {
                           SizedBox(height: 10.h),
                           CustomTextField(
                             controller: cubit.pohoneController,
-                            text: 'Phone',
+                            text:S.of(context).phone,
                             icon: Assets.imagesIconsPhone,
                             keyboardType: TextInputType.phone,
                             validator: (value) =>
@@ -108,7 +109,7 @@ class MyProfileView extends StatelessWidget {
                     ),
                     SizedBox(height: 50.h),
                     CustomButton(
-                      text: 'Save',
+                      text:S.of(context).save,
                       ontap: () {
                         cubit.onPreasedSave();
                       },

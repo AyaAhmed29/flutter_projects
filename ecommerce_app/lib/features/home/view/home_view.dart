@@ -14,7 +14,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  HomeView({super.key});
+  final bestSellerCubit = BestSellerCubit()..getBestSeller();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class HomeView extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => FeaturCubit()..getFeatur()),
         BlocProvider(create: (context) => SliderCubit()..getSlider()),
-        BlocProvider(create: (context) => BestSellerCubit()..getBestSeller()),
+        BlocProvider.value(value: bestSellerCubit),
       ],
       child: Scaffold(
         appBar: const LogoAppbar(),

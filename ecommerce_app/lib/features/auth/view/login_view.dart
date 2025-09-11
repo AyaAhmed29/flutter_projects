@@ -6,6 +6,7 @@ import 'package:ecommerce_app/features/auth/cubit/login_cubit/login_cubit.dart';
 import 'package:ecommerce_app/features/auth/cubit/login_cubit/login_state.dart';
 import 'package:ecommerce_app/features/auth/view/widgets/auth_header.dart';
 import 'package:ecommerce_app/features/auth/view/widgets/custom_login_form.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,10 @@ class LoginView extends StatelessWidget {
       child: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            AppPopUp.showSnackBar(context: context, text: 'sucess');
+            AppPopUp.showSnackBar(
+              context: context,
+              text: S.of(context).loginSuccessfully,
+            );
             GoRouter.of(context).go(AppRouter.navigationView);
           } else if (state is LoginFailure) {
             AppPopUp.showSnackBar(context: context, text: state.errorMessage);
@@ -36,7 +40,7 @@ class LoginView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
-                  AuthHeader(text: 'Welcome \nBack!'),
+                  AuthHeader(text: S.of(context).welcomeBack),
                   SizedBox(height: 45.h),
                   CustomLoginForm(),
                 ],

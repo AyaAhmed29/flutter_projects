@@ -2,6 +2,7 @@ import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/core/widget/item_widget.dart';
 import 'package:ecommerce_app/features/home/data/model/Category_moder.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +16,7 @@ class Products extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Text('Products', style: AppStyle.semiBold18),
+          child: Text(S.of(context).products, style: AppStyle.semiBold18),
         ),
         GridView.builder(
           padding: AppPadding.all16,

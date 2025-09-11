@@ -6,6 +6,7 @@ import 'package:ecommerce_app/features/auth/cubit/register_cubit/register_cubit.
 import 'package:ecommerce_app/features/auth/cubit/register_cubit/register_state.dart';
 import 'package:ecommerce_app/features/auth/view/widgets/auth_header.dart';
 import 'package:ecommerce_app/features/auth/view/widgets/custom_register_form.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +21,10 @@ class RegisterView extends StatelessWidget {
       child: BlocListener<RegisterCubit, RegisterState>(
         listener: (context, state) {
           if (state is RegisterSuccess) {
-            AppPopUp.errorShowSnackBar(context: context, text: 'Success');
+            AppPopUp.errorShowSnackBar(
+              context: context,
+              text: S.of(context).registerSuccessfully,
+            );
             GoRouter.of(context).go(AppRouter.navigationView);
           } else if (state is RegisterFailure) {
             AppPopUp.errorShowSnackBar(
@@ -37,7 +41,7 @@ class RegisterView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AuthHeader(text: 'Create an\naccount!'),
+                  AuthHeader(text: S.of(context).createAccount),
                   SizedBox(height: 33.h),
                   CustomRegisterForm(),
                 ],

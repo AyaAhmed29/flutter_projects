@@ -2,6 +2,7 @@ import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/features/home/data/model/slider_model.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -61,7 +62,7 @@ class SliderCard extends StatelessWidget {
                     child: Center(
                       child: Row(
                         children: [
-                          Text('Shop Now', style: AppStyle.semiBold16),
+                          Text(S.of(context).shopNow, style: AppStyle.semiBold16),
                           SizedBox(width: 10.w),
                           Icon(Icons.arrow_forward),
                         ],

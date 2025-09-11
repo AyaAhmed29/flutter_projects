@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/core/widget/custom_button.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -40,14 +41,14 @@ class GetStartedView extends StatelessWidget {
 
                   children: [
                     Text(
-                      'You want Authentic, here you go!',
+                     S.of(context).youWantAuthentic,
                       style: AppStyle.semiBold134,
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 24.h),
 
                     Text(
-                      'Find it here, buy it now!',
+                       S.of(context).findItHereBuyNow,
                       style: AppStyle.regular14,
                     ),
                     SizedBox(height: 24.h),
@@ -56,14 +57,14 @@ class GetStartedView extends StatelessWidget {
                       ontap: () {
                         GoRouter.of(context).push(AppRouter.loginView);
                       },
-                      text: 'Login',
+                      text: S.of(context).login,
                     ),
                     SizedBox(height: 15.h),
                     CustomButton(
                       ontap: () {
                         GoRouter.of(context).push(AppRouter.registerView);
                       },
-                      text: 'Register',
+                      text: S.of(context).register,
                       color: AppColors.white,
                     ),
                   ],

@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/features/home/view/home_view.dart';
 import 'package:ecommerce_app/features/items/view/items_view.dart';
 import 'package:ecommerce_app/features/profile/view/profle_view.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,7 +19,7 @@ class NavigationView extends StatefulWidget {
 class _NavigationViewState extends State<NavigationView> {
   int selectedIndex = 0;
 
-  final List<Widget> views = const [HomeView(), ItemsView(), ProfleView()];
+  final List<Widget> views =  [HomeView(), ItemsView(), ProfleView()];
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class _NavigationViewState extends State<NavigationView> {
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            label: 'Home',
+            label: S.of(context).home,
             icon: Image.asset(
               Assets.imagesIconsHome,
               color: selectedIndex == 0
@@ -54,7 +55,7 @@ class _NavigationViewState extends State<NavigationView> {
             ),
           ),
           BottomNavigationBarItem(
-            label: 'Items',
+            label: S.of(context).items,
             icon: Image.asset(
               Assets.imagesIconsShopping,
               color: selectedIndex == 1
@@ -63,7 +64,7 @@ class _NavigationViewState extends State<NavigationView> {
             ),
           ),
           BottomNavigationBarItem(
-            label: 'Profile',
+            label: S.of(context).profile,
             icon: Image.asset(
               Assets.imagesIconsProfile,
               color: selectedIndex == 2

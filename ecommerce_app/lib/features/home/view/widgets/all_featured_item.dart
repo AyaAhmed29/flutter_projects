@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/features/home/cubit/category/Category_cubit.dart';
 import 'package:ecommerce_app/features/home/cubit/category/Category_state.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,7 @@ class AllFeaturedItem extends StatelessWidget {
               children: [
                 Padding(
                   padding: AppPadding.all16,
-                  child: Text('All Featured', style: AppStyle.semiBold18),
+                  child: Text(S.of(context).allFeatured, style: AppStyle.semiBold18),
                 ),
                 SizedBox(
                   height: 100.h,

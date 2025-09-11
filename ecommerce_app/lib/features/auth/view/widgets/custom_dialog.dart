@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CustomDialog extends StatelessWidget {
@@ -25,14 +26,14 @@ class CustomDialog extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text("No", style: TextStyle(color: AppColors.blueberry)),
+              child: Text(S.of(context).no, style: TextStyle(color: AppColors.blueberry)),
             ),
             TextButton(
               onPressed: () {
                 onConfirm();
                 Navigator.of(context).pop();
               },
-              child: Text("Yes", style: TextStyle(color: AppColors.pink)),
+              child: Text(S.of(context).yes, style: TextStyle(color: AppColors.pink)),
             ),
           ],
         ),

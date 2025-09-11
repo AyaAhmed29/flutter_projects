@@ -9,6 +9,7 @@ import 'package:ecommerce_app/core/widget/custom_button.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/cart_list_view.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/checkout_list.dart';
 import 'package:ecommerce_app/core/widget/no_prodect.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -29,16 +30,16 @@ class CheckoutView extends StatelessWidget {
 
     double total = subtotal + 65;
     return Scaffold(
-      appBar: CustomAppBar(title: 'Cart'),
+      appBar: CustomAppBar(title: S.of(context).cart),
       body: cartProducts.isEmpty
-          ? NoProdect(text: 'products')
+          ? NoProdect(text: S.of(context).products)
           : Padding(
               padding: AppPadding.all16,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children: [
-                  Text('Shopping List', style: AppStyle.semiBold16),
+                  Text(S.of(context).shoppingList, style: AppStyle.semiBold16),
                   SizedBox(height: 16.h),
                   CartListView(cartProducts: cartProducts),
                   SizedBox(height: 25.h),
@@ -55,7 +56,7 @@ class CheckoutView extends StatelessWidget {
                     ontap: () {
                       GoRouter.of(context).push(AppRouter.placeOrderView);
                     },
-                    text: 'Checkout',
+                    text: S.of(context).checkout,
                   ),
                   SizedBox(height: 18.h),
                 ],

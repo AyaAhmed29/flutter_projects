@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/widget/custom_appbar.dart';
 import 'package:ecommerce_app/features/profile/view/widgets/language_switch.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,7 +10,7 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'settings'),
+      appBar: CustomAppBar(title: S.of(context).settings),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0.w),
         child: LanguageSwitch(),

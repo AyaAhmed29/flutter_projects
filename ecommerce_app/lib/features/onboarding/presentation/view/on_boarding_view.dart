@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/Widget/custom_page.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/Widget/custom_smooth_page_indicator.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -54,24 +55,21 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               Expanded(
                 child: PageView(
                   controller: controller,
-                  children: const [
+                  children: [
                     CustomPage(
                       image: Assets.imagesPageViewItem1Image,
-                      text: 'Choose Products',
-                      descText:
-                          'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+                      text: S.of(context).chooseProducts,
+                      descText: S.of(context).loremDescription1,
                     ),
                     CustomPage(
                       image: Assets.imagesPageViewItem2Image,
-                      text: 'Fast Delivery',
-                      descText:
-                          'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+                      text: S.of(context).fastDelivery,
+                      descText: S.of(context).loremDescription2,
                     ),
                     CustomPage(
                       image: Assets.imagesPageViewItem3Image,
-                      text: 'Easy Payment',
-                      descText:
-                          'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+                      text: S.of(context).easyPayment,
+                      descText: S.of(context).loremDescription3,
                     ),
                   ],
                 ),

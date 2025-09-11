@@ -1,6 +1,7 @@
 
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutList extends StatelessWidget {
@@ -13,9 +14,9 @@ class CheckoutList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _summaryItems(title: 'Subtotal', price: '\$ ${subtotal.toString()}'),
-        _summaryItems(title: 'Tax and Fees', price: '\$ 15'),
-        _summaryItems(title: 'Delivery Fee', price: '\$ 50'),
+        _summaryItems(title: S.of(  context).subtotal, price: '\$ ${subtotal.toString()}'),
+        _summaryItems(title: S.of(  context).taxAndFees, price: '\$ 0'),
+        _summaryItems(title: S.of(  context).deliveryFee, price: '\$ 0'),
         Divider(
           color: AppColors.pink,
           thickness: 1,
@@ -24,7 +25,7 @@ class CheckoutList extends StatelessWidget {
           endIndent: 5,
         ),
         _summaryItems(
-          title: 'Order Total',
+          title: S.of(context).orderTotal,
           price: '\$ ${total.toString()}',
           color: AppColors.pink,
         ),

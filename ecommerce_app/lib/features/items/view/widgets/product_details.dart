@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/core/utlis/storage/prodect_model/app_local_storage.dart';
 import 'package:ecommerce_app/features/home/data/model/Category_moder.dart';
 import 'package:ecommerce_app/features/items/view/cubit/cubit/product_cubit.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -88,7 +89,7 @@ class ProductDetails extends StatelessWidget {
                       await storage.addProductToCart(productToSave, context);
                     }
                   },
-                  text: 'Add To Cart',
+                  text: S.of(context).addToCart,
                   icon: Assets.imagesIconsShopping,
                 ),
               ],

@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/widget/no_prodect.dart';
 import 'package:ecommerce_app/features/orders/cubit/order/order_cubit.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/order_item_card.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/order_state_list.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,7 +15,7 @@ class MyOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'My Orders'),
+      appBar: CustomAppBar(title: S.of(context).myOrders),
       body: BlocProvider(
         create: (context) => OrderCubit()..getOrders(),
         child: Column(
@@ -39,10 +40,10 @@ class MyOrderView extends StatelessWidget {
                       return Center(
                         child: NoProdect(
                           text: cubit.selectedStateOrder == 0
-                              ? "active orders"
+                              ? S.of(context).activeOrders
                               : cubit.selectedStateOrder == 1
-                              ? "Completed orders"
-                              : "Canceled orders",
+                              ? S.of(context).completedOrders
+                              : S.of(context).canceledOrders,
                         ),
                       );
                     }

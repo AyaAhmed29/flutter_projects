@@ -57,7 +57,8 @@ class ItemWidget extends StatelessWidget {
                         style: AppStyle.medium16,
                       ),
                       Text(
-                        'Mens Starry Sky Printed Shirt100% Cotton Fabric,',
+                        products.description ??''
+                        ,
                         style: AppStyle.regular10,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,

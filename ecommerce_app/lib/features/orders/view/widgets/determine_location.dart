@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/core/widget/custom_svg.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -39,7 +40,7 @@ class DetermineLocation extends StatelessWidget {
                 TextField(
                   maxLines: 2,
                   decoration: InputDecoration(
-                    hintText: 'Type address here or pick from map',
+                    hintText:S.of(context).typeAddress,
                     hintStyle: AppStyle.regular12,
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.zero,

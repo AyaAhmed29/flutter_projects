@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/widget/item_widget.dart';
 import 'package:ecommerce_app/features/home/cubit/search/cubit/search_cubit.dart';
 import 'package:ecommerce_app/features/home/cubit/search/cubit/search_state.dart';
 import 'package:ecommerce_app/features/home/data/model/Category_moder.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +22,7 @@ class SearchView extends StatelessWidget {
           var cubit = SearchCubit.get(context);
 
           return Scaffold(
-            appBar: AppBar(title: const Text("Search")),
+            appBar: AppBar(title: Text(S.of(context).search)),
             body: ProdectCard(cubit: cubit),
           );
         },
@@ -61,7 +62,7 @@ class ProdectCard extends StatelessWidget {
                 cubit.searchProducts();
               },
               decoration: InputDecoration(
-                hintText: 'Search any Product..',
+                hintText: S.of(context).searchAnyProduct,
                 prefixIcon: IconButton(
                   onPressed: () {
                     cubit.searchProducts();
@@ -88,7 +89,7 @@ class ProdectCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${state.products.products?.length ?? 0} Items',
+                        '${state.products.products?.length ?? 0} ${S.of(context).items}',
                         style: AppStyle.semiBold18,
                       ),
                       const SizedBox(height: 8),
@@ -137,7 +138,7 @@ class ProdectCard extends StatelessWidget {
                     ],
                   );
                 } else if (state is SearchFailure) {
-                  return Center(child: Text("Error: ${state.error}"));
+                  return Center(child: Text("${S.of(context).error} ${state.error}"));
                 } else {
                   return const SizedBox.shrink();
                 }

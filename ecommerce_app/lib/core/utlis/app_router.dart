@@ -15,6 +15,7 @@ import 'package:ecommerce_app/features/onboarding/presentation/view/get_started_
 import 'package:ecommerce_app/features/onboarding/presentation/view/on_boarding_view.dart';
 import 'package:ecommerce_app/features/profile/view/my_favorites_view.dart';
 import 'package:ecommerce_app/features/profile/view/my_profile_view.dart';
+import 'package:ecommerce_app/features/profile/view/setting_view.dart';
 import 'package:ecommerce_app/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,8 +35,9 @@ abstract class AppRouter {
   static const checkoutView = '/CheckoutView';
   static const placeOrderView = '/PlaceOrderView';
   static const locationView = '/locationView';
-static const myFavoritesView = '/MyFavoritesView';
-  static const String ordersView = '/OrdersView';
+  static const myFavoritesView = '/MyFavoritesView';
+  static const ordersView = '/OrdersView';
+  static const settingView = '/SettingView';
 
   static final router = GoRouter(
     routes: [
@@ -53,7 +55,7 @@ static const myFavoritesView = '/MyFavoritesView';
         path: registerView,
         builder: (context, state) => const RegisterView(),
       ),
-      GoRoute(path: homeView, builder: (context, state) => const HomeView()),
+      GoRoute(path: homeView, builder: (context, state) => HomeView()),
       GoRoute(
         path: navigationView,
         builder: (context, state) => const NavigationView(),
@@ -92,6 +94,11 @@ static const myFavoritesView = '/MyFavoritesView';
       //   path: ordersView,
       //   builder: (context, state) => const OrdersView(),
       // ),
+      GoRoute(
+        path: settingView,
+        builder: (context, state) => const SettingView(),
+      ),
+
     ],
   );
 }

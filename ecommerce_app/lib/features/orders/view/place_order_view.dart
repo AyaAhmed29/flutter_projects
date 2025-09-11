@@ -4,6 +4,7 @@ import 'package:ecommerce_app/core/utlis/storage/prodect_model/product_model.dar
 import 'package:ecommerce_app/features/orders/cubit/order/order_cubit.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/place_order_body.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -26,7 +27,7 @@ class PlaceOrderView extends StatelessWidget {
           if (state is OrderSuccess) {
             AppPopUp.showSnackBar(
               context: context,
-              text: 'Order placed successfully',
+              text: S.of(context).orderPlacedSuccessfully,
             );
             GoRouter.of(context).go(AppRouter.navigationView);
           } else if (state is OrderFailure) {
@@ -39,7 +40,7 @@ class PlaceOrderView extends StatelessWidget {
               progressIndicator: CircularProgressIndicator(color: Colors.pink),
               inAsyncCall: context.watch<OrderCubit>().state is OrderLoading,
               child: Scaffold(
-                appBar: AppBar(title: const Text('Checkout')),
+                appBar: AppBar(title:  Text(S.of(context).placeOrder)),
                 body: PlaceOrderBody(cartProducts: cartProducts),
               ),
             );

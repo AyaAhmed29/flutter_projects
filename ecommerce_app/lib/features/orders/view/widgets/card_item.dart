@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/core/utlis/storage/prodect_model/product_model.dart';
 import 'package:ecommerce_app/core/widget/custom_cach_image.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -63,8 +64,8 @@ class CardItem extends StatelessWidget {
             padding: AppPadding.horizontal24,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Total Order (${product.quantity})  :'),
+              children: [ 
+                Text('${S.of(context).totalOrder} ${product.quantity} :'),
                 Text('\$ ${product.price! * product.quantity}'),
               ],
             ),

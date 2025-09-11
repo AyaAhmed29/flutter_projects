@@ -1,10 +1,10 @@
 import 'package:ecommerce_app/core/logic/language/toggle_language_cubit.dart';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class LanguageSwitch extends StatefulWidget {
   const LanguageSwitch({super.key});
@@ -14,16 +14,12 @@ class LanguageSwitch extends StatefulWidget {
 }
 
 class _LanguageSwitchState extends State<LanguageSwitch> {
-  
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          'S.of(context).Language',
-          style: AppStyle.medium18,
-        ), 
+        Text(S.of(context).language, style: AppStyle.medium18),
         BlocBuilder<ToggleLanguageCubit, Locale>(
           builder: (context, locale) {
             return SizedBox(
@@ -54,7 +50,7 @@ class _LanguageSwitchState extends State<LanguageSwitch> {
                             ),
                             alignment: Alignment.center,
                             child: Text(
-                             'AR',
+                              S.of(context).ar,
                               style: TextStyle(
                                 color:
                                     !ToggleLanguageCubit.get(context).isEnglish
@@ -80,7 +76,7 @@ class _LanguageSwitchState extends State<LanguageSwitch> {
                             ),
                             alignment: Alignment.center,
                             child: Text(
-                             'EN',
+                              S.of(context).en,
                               style: TextStyle(
                                 color:
                                     ToggleLanguageCubit.get(context).isEnglish

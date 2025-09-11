@@ -11,6 +11,7 @@ import 'package:ecommerce_app/features/profile/cubit/user/user_cubit.dart';
 import 'package:ecommerce_app/features/profile/cubit/user/user_state.dart';
 import 'package:ecommerce_app/features/profile/view/widgets/profile_item.dart';
 import 'package:ecommerce_app/features/profile/view/widgets/user_image.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,7 @@ class ProfleView extends StatelessWidget {
     return BlocProvider(
       create: (context) => UserCubit()..getUser(),
       child: Scaffold(
-        appBar: CustomAppBar(title: 'Profile'),
+        appBar: CustomAppBar(title: S.of(context).profile),
         body: BlocBuilder<UserCubit, UserState>(
           builder: (context, state) {
             if (state is UserLoading) {
@@ -54,7 +55,7 @@ class ProfleView extends StatelessWidget {
                     ),
                     SizedBox(height: 50.h),
                     ProfileItem(
-                      title: 'My Profile',
+                      title: S.of(context).profile,
                       icon: Assets.imagesIconsProfile,
                       onPressed: () {
                         GoRouter.of(
@@ -63,30 +64,32 @@ class ProfleView extends StatelessWidget {
                       },
                     ),
                     ProfileItem(
-                      title: 'My Orders',
+                      title: S.of(context).myOrders,
                       icon: Assets.imagesIconsBagProfile,
                       onPressed: () {
                         GoRouter.of(context).push(AppRouter.ordersView);
                       },
                     ),
                     ProfileItem(
-                      title: 'My Favorites',
+                      title: S.of(context).myFavorites,
                       icon: Assets.imagesIconsHeart,
                       onPressed: () {
                         GoRouter.of(context).push(AppRouter.myFavoritesView);
                       },
                     ),
                     ProfileItem(
-                      title: 'Settings',
+                      title: S.of(context).settings,
                       icon: Assets.imagesIconsSetting,
-                      onPressed: () {},
+                      onPressed: () {
+                        GoRouter.of(context).push(AppRouter.settingView);
+                      },
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 40.0),
                       child: Divider(thickness: 1.h, color: AppColors.pink),
                     ),
                     ProfileItem(
-                      title: 'Log Out',
+                      title: S.of(context).logOut,
                       icon: Assets.imagesIconsLogout,
                       onPressed: () {
                         showDialog(
@@ -100,13 +103,12 @@ class ProfleView extends StatelessWidget {
                               await LocalStorage().clearCart();
                               AppPopUp.showSnackBar(
                                 context: context,
-                                text: 'LOg out successfully',
+                                text: S.of(context).logOutSuccessfully,
                               );
                               GoRouter.of(context).go(AppRouter.loginView);
                             },
-                            title: 'Confirmation',
-                            content:
-                                'Are you sure you want to log out from your account?',
+                            title: S.of(context).confirmation,
+                            content: S.of(context).logOutConfirmation,
                           ),
                         );
                       },

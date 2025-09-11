@@ -5,6 +5,7 @@ import 'package:ecommerce_app/features/auth/cubit/register_cubit/register_cubit.
 import 'package:ecommerce_app/features/auth/cubit/register_cubit/register_state.dart';
 import 'package:ecommerce_app/features/auth/view/widgets/custom_text_field.dart';
 import 'package:ecommerce_app/features/auth/view/widgets/register_agreement.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,13 +27,13 @@ class CustomRegisterForm extends StatelessWidget {
                   return AppValidator.usernameValidator(value);
                 },
                 controller: RegisterCubit.get(context).usernameController,
-                text: 'Full Name',
+                text: S.of(context).fullName,
                 icon: Assets.imagesIconsUser,
                 keyboardType: TextInputType.name,
               ),
               _hight10(),
               CustomTextField(
-                text: 'Phone',
+                text: S.of(context).phone,
                 keyboardType: TextInputType.phone,
                 icon: Assets.imagesIconsPhone,
                 validator: (value) {
@@ -48,7 +49,7 @@ class CustomRegisterForm extends StatelessWidget {
                   );
                 },
                 controller: RegisterCubit.get(context).emailController,
-                text: 'Email',
+                text: S.of(context).email,
                 icon: Assets.imagesIconsEmail,
                 keyboardType: TextInputType.emailAddress,
               ),
@@ -66,7 +67,7 @@ class CustomRegisterForm extends StatelessWidget {
                         controller: RegisterCubit.get(
                           context,
                         ).passwordController,
-                        text: 'Password',
+                        text: S.of(context).password,
                         icon: Assets.imagesIconsLock,
                         keyboardType: TextInputType.visiblePassword,
                         suffixIconOnPressed: () {
@@ -90,7 +91,7 @@ class CustomRegisterForm extends StatelessWidget {
                             value: value,
                           );
                         },
-                        text: 'ConfirmPassword',
+                        text: S.of(context).confirmPassword,
                         icon: Assets.imagesIconsLock,
                         keyboardType: TextInputType.visiblePassword,
                         obscureText: RegisterCubit.get(
@@ -116,7 +117,7 @@ class CustomRegisterForm extends StatelessWidget {
               SizedBox(height: 28.h),
 
               CustomButton(
-                text: 'Create Account',
+                text: S.of(context).createAccountButton,
                 ontap: () {
                   RegisterCubit.get(context).onTapregister();
                 },

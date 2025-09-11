@@ -6,6 +6,7 @@ import 'package:ecommerce_app/features/orders/cubit/order/order_cubit.dart';
 import 'package:ecommerce_app/features/orders/data/model/order_model.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/order_actions_row.dart';
 import 'package:ecommerce_app/features/orders/view/widgets/order_status_row.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -26,7 +27,7 @@ class OrderItemCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Order #${order.id ?? ''}', style: AppStyle.bold18),
+            Text('${S.of(context).order} #${order.id ?? ''}', style: AppStyle.bold18),
             SizedBox(height: 6.h),
             Text(
               order.orderDate != null && order.orderDate!.isNotEmpty
@@ -58,7 +59,7 @@ class OrderItemCard extends StatelessWidget {
                             SizedBox(height: 4.h),
                             Text('\$: ${item.price}', style: AppStyle.medium12),
                             Text(
-                              '${item.quantity} item',
+                              '${item.quantity} ${S.of(context).items}',
                               style: AppStyle.medium12,
                             ),
                           ],

@@ -2,6 +2,7 @@ import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/widget/custom_appbar.dart';
 import 'package:ecommerce_app/features/items/view/widgets/products.dart';
 import 'package:ecommerce_app/features/profile/cubit/prodect/cubit/prodect_cubit.dart';
+import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +14,7 @@ class MyFavoritesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'My Favorites'),
+      appBar: CustomAppBar(title: S.of(context).myFavorites),
       body: BlocProvider(
         create: (context) => ProdectCubit()..getFavoriteProducts(),
         child: BlocBuilder<ProdectCubit, ProdectState>(
@@ -96,7 +97,7 @@ class ProdectShimmerItem extends StatelessWidget {
               height: 180,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.grey.shade500, // يبان غامق شوية
+                color: Colors.grey.shade500, 
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(12),
                 ),
