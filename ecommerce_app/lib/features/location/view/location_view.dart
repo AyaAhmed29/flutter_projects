@@ -1,9 +1,11 @@
+import 'package:ecommerce_app/core/utlis/app_colors.dart';
+import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/features/location/cubit/location_cubit.dart';
 import 'package:ecommerce_app/features/location/cubit/location_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+String  selectedLocationName = '';
 class LocationView extends StatelessWidget {
   const LocationView({super.key});
 
@@ -30,15 +32,42 @@ class LocationView extends StatelessWidget {
                       ),
                       markers: LocationCubit.get(context).markers,
                       onTap: (LatLng newPosition) {
-                        
                         LocationCubit.get(context).updateMarker(newPosition);
+                        selectedLocationName = LocationCubit.get(context).selectedLocationName!;
                       },
                     ),
+                    // PlaseName
+                    if (LocationCubit.get(context).selectedLocationName != null)
+                      Positioned(
+                        top: 50,
+                        left: 20,
+                        right: 20,
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppColors.black.withValues(alpha: 0.2),
+                                blurRadius: 5,
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            LocationCubit.get(context).selectedLocationName!,
+                            style: AppStyle.medium18.copyWith(
+                              color: AppColors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
                   ],
                 ),
               );
             } else if (state is Locationfailure) {
-              return Text(state.message);
+              return Center(child: Text(state.message));
             }
             return const SizedBox();
           },

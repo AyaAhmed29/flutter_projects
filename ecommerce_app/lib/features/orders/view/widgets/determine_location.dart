@@ -1,10 +1,11 @@
-
+import 'package:ecommerce_app/core/helper/app_validator.dart';
 import 'package:ecommerce_app/core/utlis/app_assets.dart';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
 import 'package:ecommerce_app/core/utlis/app_padding.dart';
 import 'package:ecommerce_app/core/utlis/app_router.dart';
 import 'package:ecommerce_app/core/utlis/app_style.dart';
 import 'package:ecommerce_app/core/widget/custom_svg.dart';
+import 'package:ecommerce_app/features/location/view/location_view.dart';
 import 'package:ecommerce_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,10 +38,16 @@ class DetermineLocation extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Address', style: AppStyle.medium12),
-                TextField(
+                TextFormField(
+                  controller: TextEditingController(
+                    text: selectedLocationName ?? '',
+                  ),
+                  validator: (value) {
+                    return AppValidator.usernameValidator(value);
+                  },
                   maxLines: 2,
                   decoration: InputDecoration(
-                    hintText:S.of(context).typeAddress,
+                    hintText: S.of(context).typeAddress,
                     hintStyle: AppStyle.regular12,
                     border: InputBorder.none,
                     contentPadding: EdgeInsets.zero,

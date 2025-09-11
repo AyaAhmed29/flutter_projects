@@ -1,6 +1,6 @@
 abstract class EndPoints {
   static const String ecoBaseUrl =
-      'https://nti-ecommerce-api-production-e1c2.up.railway.app/api/';
+      '        https://nti-ecommerce-api-production-e1c2.up.railway.app/api/';
   static const String login = 'login';
   static const String register = 'register';
   static const String getUserData = 'get_user_data';
