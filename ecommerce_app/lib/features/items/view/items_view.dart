@@ -1,10 +1,13 @@
 import 'package:ecommerce_app/core/widget/logo_appbar.dart';
 import 'package:ecommerce_app/features/home/cubit/category/Category_cubit.dart';
 import 'package:ecommerce_app/features/home/cubit/category/Category_state.dart';
+import 'package:ecommerce_app/features/home/view/widgets/all_featured_shimmer.dart';
 import 'package:ecommerce_app/features/items/view/widgets/products.dart';
 import 'package:ecommerce_app/features/profile/view/my_favorites_view.dart';
+import 'package:ecommerce_app/features/profile/view/widgets/product_shimmer_grid.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce_app/features/home/view/widgets/all_featured_item.dart';
+import 'package:ecommerce_app/features/home/view/widgets/all_featured_item.dart'
+    hide AllFeaturedShimmer;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ItemsView extends StatelessWidget {
@@ -19,11 +22,11 @@ class ItemsView extends StatelessWidget {
           builder: (context, state) {
             if (state is FeaturLoading) {
               return SingleChildScrollView(
-                child: const Column(
+                child: Column(
                   children: [
                     AllFeaturedShimmer(),
-                    SizedBox(height: 10),
-                    ProductShimmerGrid(),
+                    const SizedBox(height: 10),
+                    const ProductShimmerGrid(),
                   ],
                 ),
               );
@@ -36,7 +39,9 @@ class ItemsView extends StatelessWidget {
                 },
                 child: CustomScrollView(
                   slivers: [
-                    SliverToBoxAdapter(child: AllFeaturedItem()),
+                    SliverToBoxAdapter(
+                      child: AllFeaturedItem(enableSelection: true),
+                    ),
                     SliverToBoxAdapter(
                       child: Products(
                         products: state

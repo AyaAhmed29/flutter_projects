@@ -16,15 +16,8 @@ class RecommendedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BestSellerCubit.get(context);
-    log(cubit.state.toString());
-
     return BlocBuilder<BestSellerCubit, BestSellerState>(
       builder: (context, state) {
-        final cubit = BestSellerCubit.get(context);
-        log(cubit.state.toString());
-
-        log(state.toString());
         if (state is BestSellerLoading) {
           return const RecommendedShimmer();
         } else if (state is BestSellerfailure) {
@@ -103,7 +96,7 @@ class RecommendedShimmer extends StatelessWidget {
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
-        itemCount: 6, 
+        itemCount: 6,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Shimmer.fromColors(

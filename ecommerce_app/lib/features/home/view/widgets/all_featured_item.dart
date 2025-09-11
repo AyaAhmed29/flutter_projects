@@ -10,7 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class AllFeaturedItem extends StatelessWidget {
-  const AllFeaturedItem({super.key});
+  const AllFeaturedItem({super.key, this.enableSelection = false});
+  final bool enableSelection;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,10 @@ class AllFeaturedItem extends StatelessWidget {
               children: [
                 Padding(
                   padding: AppPadding.all16,
-                  child: Text(S.of(context).allFeatured, style: AppStyle.semiBold18),
+                  child: Text(
+                    S.of(context).allFeatured,
+                    style: AppStyle.semiBold18,
+                  ),
                 ),
                 SizedBox(
                   height: 100.h,
@@ -42,20 +46,44 @@ class AllFeaturedItem extends StatelessWidget {
                           SizedBox(width: 18.w),
                           GestureDetector(
                             onTap: () {
+                              if (!enableSelection) return;
                               FeaturCubit.get(context).setCurrentIndex(index);
                             },
                             child: Column(
                               children: [
                                 CircleAvatar(
                                   radius: 32,
-                                  backgroundImage: NetworkImage(
-                                    state.categories[index].imagePath ??
-                                        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200&q=80',
+                                  backgroundColor:
+                                      enableSelection &&
+                                          FeaturCubit.get(
+                                                context,
+                                              ).currentIndex ==
+                                              index
+                                      ? AppColors.pink
+                                      : Colors.transparent,
+                                  child: CircleAvatar(
+                                    radius: 30,
+                                    backgroundImage: NetworkImage(
+                                      state.categories[index].imagePath ??
+                                          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200&q=80',
+                                    ),
                                   ),
                                 ),
+
                                 Text(
                                   state.categories[index].title ?? 'Beauty',
-                                  style: AppStyle.regular10,
+                                  style: AppStyle.regular10.copyWith(
+                                    color:
+                                        enableSelection &&
+                                            FeaturCubit.get(
+                                                  context,
+                                                ).currentIndex ==
+                                                index
+                                        ? AppColors.pink
+                                        : Theme.of(
+                                            context,
+                                          ).colorScheme.onSurface,
+                                  ),
                                 ),
                               ],
                             ),

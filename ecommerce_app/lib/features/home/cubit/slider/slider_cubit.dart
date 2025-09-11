@@ -7,20 +7,37 @@ import 'package:meta/meta.dart';
 part 'slider_state.dart';
 
 class SliderCubit extends Cubit<SliderState> {
-  SliderCubit() : super(SliderInitial());
-  static SliderCubit get(context) => BlocProvider.of(context);
+  SliderCubit._internal() : super(SliderInitial());
+  // 1. Singleton pattern
+  static final SliderCubit _instance = SliderCubit._internal();
+  factory SliderCubit() {
+    return _instance;
+  }
+
+  // 2. Caching variable
+  SliderModel? cachedSliders;
   int currentIndex = 0;
 
-  setCurrentIndex(int index) {
+  void setCurrentIndex(int index) {
     currentIndex = index;
     emit(ChangeCurrentIndex());
   }
 
-  getSlider() async {
+  void getSlider({bool forceRefresh = false}) async {
+    // 3. Check for cached data before fetching, unless a refresh is forced
+    if (!forceRefresh &&
+        cachedSliders != null &&
+        cachedSliders!.sliders!.isNotEmpty) {
+      emit(SliderSuccess(sliders: cachedSliders!));
+      return;
+    }
+
     HomeRepo homeRepo = HomeRepo();
     emit(SliderLoading());
     var response = await homeRepo.getSlider();
     response.fold((error) => emit(Sliderfailure(error: error)), (sliders) {
+      // 4. Cache the fetched data after a successful network call
+      cachedSliders = sliders;
       emit(SliderSuccess(sliders: sliders));
     });
   }

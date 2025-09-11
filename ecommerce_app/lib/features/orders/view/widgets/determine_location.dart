@@ -37,11 +37,9 @@ class DetermineLocation extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Address', style: AppStyle.medium12),
+                Text(S.of(context).address, style: AppStyle.medium12),
                 TextFormField(
-                  controller: TextEditingController(
-                    text: selectedLocationName ?? '',
-                  ),
+                  controller: TextEditingController(text: selectedLocationName),
                   validator: (value) {
                     return AppValidator.usernameValidator(value);
                   },

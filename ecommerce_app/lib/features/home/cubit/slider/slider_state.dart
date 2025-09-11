@@ -10,7 +10,9 @@ final class SliderLoading extends SliderState {}
 final class SliderSuccess extends SliderState {
   final SliderModel sliders;
 
-  SliderSuccess({required this.sliders});
+  SliderSuccess({
+    required this.sliders,
+  });
 }
 
 final class Sliderfailure extends SliderState {
@@ -18,8 +20,5 @@ final class Sliderfailure extends SliderState {
 
   Sliderfailure({required this.error});
 }
-final class ChangeCurrentIndex extends SliderState {
-  
 
-
-}
+final class ChangeCurrentIndex extends SliderState {}
