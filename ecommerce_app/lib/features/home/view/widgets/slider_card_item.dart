@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_app/core/utlis/app_colors.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SliderCardItem extends StatelessWidget {
@@ -17,7 +18,7 @@ class SliderCardItem extends StatelessWidget {
     return BlocBuilder<SliderCubit, SliderState>(
       builder: (context, state) {
         if (state is SliderLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return SliderShimmerWithDots();
         } else if (state is Sliderfailure) {
           return Text(state.error);
         } else if (state is SliderSuccess) {
@@ -54,6 +55,48 @@ class SliderCardItem extends StatelessWidget {
         }
         return Container();
       },
+    );
+  }
+}
+
+class SliderShimmerWithDots extends StatelessWidget {
+  const SliderShimmerWithDots({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: AppPadding.all16,
+          child: Shimmer.fromColors(
+            baseColor: AppColors.grey.withValues(alpha: .4),
+            highlightColor: AppColors.grey.withValues(alpha: .1),
+            child: Container(
+              height: 189.h,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            3,
+            (index) => Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              width: 9.w,
+              height: 9.h,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade400,
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

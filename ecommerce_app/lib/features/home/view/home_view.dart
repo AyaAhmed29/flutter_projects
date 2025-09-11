@@ -38,12 +38,7 @@ class HomeView extends StatelessWidget {
 
             SliverToBoxAdapter(child: AllFeaturedItem()),
             SliverToBoxAdapter(child: SliderCardItem()),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: AppPadding.horizontal18,
-                child: Text('Recommended', style: AppStyle.semiBold18),
-              ),
-            ),
+
             SliverToBoxAdapter(child: RecommendedItem()),
           ],
         ),

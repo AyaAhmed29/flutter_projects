@@ -32,14 +32,14 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       validator: validator,
+
       obscureText: obscureText ?? false,
       obscuringCharacter: '*',
       keyboardType: keyboardType,
       decoration: InputDecoration(
         filled: true,
 
-        fillColor: AppColors.lightGrey,
-
+        // fillColor: AppColors.lightGrey,
         suffixIcon: suffixIcon != null
             ? IconButton(
                 onPressed: suffixIconOnPressed,
@@ -52,7 +52,7 @@ class CustomTextField extends StatelessWidget {
         ),
         labelText: text,
         labelStyle: AppStyle.medium12.copyWith(
-          color: Theme.of(context).inputDecorationTheme.hintStyle?.color,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
         border: _borderStyle(),
         enabledBorder: _borderStyle(),
